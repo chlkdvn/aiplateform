@@ -19,7 +19,7 @@ const app = express();
 
 /* ---------------- CORS ---------------- */
 const corsOptions = {
-  origin: "http://localhost:5500",
+  origin: "https://scintillating-daffodil-817227.netlify.app",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
   allowedHeaders: [
