@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cognitive Analyst | Architectural Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#cdbdff",
+                    "inverse-surface": "#2d3133",
+                    "error": "#ba1a1a",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed": "#e8deff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#4f00d0",
+                    "secondary-container": "#61e5ff",
+                    "surface-container": "#eceef0",
+                    "on-primary-fixed": "#000767",
+                    "primary-container": "#000767",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary-container": "#737cd8",
+                    "on-secondary-fixed": "#001f25",
+                    "tertiary": "#000000",
+                    "surface-variant": "#e0e3e5",
+                    "primary": "#000000",
+                    "on-tertiary-fixed": "#20005f",
+                    "error-container": "#ffdad6",
+                    "outline": "#74777d",
+                    "secondary-fixed-dim": "#4fd7f0",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-fixed": "#a3eeff",
+                    "on-surface": "#191c1e",
+                    "surface": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-background": "#191c1e",
+                    "outline-variant": "#c4c6cc",
+                    "surface-tint": "#4c56af",
+                    "tertiary-container": "#20005f",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-tertiary-container": "#8d69ff",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-primary": "#bdc2ff",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed": "#e0e0ff",
+                    "on-primary-fixed-variant": "#343d96",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#006573",
+                    "secondary": "#006877",
+                    "on-surface-variant": "#44474c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-nav {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container">
+<!-- Side Panel -->
+<div id="side-panel" class="fixed top-0 left-0 w-80 h-full shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]" style="background-color:#0f172a;">
+  <div class="flex justify-between items-center p-6 border-b border-slate-700" style="background-color:#0f172a;">
+    <span class="text-xl font-bold text-white font-headline">Menu</span>
+    <button id="close-btn" class="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="p-6 space-y-6 overflow-y-auto" style="background-color:#0f172a; height: calc(100% - 73px);">
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="index.html">Home</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="marketplace.html">Marketplace</a>
+    <a class="block text-white font-bold border-b-2 border-white pb-1 font-body" href="solution.html">Solution</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="pricing.html">Pricing</a>
+    <div class="space-y-4 pt-6">
+      <a href="login.html" class="block w-full px-6 py-3 rounded-lg text-slate-400 hover:text-white transition-all font-semibold border border-slate-700 hover:border-slate-500 text-center">Login</a>
+      <a href="signup.html" class="block w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all text-center shadow-xl">Sign Up</a>
+      <a href="./user-dashboard/dashboard.html" class="block w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all text-center shadow-xl">Dashboard</a>
+    </div>
+  </div>
+</div>
+<div id="overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[9998]"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl transition-all duration-300">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-slate-950">Architectural Intelligence</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="index.html">Home</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="marketplace.html">Marketplace</a>
+<a class="text-slate-950 dark:text-white font-bold border-b-2 border-slate-950 dark:border-white pb-1 font-body" href="solution.html">Solution</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="pricing.html">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+  <div class="hidden md:flex items-center gap-4">
+    <a href="login.html" class="px-6 py-2 rounded-lg text-slate-500 hover:text-slate-900 transition-all font-semibold active:scale-95">Login</a>
+    <a href="signup.html" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl">Sign Up</a>
+    <a href="./user-dashboard/dashboard.html" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl">Dashboard</a>
+  </div>
+  <button id="menu-btn" class="md:hidden px-4 py-2 text-slate-950">
+    <span class="material-symbols-outlined">menu</span>
+  </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-semibold mb-6">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        ACTIVE AI PROCESSING
+                    </div>
+<h1 class="text-6xl font-extrabold tracking-tight text-on-surface mb-6">Cognitive Analyst</h1>
+<p class="text-xl text-on-surface-variant leading-relaxed mb-10 max-w-xl">
+                        Uncover hidden patterns in architectural workflows with our flagship neural engine. Cognitive Analyst transforms raw operational data into high-fidelity strategic foresight.
+                    </p>
+<div class="flex items-center gap-6">
+<button class="px-8 py-4 bg-primary text-on-primary font-bold rounded-lg text-lg hover:scale-95 transition-transform active:scale-90 shadow-xl">
+                            Try for Free
+                        </button>
+<button class="px-8 py-4 bg-surface-container-low text-on-surface font-semibold rounded-lg text-lg hover:bg-surface-container-high transition-colors">
+                            Request Demo
+                        </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-r from-primary-container to-on-tertiary-container opacity-20 blur-3xl group-hover:opacity-30 transition-opacity"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl bg-surface-container-lowest">
+<img alt="Cognitive Analyst Interface" class="w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="abstract digital visualization of complex data networks with glowing nodes and futuristic architectural lines in deep blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIIpH12rmiSXcfL14EyMuB3H936t5mIsN_dTh6EHl5R4Q0NiwCuvv0RhPh2LYR2a_HyuV1ic6tELEuXHWrhUCHs0yjSObiKD6mAgqKix3jGOa4v6ra0rPtCILUxeyPKzpBe-BVdtRmB8FnfrKEm7L_hr5EDQHtXhwXSp4Z1bCq-r1Fl1_bYT6e_bQeUOMNcTjMgGPtj8jIK3vd9DxhYdrqo_br9xK0PdQG1l0QDrQoRxagTTTHhfG2NYsJ38vaLUwJ1WzJjam9e1Y"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Description (Asymmetric Layout) -->
+<section class="bg-surface-container-low py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+<div class="md:col-span-5">
+<h2 class="text-4xl font-bold mb-8">Deep Context Integration</h2>
+<p class="text-lg text-on-surface-variant mb-6">
+                            Traditional analytics look at what happened. Cognitive Analyst looks at *why* it matters for your structural integrity. By ingesting BIM data, environmental variables, and financial metadata, it builds a multi-dimensional graph of your firm's performance.
+                        </p>
+<p class="text-lg text-on-surface-variant">
+                            Our proprietary "Context-Aware" transformer model ensures that every insight is grounded in the reality of architectural constraints and regulatory standards.
+                        </p>
+</div>
+<div class="md:col-span-7 md:translate-x-12">
+<div class="aspect-video bg-surface-container-lowest rounded-xl shadow-lg flex items-center justify-center p-8">
+<img alt="System Diagram" class="rounded-lg shadow-md" data-alt="clean minimal UI dashboard showing complex graph charts and AI prediction models for architectural project management" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqgqrliMZwpEFLyQDolgmDw0zuvCFHhRKsZg_iBkKpl8kMXVWXh_Ncy0CbA_XDhVvibzoaAQTimfCSELDWYAPMjV8k4TaJ01jU1cxwsfKXpBglwKeyjom8ZFcTDIMKF0QaL0umFJKCiCTCd_9_7tWUticAacRPUViDogBNa4_P2vWZo-VCbq9kaOzVFrk0CXtsybVK7LRvZOwArkLUmEYR_VeitZEbifsT6Z0ULW_i3GQpHmQU2E2W7mdZYeaUwx9brt-zlxcl3OE"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Key Features Bento Grid -->
+<section class="max-w-7xl mx-auto px-8 py-32">
+<div class="flex flex-col mb-16">
+<h2 class="text-4xl font-bold mb-4">Powerful Core Capabilities</h2>
+<div class="w-24 h-1 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-secondary-container">neurology</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Predictive Structural Modeling</h3>
+<p class="text-on-surface-variant">Anticipate design bottlenecks before they manifest. Our engine simulates thousands of workflow variations to find the optimal path for project completion.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-primary-container p-8 rounded-xl flex flex-col justify-between text-on-primary">
+<span class="material-symbols-outlined text-4xl mb-4">insights</span>
+<div>
+<h3 class="text-xl font-bold mb-2">Real-time Telemetry</h3>
+<p class="opacity-80 text-sm">Live data streaming from all active project endpoints with sub-second latency.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-highest p-8 rounded-xl">
+<span class="material-symbols-outlined text-3xl mb-4">security</span>
+<h3 class="text-xl font-bold mb-2">Sovereign Encryption</h3>
+<p class="text-on-surface-variant text-sm">Your data never leaves your infrastructure. On-premise AI processing for sensitive assets.</p>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-2 bg-white p-8 rounded-xl border-l-4 border-secondary flex items-center gap-8 shadow-sm">
+<div class="flex-1">
+<h3 class="text-xl font-bold mb-2">Autonomous Documentation</h3>
+<p class="text-on-surface-variant text-sm">Automatically generate technical specs and API documentation from your design models using natural language processing.</p>
+</div>
+<span class="material-symbols-outlined text-5xl text-secondary opacity-20">auto_stories</span>
+</div>
+</div>
+</section>
+<!-- Documentation Section -->
+<section class="bg-primary text-on-primary py-32">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-bold mb-6">Built for Developers</h2>
+<p class="text-lg opacity-80 mb-10">Integrate Cognitive Analyst into your existing stack in minutes. Our API-first approach means you can power your own tools with our intelligence.</p>
+<div class="space-y-4">
+<a class="flex items-center justify-between p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="font-medium">Quick Start Guide</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="font-medium">Full API Reference</span>
+<span class="material-symbols-outlined">code</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="font-medium">Webhooks &amp; Events</span>
+<span class="material-symbols-outlined">sensors</span>
+</a>
+</div>
+</div>
+<div class="bg-slate-900 rounded-xl p-6 font-mono text-sm shadow-2xl">
+<div class="flex gap-2 mb-6">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+</div>
+<div class="text-blue-400">curl <span class="text-white">-X POST</span> https://api.arch-intel.ai/v1/analyze \</div>
+<div class="pl-4 text-blue-400">-H <span class="text-green-400">"Authorization: Bearer $API_KEY"</span> \</div>
+<div class="pl-4 text-blue-400">-d <span class="text-green-400">'{ "model_id": "cognitive_v4", "context": "high_res_bim" }'</span></div>
+<div class="mt-8 text-slate-500">// Response</div>
+<div class="text-slate-300">{</div>
+<div class="pl-4 text-slate-300">"status": <span class="text-green-400">"success"</span>,</div>
+<div class="pl-4 text-slate-300">"confidence_score": <span class="text-yellow-400">0.984</span>,</div>
+<div class="pl-4 text-slate-300">"insights": [ ... ]</div>
+<div class="text-slate-300">}</div>
+</div>
+</div>
+</section>
+<!-- Pricing Tiers -->
+<section class="max-w-7xl mx-auto px-8 py-32">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-bold mb-4">Simple, Scalable Tiers</h2>
+<p class="text-on-surface-variant">Choose the plan that fits your firm's growth trajectory.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Standard -->
+<div class="p-8 rounded-xl bg-surface-container-low flex flex-col border border-transparent hover:border-outline-variant transition-colors">
+<h3 class="text-xl font-bold mb-2">Standard</h3>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-bold">$49</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Up to 5 active projects
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Standard neural engine
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Email support
+                        </li>
+</ul>
+<button class="w-full py-3 bg-surface-container-highest font-bold rounded-lg hover:bg-surface-container-high transition-colors">Get Started</button>
+</div>
+<!-- Professional -->
+<div class="p-8 rounded-xl bg-surface-container-lowest shadow-2xl flex flex-col relative border-2 border-primary">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+<h3 class="text-xl font-bold mb-2">Professional</h3>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-bold">$199</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Unlimited projects
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Advanced Cognitive v4 Engine
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Priority 1h support
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Custom model training
+                        </li>
+</ul>
+<button class="w-full py-3 bg-primary text-on-primary font-bold rounded-lg hover:scale-[1.02] transition-transform">Start Pro Trial</button>
+</div>
+<!-- Enterprise -->
+<div class="p-8 rounded-xl bg-surface-container-low flex flex-col">
+<h3 class="text-xl font-bold mb-2">Enterprise</h3>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-bold">Custom</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            On-premise deployment
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            White-glove onboarding
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Dedicated account team
+                        </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            SLA guarantees
+                        </li>
+</ul>
+<button class="w-full py-3 bg-slate-950 text-white font-bold rounded-lg hover:bg-slate-800 transition-colors">Contact Sales</button>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="bg-surface-container-low py-32">
+<div class="max-w-7xl mx-auto px-8">
+<h2 class="text-3xl font-bold mb-16 text-center italic">"Cognitive Analyst didn't just optimize our workflow; it fundamentally changed how we perceive structural risk."</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 bg-slate-200">
+<img alt="User 1" data-alt="professional portrait of a male architect in a studio setting with blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdh2t_5YdLz-Cnm69t5xZkOf3stpsYP7WGCVePF7CB9hZf9R_c_ODqqTz4QnrzUXUdgD7-XRcr0wrye3VH7Knt-cHa30yN5m1TTAE7RcP1C5LgJtv0FRbTdc6uVTksLY4KQ6QqX0MrAffj0iNsQ2H-SP63Qjs3dx4FPcyViLuzdm2sB3iQ80EzX1UaPjcVUCmmV_-t8P2DDn3_KagwzgKSU6Mj41Xw6ML9nZuyouZ5uipM8mgUfrkdhfE23tYwz3EZ55Bk-NhxY54"/>
+</div>
+<p class="font-bold">Marcus Thorne</p>
+<p class="text-sm text-on-surface-variant">CTO, Vertex Structures</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 bg-slate-200">
+<img alt="User 2" data-alt="portrait of a confident woman in business attire with a modern office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1bs0QUBrXjbawpDbKjW-fusHr5e7zJrBFZhv8uV4K3p3Vcg7ckHjCerwB_kAfulwJILw4-Mmb-w3WsTNFWBhovWJ1qMwo8qlBPgwid125FO9xnOSFZtZnfiH32VcICfshyiN136EZoqEa8OvlRv6NP9oLlwfWbY22M-6XN89bVcRHy_506DhBO1-8QgVGeyvIu4UmWQK6DMDMnQenywQLmjeA_25fXTf9ZTh7ZC-5DqtHLwoCPK1FdldCHs8CG39pR4rJXRIzFPM"/>
+</div>
+<p class="font-bold">Elena Rodriguez</p>
+<p class="text-sm text-on-surface-variant">Design Lead, Urbanism AI</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 bg-slate-200">
+<img alt="User 3" data-alt="close up headshot of a middle aged man with glasses smiling gently in professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJLQdv3-caXDibgCTC27c9XdWCjSs0DN3YaFC6Kcn750euF2MycWKaj26sh5qBQ_VNgHafnnrn7_ZBycnnrALUX8smRnRXXuZL4WpAas6K_4FkV2sGRtN88ws9VteEPpFVWENm05DfplUIv4ZHwiX-YwIed4jDLx8kYDpA2cXtOMKsY6lP2xxNFVZLoMnnr2Dk0Bw5EwP5RV7DRaxEAKG4c4u11GIr9cGTOw2s7he85bZLtL8c4cQognQmijOvMJ-g-04pVt9Mjfw"/>
+</div>
+<p class="font-bold">Samuel Chen</p>
+<p class="text-sm text-on-surface-variant">Lead Engineer, Horizon BIM</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 w-full mt-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+<div>
+<span class="text-xl font-bold text-slate-900 dark:text-white block mb-6">Architectural Intelligence</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                    Pioneering the cognitive layer of the built environment. Built for the AI Frontier.
+                </p>
+</div>
+<div>
+<h4 class="font-bold mb-6">Company</h4>
+<div class="flex flex-col gap-4">
+<a class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">About</a>
+<a class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Careers</a>
+<a class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6">Legal</h4>
+<div class="flex flex-col gap-4">
+<a class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6">Newsletter</h4>
+<p class="text-sm text-slate-500 mb-4">Stay updated on AI advancements.</p>
+<div class="flex">
+<input class="bg-surface-container border-none focus:ring-2 focus:ring-primary rounded-l-lg w-full text-sm" placeholder="Email" type="email"/>
+<button class="bg-primary text-on-primary px-4 rounded-r-lg">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 dark:border-slate-800 text-slate-500 text-sm">
+            © 2024 Architectural Intelligence. Built for the AI Frontier.
+        </div>
+</footer>
+<script>
+const menuBtn = document.getElementById('menu-btn');
+const closeBtn = document.getElementById('close-btn');
+const sidePanel = document.getElementById('side-panel');
+const overlay = document.getElementById('overlay');
+
+function openMenu() {
+  sidePanel.classList.remove('-translate-x-full');
+  overlay.classList.remove('opacity-0', 'pointer-events-none');
+  overlay.classList.add('opacity-100', 'pointer-events-auto');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  sidePanel.classList.add('-translate-x-full');
+  overlay.classList.remove('opacity-100', 'pointer-events-auto');
+  overlay.classList.add('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = '';
+}
+
+menuBtn.addEventListener('click', openMenu);
+closeBtn.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+</script>
+</body></html>

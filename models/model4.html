@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SmartAI Assistant - Product Details &amp; Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "secondary-fixed-dim": "#4fd7f0",
+                    "on-secondary-container": "#006573",
+                    "inverse-surface": "#2d3133",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#4f00d0",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "on-primary-container": "#737cd8",
+                    "on-background": "#191c1e",
+                    "inverse-primary": "#bdc2ff",
+                    "tertiary-fixed": "#e8deff",
+                    "surface-variant": "#e0e3e5",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary-fixed": "#20005f",
+                    "outline-variant": "#c4c6cc",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#61e5ff",
+                    "outline": "#74777d",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface-variant": "#44474c",
+                    "tertiary-fixed-dim": "#cdbdff",
+                    "on-primary-fixed": "#000767",
+                    "tertiary-container": "#20005f",
+                    "primary-container": "#000767",
+                    "on-error": "#ffffff",
+                    "primary": "#000000",
+                    "on-tertiary-container": "#8d69ff",
+                    "on-primary-fixed-variant": "#343d96",
+                    "surface-tint": "#4c56af",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed": "#a3eeff",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#006877",
+                    "on-surface": "#191c1e",
+                    "primary-fixed": "#e0e0ff",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-secondary-fixed-variant": "#004e5a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl transition-opacity">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-slate-900 font-headline">SmartAI Assistant</div>
+<div class="hidden md:flex items-center gap-8 font-headline tracking-tight font-semibold">
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Features</a>
+<a class="text-slate-900 font-bold border-b-2 border-slate-900 pb-1" href="#">Solutions</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Developers</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-semibold hover:opacity-80 transition-opacity active:scale-95">Get Started</button>
+<span class="material-symbols-outlined text-slate-900 cursor-pointer md:hidden">menu</span>
+</div>
+</div>
+</nav>
+<main class="pt-24 max-w-7xl mx-auto px-6 md:px-12">
+<!-- Hero / Top Overview Section -->
+<section class="py-16 md:py-24 flex flex-col items-start gap-8">
+<div class="flex items-center gap-3 bg-secondary-fixed/30 text-on-secondary-fixed px-3 py-1 rounded-full text-xs font-bold font-headline uppercase tracking-widest">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+                Pro version available
+            </div>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tight max-w-4xl leading-[1.1]">
+                Unleash the Power of <span class="text-on-primary-container">Cognitive Intelligence</span>.
+            </h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-body leading-relaxed">
+                SmartAI Assistant is the definitive large-language model framework designed for high-performance enterprises. Curate, automate, and scale with architectural precision.
+            </p>
+<div class="flex items-center gap-6 mt-4">
+<div class="flex items-center gap-2">
+<div class="flex text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<span class="font-bold">4.8</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="text-on-surface-variant font-medium">12k+ users trust us</div>
+</div>
+<div class="flex flex-wrap gap-4 mt-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-headline font-bold text-lg hover:opacity-90 transition-all shadow-xl shadow-primary/10">Try Now</button>
+<button class="bg-surface-container-high text-on-surface px-8 py-4 rounded-lg font-headline font-bold text-lg hover:bg-surface-container-highest transition-all">View Docs</button>
+</div>
+</section>
+<!-- Product Preview Tabbed Interface -->
+<section class="mb-32">
+<div class="bg-surface-container-low rounded-[2rem] p-4 md:p-8 overflow-hidden">
+<div class="flex gap-4 mb-8">
+<button class="bg-surface-container-lowest shadow-sm px-6 py-2 rounded-xl font-headline font-bold text-sm">Preview</button>
+<button class="text-on-surface-variant px-6 py-2 rounded-xl font-headline font-semibold text-sm hover:bg-surface-container-high transition-all">Use Case</button>
+<button class="text-on-surface-variant px-6 py-2 rounded-xl font-headline font-semibold text-sm hover:bg-surface-container-high transition-all">Demo</button>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl aspect-video w-full shadow-2xl relative overflow-hidden border border-white/40">
+<!-- Chat UI Mockup -->
+<div class="absolute inset-0 flex flex-col">
+<div class="p-6 border-b border-surface-container flex items-center justify-between bg-surface-container-lowest/50 backdrop-blur-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">psychology</span>
+</div>
+<span class="font-headline font-bold">SmartAI Core V4.0</span>
+</div>
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-red-400"></div>
+<div class="w-3 h-3 rounded-full bg-amber-400"></div>
+<div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+</div>
+</div>
+<div class="flex-1 p-8 space-y-6 overflow-y-auto no-scrollbar">
+<div class="flex gap-4 max-w-2xl">
+<div class="w-10 h-10 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-none font-body text-sm leading-relaxed">
+                                    Analyze our Q3 healthcare outcomes dataset and identify the top three correlates for patient readmission.
+                                </div>
+</div>
+<div class="flex gap-4 max-w-3xl ml-auto flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-primary-container flex-shrink-0 flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div class="bg-primary text-on-primary p-5 rounded-2xl rounded-tr-none font-body text-sm leading-relaxed shadow-lg">
+                                    Based on the Q3 dataset, the three primary correlates for readmission are:
+                                    <ol class="mt-3 space-y-2 list-decimal list-inside opacity-90">
+<li>Post-operative medication non-adherence (42% correlation).</li>
+<li>Lack of outpatient follow-up within 72 hours (31% correlation).</li>
+<li>Pre-existing chronic respiratory conditions (24% correlation).</li>
+</ol>
+</div>
+</div>
+<div class="flex gap-4 max-w-2xl">
+<div class="w-10 h-10 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-none font-body text-sm leading-relaxed">
+                                    Generate a Python script to automate these alerts for our CRM.
+                                </div>
+</div>
+</div>
+<div class="p-6 border-t border-surface-container bg-surface-container-lowest">
+<div class="flex items-center gap-4 bg-surface-container-low rounded-xl px-4 py-3">
+<span class="material-symbols-outlined text-outline">attachment</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body text-sm" placeholder="Type your instruction..." type="text"/>
+<span class="material-symbols-outlined text-primary">send</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Key Features Cards (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-32">
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-3xl group hover:bg-primary transition-all duration-500">
+<span class="material-symbols-outlined text-4xl text-on-primary-container group-hover:text-on-primary mb-6 block transition-colors">chat_bubble</span>
+<h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-on-primary transition-colors">AI Chat &amp; NLP</h3>
+<p class="text-on-surface-variant group-hover:text-on-primary/80 transition-colors leading-relaxed">Advanced linguistic understanding with context awareness across thousands of tokens. Perfect for complex dialogue systems.</p>
+</div>
+<div class="bg-surface-container-lowest p-10 rounded-3xl group hover:bg-secondary transition-all duration-500">
+<span class="material-symbols-outlined text-4xl text-secondary group-hover:text-on-secondary mb-6 block transition-colors">bolt</span>
+<h3 class="text-xl font-headline font-bold mb-4 group-hover:text-on-secondary transition-colors">Automation</h3>
+<p class="text-on-surface-variant text-sm group-hover:text-on-secondary/80 transition-colors leading-relaxed">Trigger complex workflows based on natural language commands.</p>
+</div>
+<div class="bg-surface-container-lowest p-10 rounded-3xl group hover:bg-on-primary-container transition-all duration-500">
+<span class="material-symbols-outlined text-4xl text-on-primary-container group-hover:text-on-primary mb-6 block transition-colors">analytics</span>
+<h3 class="text-xl font-headline font-bold mb-4 group-hover:text-on-primary transition-colors">Analytics</h3>
+<p class="text-on-surface-variant text-sm group-hover:text-on-primary/80 transition-colors leading-relaxed">Real-time data synthesis and visualization of high-volume logs.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container-low p-12 rounded-3xl flex flex-col md:flex-row gap-12 items-center">
+<div class="flex-1">
+<div class="flex items-center gap-2 text-secondary font-bold mb-4 uppercase tracking-tighter text-sm">
+<span class="material-symbols-outlined text-base">api</span>
+                        Developer First
+                    </div>
+<h3 class="text-3xl font-headline font-bold mb-6">Seamless API Access</h3>
+<p class="text-on-surface-variant font-body leading-relaxed mb-8">Deploy our pre-trained models into your existing stack in under 5 minutes. Support for REST, GraphQL, and gRPC with 99.99% uptime SLA.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500">check_circle</span>
+<span class="font-medium">SDKs for Node, Python, and Go</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500">check_circle</span>
+<span class="font-medium">Edge deployment capabilities</span>
+</li>
+</ul>
+</div>
+<div class="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="close-up of clean code on a dark monitor screen with soft bokeh of neon lights in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiWgIhLelZHtzynJLjGhS2_3XzBBMwKDPaamG0fyalj3KqmFr2IaqHyaFc7cNQn3q4hyWMytYe_Je2YM9h9OkoN4t3CqLymK9qj9WJLxn3Pv5h9AvIeSJI4tczJBJkUUUSAlbkIlShOlNryPOS0iNpiJVYs5oWCTgOxWWw3qfpo64UcPfjzkyUetAep5NxD_JWVR-KGUKzFIIoTm9bV4iJNJAwHe6_anccAbUgjo4PMmInzoixxw7xbAjpSKKhgo8Gh3ndKUuaNxg"/>
+</div>
+</div>
+</section>
+<!-- Detailed Description / Use Cases -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-24 mb-32 items-center">
+<div>
+<h2 class="text-4xl font-headline font-extrabold mb-8">Engineered for the Modern Enterprise.</h2>
+<div class="space-y-8">
+<div class="p-8 bg-surface-container-low rounded-2xl">
+<h4 class="font-headline font-bold text-xl mb-3">Healthcare Excellence</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">From patient data anonymization to diagnostic assistance, our engine is HIPAA compliant and trained on validated medical journals.</p>
+</div>
+<div class="p-8 bg-surface-container-low rounded-2xl">
+<h4 class="font-headline font-bold text-xl mb-3">E-commerce Optimization</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Predictive inventory management and hyper-personalized customer support bots that actually resolve issues.</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative bg-surface-container-lowest p-1 rounded-3xl shadow-2xl">
+<img class="rounded-2xl w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="minimalist white robotic hand interacting with a floating digital interface representing neural networks and data streams" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCux0tGEwBtOe-gzDE0Pd-uzB_e0-5CBLHNoCnfWjYt9N9sKH26z9hIJcbEK3Hez0VepLS8OhjzhK4PNDIFletKekfIw4l4l-22j5IZZSCJCRl5SGBsZ4qdV2w9_Zy9JJPcSDqCpXge6pZ8o4lr0QJRv5UYz0MAvHQc-y-JzU8tV_5Cu8dnVGbfH27_Hswa10ebLEjHgzNvnMPJx-TcgZAHIhKbJZ_I6DjtIvfwKlh7B5VESy0_ts0Z105eZSX4RIei1bfbPhYnUTA"/>
+</div>
+</div>
+</section>
+<!-- Documentation Section Shell -->
+<section class="border-t border-surface-container pt-32 mb-32" id="docs">
+<div class="flex flex-col md:flex-row gap-12">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col gap-2 w-full md:w-64 p-4 sticky top-24 h-auto md:h-[calc(100vh-6rem)] rounded-r-xl bg-slate-50/50 transition-all">
+<div class="mb-6 px-3">
+<div class="text-lg font-bold text-slate-900 font-headline">Documentation</div>
+<div class="text-xs text-on-surface-variant font-medium">v2.4.0-stable</div>
+</div>
+<nav class="flex flex-col gap-1 font-manrope text-sm font-medium">
+<a class="text-slate-900 dark:text-white font-bold bg-white shadow-sm rounded-lg px-3 py-2 flex items-center gap-3" href="#intro">
+<span class="material-symbols-outlined text-lg">info</span> Introduction
+                        </a>
+<a class="text-slate-500 hover:translate-x-1 transition-transform px-3 py-2 flex items-center gap-3" href="#getting-started">
+<span class="material-symbols-outlined text-lg">rocket_launch</span> Getting Started
+                        </a>
+<a class="text-slate-500 hover:translate-x-1 transition-transform px-3 py-2 flex items-center gap-3" href="#auth">
+<span class="material-symbols-outlined text-lg">lock</span> Authentication
+                        </a>
+<a class="text-slate-500 hover:translate-x-1 transition-transform px-3 py-2 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">psychology</span> Core Concepts
+                        </a>
+<a class="text-slate-500 hover:translate-x-1 transition-transform px-3 py-2 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">code</span> API Reference
+                        </a>
+</nav>
+</aside>
+<!-- Content Area -->
+<div class="flex-1 space-y-24 pb-24">
+<!-- Intro -->
+<article id="intro">
+<h2 class="text-3xl font-headline font-bold mb-6">Introduction</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            The SmartAI API provides a robust, low-latency interface for integrating Cognitive Intelligence into your applications. Whether you're building a high-frequency trading bot or a healthcare triage system, our API scales with your needs.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 bg-surface-container-high rounded-xl">
+<span class="material-symbols-outlined text-primary mb-3">speed</span>
+<h4 class="font-bold mb-2">High Performance</h4>
+<p class="text-sm text-on-surface-variant">Optimized inference engines with sub-200ms latency globally.</p>
+</div>
+<div class="p-6 bg-surface-container-high rounded-xl">
+<span class="material-symbols-outlined text-primary mb-3">security</span>
+<h4 class="font-bold mb-2">Secure by Default</h4>
+<p class="text-sm text-on-surface-variant">SOC2 Type II compliant with end-to-end encryption for all payloads.</p>
+</div>
+</div>
+</article>
+<!-- Getting Started -->
+<article id="getting-started">
+<h2 class="text-3xl font-headline font-bold mb-6">Getting Started</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold flex-shrink-0">1</div>
+<div>
+<h4 class="font-bold text-xl mb-2">Create an Account</h4>
+<p class="text-on-surface-variant">Sign up at the developer portal and verify your organization status.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold flex-shrink-0">2</div>
+<div>
+<h4 class="font-bold text-xl mb-2">Generate API Key</h4>
+<p class="text-on-surface-variant">Navigate to the 'Keys' section in your dashboard to create your production secret.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold flex-shrink-0">3</div>
+<div>
+<h4 class="font-bold text-xl mb-2">Make Your First Request</h4>
+<p class="text-on-surface-variant">Use the authentication methods described below to start querying the model.</p>
+</div>
+</div>
+</div>
+</article>
+<!-- Authentication -->
+<article id="auth">
+<h2 class="text-3xl font-headline font-bold mb-6">Authentication</h2>
+<p class="text-on-surface-variant mb-8">All API requests must include your API key in the `Authorization` header. Your keys are sensitive—never share them or expose them in client-side code.</p>
+<div class="bg-primary-container rounded-2xl overflow-hidden">
+<div class="flex items-center justify-between px-6 py-3 border-b border-white/10 bg-slate-900/50">
+<div class="flex gap-6">
+<button class="text-white text-xs font-bold font-headline border-b-2 border-on-tertiary-container pb-1">JavaScript</button>
+<button class="text-white/50 text-xs font-bold font-headline hover:text-white transition-colors">Python</button>
+<button class="text-white/50 text-xs font-bold font-headline hover:text-white transition-colors">cURL</button>
+</div>
+<button class="flex items-center gap-2 text-white/70 hover:text-white text-xs transition-all">
+<span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+</div>
+<div class="p-8 text-sm font-mono text-on-tertiary-container overflow-x-auto whitespace-pre">
+<span class="text-indigo-400">const</span> smartai = <span class="text-amber-300">require</span>(<span class="text-emerald-400">'@smartai/sdk'</span>);
+<span class="text-indigo-400">const</span> client = <span class="text-indigo-400">new</span> <span class="text-amber-300">smartai.Client</span>({
+  apiKey: <span class="text-emerald-400">'sk_test_51MzS...'</span>,
+  version: <span class="text-emerald-400">'2024-03-01'</span>
+});
+
+<span class="text-indigo-400">const</span> response = <span class="text-indigo-400">await</span> client.inference.<span class="text-amber-300">create</span>({
+  model: <span class="text-emerald-400">'cognitive-v4'</span>,
+  prompt: <span class="text-emerald-400">'Analyze healthcare data Q3'</span>
+});</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky 'Try Now' FAB -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="bg-primary text-on-primary h-16 w-16 rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">play_arrow</span>
+</button>
+</div>
+<!-- Footer Component -->
+<footer class="w-full border-t border-slate-100 bg-white">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 mt-32 max-w-7xl mx-auto border-t border-slate-100">
+<div class="flex flex-col gap-4 mb-8 md:mb-0">
+<div class="text-sm font-black text-slate-900 font-headline uppercase tracking-widest">Cognitive Gallery Inc.</div>
+<div class="text-xs text-slate-400 font-manrope tracking-wide uppercase">© 2024 Cognitive Gallery Inc. Built with Architectural Intelligence.</div>
+</div>
+<div class="flex gap-8 font-manrope text-xs tracking-wide uppercase font-semibold">
+<a class="text-slate-500 hover:text-slate-900 underline-offset-4 hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-slate-900 underline-offset-4 hover:underline transition-all" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-slate-900 underline-offset-4 hover:underline transition-all" href="#">Security</a>
+<a class="text-slate-500 hover:text-slate-900 underline-offset-4 hover:underline transition-all" href="#">Status</a>
+</div>
+</div>
+</footer>
+</body></html>

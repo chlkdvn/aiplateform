@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#cdbdff",
+                    "inverse-surface": "#2d3133",
+                    "error": "#ba1a1a",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed": "#e8deff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#4f00d0",
+                    "secondary-container": "#61e5ff",
+                    "surface-container": "#eceef0",
+                    "on-primary-fixed": "#000767",
+                    "primary-container": "#000767",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary-container": "#737cd8",
+                    "on-secondary-fixed": "#001f25",
+                    "tertiary": "#000000",
+                    "surface-variant": "#e0e3e5",
+                    "primary": "#000000",
+                    "on-tertiary-fixed": "#20005f",
+                    "error-container": "#ffdad6",
+                    "outline": "#74777d",
+                    "secondary-fixed-dim": "#4fd7f0",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-fixed": "#a3eeff",
+                    "on-surface": "#191c1e",
+                    "surface": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-background": "#191c1e",
+                    "outline-variant": "#c4c6cc",
+                    "surface-tint": "#4c56af",
+                    "tertiary-container": "#20005f",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-tertiary-container": "#8d69ff",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-primary": "#bdc2ff",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed": "#e0e0ff",
+                    "on-primary-fixed-variant": "#343d96",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#006573",
+                    "secondary": "#006877",
+                    "on-surface-variant": "#44474c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-pulse {
+            animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .4; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- Side Panel -->
+<div id="side-panel" class="fixed top-0 left-0 w-80 h-full shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]" style="background-color:#0f172a;">
+  <div class="flex justify-between items-center p-6 border-b border-slate-700" style="background-color:#0f172a;">
+    <span class="text-xl font-bold text-white font-headline">Menu</span>
+    <button id="close-btn" class="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="p-6 space-y-6 overflow-y-auto" style="background-color:#0f172a; height: calc(100% - 73px);">
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="index.html">Home</a>
+    <a class="block text-white font-bold border-b-2 border-white pb-1 font-body" href="marketplace.html">Marketplace</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="solution.html">Solution</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="pricing.html">Pricing</a>
+    <div class="space-y-4 pt-6">
+      <a href="login.html" class="block w-full px-6 py-3 rounded-lg text-slate-400 hover:text-white transition-all font-semibold active:scale-95 border border-slate-700 hover:border-slate-500 text-center">Login</a>
+      <a href="signup.html" class="block w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all active:scale-95 shadow-xl text-center">Sign Up</a>
+      <a href="./user-dashboard/dashboard.html" class="block w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all active:scale-95 shadow-xl text-center">Dashboard</a>
+    </div>
+  </div>
+</div>
+<div id="overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[9998]"></div>
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl transition-all duration-300">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-slate-950">Architectural Intelligence</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="index.html">Home</a>
+<a class="text-slate-950 dark:text-white font-bold border-b-2 border-slate-950 dark:border-white pb-1 font-body" href="marketplace.html">Marketplace</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="solution.html">Solution</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="pricing.html">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-4">
+<a href="login.html" class="px-6 py-2 rounded-lg text-slate-500 hover:text-slate-900 transition-all font-semibold active:scale-95">Login</a>
+<a href="signup.html" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl">Sign Up</a>
+<a href="./user-dashboard/dashboard.html" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl">Dashboard</a>
+</div>
+<button id="menu-btn" class="md:hidden px-4 py-2 text-slate-950">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12 max-w-screen-2xl mx-auto px-8">
+<!-- Search & Editorial Header -->
+<header class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+<div class="max-w-2xl">
+<h1 class="text-5xl font-extrabold tracking-tight mb-4 text-on-surface">The Cognitive Gallery</h1>
+<p class="text-xl text-on-surface-variant font-body">Curated enterprise-grade AI models designed for the architectural frontier.</p>
+</div>
+<div class="w-full md:w-96">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary-container transition-all" placeholder="Explore AI Solutions..." type="text"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-col md:flex-row gap-12">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 shrink-0 space-y-12">
+<div>
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Category</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Data Analysis</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Customer Relations</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Operational Logic</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Visual Intelligence</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Business Size</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container-high text-on-surface-variant hover:bg-primary-container hover:text-on-primary transition-all">Startup</button>
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-primary text-on-primary">Enterprise</button>
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container-high text-on-surface-variant hover:bg-primary-container hover:text-on-primary transition-all">Global</button>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Price Range</h3>
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between mt-4 text-xs font-medium text-on-surface-variant">
+<span>$0</span>
+<span>$5,000+</span>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Ratings</h3>
+<div class="space-y-2">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-xs ml-2 font-semibold">&amp; Up</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Grid -->
+<section class="flex-grow">
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest p-8 rounded-xl flex flex-col h-full group hover:shadow-xl transition-shadow duration-300">
+<div class="flex justify-between items-start mb-8">
+<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="psychology">psychology</span>
+</div>
+<div class="bg-secondary-container/30 px-3 py-1 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary rounded-full ai-pulse"></div>
+<span class="text-[10px] font-bold text-on-secondary-container uppercase tracking-wider">Active Learning</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 text-on-surface">Cognitive Analyst</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-10 flex-grow">Advanced neural processing for predictive market modeling and structural data synthesis.</p>
+<div class="mt-auto">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.9</span>
+<span class="text-sm text-outline">(1,240 reviews)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-on-surface">$299<span class="text-sm font-medium text-outline">/mo</span></span>
+<button class="p-3 rounded-lg bg-surface-container-high text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="arrow_forward"><a href="./models/model1.html">arrow_forward</a></span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest p-8 rounded-xl flex flex-col h-full group hover:shadow-xl transition-shadow duration-300">
+<div class="flex justify-between items-start mb-8">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="visibility">visibility</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 text-on-surface">Visionary CRM</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-10 flex-grow">Computer vision integrated customer management with biometric sentiment tracking.</p>
+<div class="mt-auto">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.7</span>
+<span class="text-sm text-outline">(892 reviews)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-on-surface">$149<span class="text-sm font-medium text-outline">/mo</span></span>
+<button class="p-3 rounded-lg bg-surface-container-high text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-all">
+  <span class="material-symbols-outlined" data-icon="arrow_forward"><a href="./models/model2.html">arrow_forward</a></span>
+
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest p-8 rounded-xl flex flex-col h-full group hover:shadow-xl transition-shadow duration-300">
+<div class="flex justify-between items-start mb-8">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 text-on-surface">AutoOps AI</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-10 flex-grow">Autonomous operational flows for manufacturing logistics and supply chain optimization.</p>
+<div class="mt-auto">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.8</span>
+<span class="text-sm text-outline">(2,105 reviews)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-on-surface">$599<span class="text-sm font-medium text-outline">/mo</span></span>
+<button class="p-3 rounded-lg bg-surface-container-high text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-all">
+  <span class="material-symbols-outlined" data-icon="arrow_forward"><a href="./models/model3.html">arrow_forward</a></span>
+
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest p-8 rounded-xl flex flex-col h-full group hover:shadow-xl transition-shadow duration-300">
+<div class="flex justify-between items-start mb-8">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="shield">shield</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 text-on-surface">Guardian Mesh</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-10 flex-grow">Real-time cybersecurity threat detection using adaptive neural networks.</p>
+<div class="mt-auto">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.9</span>
+<span class="text-sm text-outline">(456 reviews)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-on-surface">$349<span class="text-sm font-medium text-outline">/mo</span></span>
+<button class="p-3 rounded-lg bg-surface-container-high text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-all">
+  <span class="material-symbols-outlined" data-icon="arrow_forward"><a href="./models/model4.html">arrow_forward</a></span>
+
+</button>
+</div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="bg-surface-container-lowest p-8 rounded-xl flex flex-col h-full group hover:shadow-xl transition-shadow duration-300 border-2 border-primary-container/20">
+<div class="flex justify-between items-start mb-8">
+<div class="w-14 h-14 bg-primary flex items-center justify-center rounded-lg shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="token">token</span>
+</div>
+<span class="bg-primary text-on-primary text-[10px] px-2 py-1 rounded font-bold uppercase">Staff Pick</span>
+</div>
+<h2 class="text-2xl font-bold mb-3 text-on-surface">Genesis Forge</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-10 flex-grow">Generative design engine for architectural layouts and interior spatial planning.</p>
+<div class="mt-auto">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">5.0</span>
+<span class="text-sm text-outline">(312 reviews)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-on-surface">$899<span class="text-sm font-medium text-outline">/mo</span></span>
+<button class="p-3 rounded-lg bg-primary text-on-primary transition-all">
+  <span class="material-symbols-outlined" data-icon="arrow_forward"><a href="./models/model2.html">arrow_forward</a></span>
+
+</button>
+</div>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="bg-surface-container-lowest p-8 rounded-xl flex flex-col h-full group hover:shadow-xl transition-shadow duration-300">
+<div class="flex justify-between items-start mb-8">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="language">language</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 text-on-surface">Linguist Pro</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-10 flex-grow">Ultra-low latency real-time translation and cultural context adjustment for global teams.</p>
+<div class="mt-auto">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.6</span>
+<span class="text-sm text-outline">(1,567 reviews)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-on-surface">$199<span class="text-sm font-medium text-outline">/mo</span></span>
+<button class="p-3 rounded-lg bg-surface-container-high text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-all">
+  <span class="material-symbols-outlined" data-icon="arrow_forward"><a href="./models/model4.html">arrow_forward</a></span>
+
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-20 flex justify-center items-center gap-4">
+<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant font-bold hover:bg-surface-container-highest transition-colors">2</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant font-bold hover:bg-surface-container-highest transition-colors">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant font-bold hover:bg-surface-container-highest transition-colors">12</button>
+</div>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full mt-24 bg-slate-50 dark:bg-slate-900 border-t border-slate-100">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="text-xl font-bold text-slate-900">Architectural Intelligence</span>
+<p class="mt-6 text-slate-500 text-sm leading-relaxed font-body">Defining the future of work through curated machine intelligence and cognitive tools.</p>
+</div>
+<div>
+<h4 class="font-headline font-bold text-slate-900 mb-6">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors text-sm" href="#">About</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors text-sm" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-slate-900 mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors text-sm" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors text-sm" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-slate-900 mb-6">Support</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors text-sm" href="#">Contact Support</a></li>
+</ul>
+<div class="mt-8 pt-8 border-t border-slate-200">
+<p class="text-xs text-slate-400">© 2024 Architectural Intelligence. Built for the AI Frontier.</p>
+</div>
+</div>
+</div>
+</footer>
+<script>
+const menuBtn = document.getElementById('menu-btn');
+const closeBtn = document.getElementById('close-btn');
+const sidePanel = document.getElementById('side-panel');
+const overlay = document.getElementById('overlay');
+
+function openMenu() {
+  sidePanel.classList.remove('-translate-x-full');
+  overlay.classList.remove('opacity-0', 'pointer-events-none');
+  overlay.classList.add('opacity-100', 'pointer-events-auto');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  sidePanel.classList.add('-translate-x-full');
+  overlay.classList.remove('opacity-100', 'pointer-events-auto');
+  overlay.classList.add('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = '';
+}
+
+menuBtn.addEventListener('click', openMenu);
+closeBtn.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+</script>
+</body></html>

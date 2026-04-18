@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architectural Intelligence - Ready for Deployment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e8ea",
+                    "surface-bright": "#f7f9fb",
+                    "on-background": "#191c1e",
+                    "secondary-fixed": "#a3eeff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#4c56af",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#006573",
+                    "error": "#ba1a1a",
+                    "outline": "#74777d",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#44474c",
+                    "tertiary-container": "#20005f",
+                    "outline-variant": "#c4c6cc",
+                    "on-primary-fixed": "#000767",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-container": "#000767",
+                    "primary": "#000000",
+                    "on-error": "#ffffff",
+                    "tertiary": "#000000",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#8d69ff",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-surface": "#191c1e",
+                    "surface-container": "#eceef0",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-tertiary-fixed-variant": "#4f00d0",
+                    "on-primary-fixed-variant": "#343d96",
+                    "inverse-primary": "#bdc2ff",
+                    "tertiary-fixed": "#e8deff",
+                    "surface": "#f7f9fb",
+                    "secondary": "#006877",
+                    "on-tertiary-fixed": "#20005f",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-fixed-dim": "#cdbdff",
+                    "primary-fixed": "#e0e0ff",
+                    "surface-dim": "#d8dadc",
+                    "on-primary-container": "#737cd8",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#61e5ff",
+                    "secondary-fixed-dim": "#4fd7f0",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-low": "#f2f4f6",
+                    "background": "#f7f9fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .headline-font {
+            font-family: 'Manrope', sans-serif;
+        }
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen overflow-hidden">
+<aside class="hidden lg:flex flex-col h-screen w-64 border-r-0 bg-slate-50 dark:bg-slate-900/50 py-12 px-6 shrink-0">
+<div class="mb-12">
+<span class="text-lg font-black text-slate-900 dark:text-white headline-font tracking-tighter">Architectural Intelligence</span>
+</div>
+<div class="mb-10">
+<h3 class="font-manrope font-bold text-slate-900 dark:text-white text-xs uppercase tracking-widest mb-1">Onboarding</h3>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-medium tracking-wide">Step 4 of 4</p>
+</div>
+<nav class="flex flex-col gap-y-6">
+<div class="flex items-center gap-3 text-slate-400 dark:text-slate-500 pl-5 font-manrope font-medium text-sm">
+<span class="material-symbols-outlined text-lg">person</span>
+<span>Identity</span>
+</div>
+<div class="flex items-center gap-3 text-slate-400 dark:text-slate-500 pl-5 font-manrope font-medium text-sm">
+<span class="material-symbols-outlined text-lg">psychology</span>
+<span>Intelligence</span>
+</div>
+<div class="flex items-center gap-3 text-slate-400 dark:text-slate-500 pl-5 font-manrope font-medium text-sm">
+<span class="material-symbols-outlined text-lg">grid_view</span>
+<span>Workspace</span>
+</div>
+<div class="flex items-center gap-3 text-slate-900 dark:text-white font-bold border-l-4 border-slate-900 dark:border-white pl-4 font-manrope text-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Review</span>
+</div>
+</nav>
+<div class="mt-auto pt-10">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-full rounded-full"></div>
+</div>
+<p class="mt-3 text-[11px] font-bold text-primary uppercase tracking-tighter">Complete</p>
+</div>
+</aside>
+<main class="flex-1 flex flex-col relative overflow-y-auto">
+<header class="fixed top-0 right-0 left-0 lg:left-64 z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl flex items-center justify-between px-8 py-6">
+<div class="flex items-center gap-4">
+<h1 class="font-manrope font-bold tracking-tight text-slate-900 dark:text-slate-50">Deployment Readiness</h1>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-500 dark:text-slate-400 hover:opacity-70 transition-opacity text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                    Support
+                </button>
+<button class="text-slate-500 dark:text-slate-400 hover:opacity-70 transition-opacity" onclick="window.location.href='/dashboard.html'">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</header>
+<div class="mt-24 px-8 lg:px-16 pb-20 max-w-7xl mx-auto w-full">
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+<div class="lg:col-span-7">
+<span class="bg-secondary-container/30 text-on-secondary-container px-4 py-1.5 rounded-full text-xs font-bold tracking-wider mb-6 inline-block uppercase">Configuration Finalized</span>
+<h2 class="display-lg text-5xl lg:text-7xl font-headline font-extrabold text-primary leading-none tracking-tighter mb-8">
+                        The Future <br/>is Ready.
+                    </h2>
+<p class="text-lg text-on-surface-variant font-body max-w-xl leading-relaxed mb-10">
+                        Your architectural intelligence environment has been provisioned. We've synthesized your workspace parameters with our core intelligence engine.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button onclick="finishAndLaunch()" id="launchBtn" class="bg-primary text-on-primary px-10 py-4 rounded-lg font-headline font-bold text-lg hover:opacity-90 transition-all flex items-center gap-3 group">
+<span id="btnText">Finish & Launch</span>
+<span id="btnSpinner" class="hidden loading-spinner material-symbols-outlined">refresh</span>
+<span id="btnIcon" class="material-symbols-outlined group-hover:translate-x-1 transition-transform">rocket_launch</span>
+</button>
+<button onclick="goBack()" class="bg-surface-container-lowest text-primary border border-outline-variant/30 px-10 py-4 rounded-lg font-headline font-bold text-lg hover:bg-surface-container-low transition-all">
+                            Back
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square w-full relative rounded-3xl overflow-hidden shadow-2xl">
+<img alt="3D abstract render" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-xvU3nHagP7yEKqNExFBVh8MhRS_1lw7K5cRJl8bossk1iEaZmyTGF3GvoJYuexW9BkbcO4A1Hqdc7G-wpD2k85GmrNk6BQFIgTcRKDS_gdLOE2vAKj8uNLttAghOaXQ6I-EYjWwgRi299WCLxRWvAMyMJxwvMDPACF9cWSjgziKCrt5pLAkxGwAwBaaGMirVt7IFFN6EJIn3Zi2qOCSEM7tmfbmjYCc67RuRccj5X0Ub5VtrHMujA9DaSLjdj_y6a1HNsTgqHqg"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary-container/20 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 bg-white/70 backdrop-blur-xl p-6 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-on-tertiary-container/20 flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<p class="text-xs font-bold text-primary uppercase tracking-widest">Environment Status</p>
+<p class="text-sm text-on-surface-variant">Model "Synthetix-V4" is now active</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-24">
+<div class="flex items-end justify-between mb-8">
+<h3 class="text-3xl font-headline font-bold tracking-tight">Configuration Summary</h3>
+<button onclick="goToStep(1)" class="text-sm font-bold text-secondary flex items-center gap-2 hover:underline">
+<span class="material-symbols-outlined text-sm">edit</span>
+                        Modify selections
+                    </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between min-h-[220px]">
+<div>
+<span class="material-symbols-outlined text-primary mb-4">fingerprint</span>
+<h4 class="text-lg font-headline font-bold mb-2">Workspace Identity</h4>
+<p id="summary-identity" class="text-sm text-on-surface-variant font-body">Loading...</p>
+</div>
+<div class="mt-6 flex items-center gap-2 text-xs font-bold text-on-primary-container bg-primary-fixed p-2 rounded-lg">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Verified & Secure
+                        </div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between min-h-[220px]">
+<div>
+<span class="material-symbols-outlined text-primary mb-4">psychology</span>
+<h4 class="text-lg font-headline font-bold mb-2">Active Intelligence</h4>
+<p id="summary-intelligence" class="text-sm text-on-surface-variant font-body">Loading...</p>
+</div>
+<div class="mt-6 flex items-center gap-2 text-xs font-bold text-on-secondary-container bg-secondary-container/40 p-2 rounded-lg">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                            Performance Optimized
+                        </div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between min-h-[220px]">
+<div>
+<span class="material-symbols-outlined text-primary mb-4">layers</span>
+<h4 class="text-lg font-headline font-bold mb-2">Resource Stack</h4>
+<p id="summary-workspace" class="text-sm text-on-surface-variant font-body">Loading...</p>
+</div>
+<div class="mt-6 flex items-center gap-2 text-xs font-bold text-on-tertiary-container bg-tertiary-fixed p-2 rounded-lg">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+                            Fully Provisioned
+                        </div>
+</div>
+</div>
+</section>
+</div>
+<footer class="lg:hidden fixed bottom-0 w-full bg-white px-8 py-4 border-t border-slate-100 flex items-center justify-between">
+<div class="flex-1 mr-6">
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+<p class="mt-1 text-[10px] font-bold text-primary uppercase">Complete</p>
+</div>
+<button onclick="finishAndLaunch()" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-headline font-bold text-sm">
+                Finish
+             </button>
+</footer>
+</main>
+
+<script>
+    const API_BASE_URL = 'http://localhost:4000';
+
+    // Load data when page loads
+    document.addEventListener('DOMContentLoaded', async () => {
+        await loadOnboardingData();
+    });
+
+    async function loadOnboardingData() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/onboarding/status`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const result = await response.json();
+
+            if (result.success && result.data) {
+                // Populate Identity Summary
+                const identity = result.data.identity || {};
+                const identityHtml = `
+                    <strong>${identity.workspaceName || 'Not set'}</strong><br>
+                    Industry: ${identity.industry ? identity.industry.charAt(0).toUpperCase() + identity.industry.slice(1) : 'Not set'}<br>
+                    Size: ${identity.companySize || 'Not set'}
+                `;
+                document.getElementById('summary-identity').innerHTML = identityHtml;
+
+                // Populate Intelligence Summary
+                const intelligence = result.data.intelligence || {};
+                const specializations = intelligence.specializations?.length 
+                    ? intelligence.specializations.join(', ') 
+                    : 'None selected';
+                const intelligenceHtml = `
+                    <strong>Role:</strong> ${intelligence.primaryRole ? intelligence.primaryRole.replace('-', ' ') : 'Not set'}<br>
+                    <strong>Specializations:</strong> ${specializations}<br>
+                    <strong>Level:</strong> ${intelligence.experienceLevel || 'Not set'}
+                `;
+                document.getElementById('summary-intelligence').innerHTML = intelligenceHtml;
+
+                // Populate Workspace Summary
+                const workspace = result.data.workspace || {};
+                const notifications = workspace.notifications || {};
+                const notificationList = [];
+                if (notifications.emailDigest) notificationList.push('Email');
+                if (notifications.slackIntegration) notificationList.push('Slack');
+                if (notifications.systemAlerts) notificationList.push('Alerts');
+                
+                const workspaceHtml = `
+                    <strong>Region:</strong> ${workspace.region || 'us-east-1'}<br>
+                    <strong>Timezone:</strong> ${workspace.timezone || 'UTC'}<br>
+                    <strong>Notifications:</strong> ${notificationList.length ? notificationList.join(', ') : 'None'}
+                `;
+                document.getElementById('summary-workspace').innerHTML = workspaceHtml;
+            } else {
+                console.error('Failed to load onboarding data:', result.error);
+            }
+        } catch (error) {
+            console.error('Error loading onboarding data:', error);
+            document.getElementById('summary-identity').innerHTML = 'Error loading data';
+            document.getElementById('summary-intelligence').innerHTML = 'Error loading data';
+            document.getElementById('summary-workspace').innerHTML = 'Error loading data';
+        }
+    }
+
+    function setLoading(isLoading) {
+        const btn = document.getElementById('launchBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const btnIcon = document.getElementById('btnIcon');
+        
+        if (isLoading) {
+            btn.disabled = true;
+            btnText.classList.add('hidden');
+            btnIcon.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
+        } else {
+            btn.disabled = false;
+            btnText.classList.remove('hidden');
+            btnIcon.classList.remove('hidden');
+            btnSpinner.classList.add('hidden');
+        }
+    }
+
+    function goBack() {
+        window.location.href = 'onboarding_3.html';
+    }
+
+    function goToStep(step) {
+        window.location.href = `onboarding_${step}.html`;
+    }
+
+    async function finishAndLaunch() {
+        setLoading(true);
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/onboarding/complete`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Redirect to dashboard or redirectUrl from response
+                window.location.href ='/user-dashboard/dashboard.html';
+            } else {
+                alert(result.error || 'Failed to complete onboarding. Please try again.');
+                setLoading(false);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Network error. Please try again.');
+            setLoading(false);
+        }
+    }
+</script>
+</body>
+</html>

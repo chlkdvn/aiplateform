@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management | The Architectural Intelligence</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-container": "#737cd8",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#4f00d0",
+                    "secondary": "#006877",
+                    "surface-container-low": "#f2f4f6",
+                    "secondary-fixed": "#a3eeff",
+                    "secondary-fixed-dim": "#4fd7f0",
+                    "surface-dim": "#d8dadc",
+                    "tertiary-container": "#20005f",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "tertiary-fixed": "#e8deff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#20005f",
+                    "on-surface-variant": "#44474c",
+                    "outline": "#74777d",
+                    "tertiary-fixed-dim": "#cdbdff",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "secondary-container": "#61e5ff",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-surface": "#191c1e",
+                    "on-secondary-container": "#006573",
+                    "on-tertiary-container": "#8d69ff",
+                    "background": "#f7f9fb",
+                    "primary-container": "#000767",
+                    "inverse-primary": "#bdc2ff",
+                    "surface-tint": "#4c56af",
+                    "surface-container-high": "#e6e8ea",
+                    "outline-variant": "#c4c6cc",
+                    "primary-fixed": "#e0e0ff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-fixed": "#001f25",
+                    "tertiary": "#000000",
+                    "on-primary-fixed": "#000767",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-fixed-variant": "#343d96",
+                    "primary": "#000000",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-background": "#191c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-8 px-4 font-manrope text-sm font-medium tracking-tight">
+<div class="mb-10 px-2">
+<span class="text-lg font-bold text-slate-950 dark:text-white">Cognitive Admin</span>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Super User</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active: Platform Overview -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label">Platform Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-900 font-bold border-r-4 border-blue-900 transition-colors" href="user-management.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="model-performance.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label">Model Performance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="revenue.html">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label">Revenue &amp; Billing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="system-logs.html">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label">System Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="security.html">
+  <span class="material-symbols-outlined" data-icon="shield">shield</span>
+  <span class="font-label">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="general-settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label">General Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-2 flex items-center gap-3">
+<img alt="Admin profile avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a mature business administrator with a friendly expression in a modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmXERkODkPmjwh6WuiqHV-JmnrwxucXd0Fv02N7GkiaCGZrkRnumrE44qmUOz2Xp3tJsrWXhQloGMf5f_FQfcdcMGOwpZpy_K846ZiEtq1Sn44mLMo0iyq0Piqm-6KNH5eWZ_gPQZ5pEqiFKUgROENJ6ojzynWBHI7X5N2wzaGkS6Y-SZZzbKUCVSV9ythOHTGhMPhJbuPNSTlLTNNNYuqc2te8V_b8S5amd9s_pWRZgcWJuaEl29ckplhDEgmvqjyZV6oHSJTvzU"/>
+<div>
+<p class="font-bold text-slate-950 dark:text-white">Alex Rivera</p>
+<p class="text-xs text-slate-500">Super User</p>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Execution from JSON) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 flex items-center justify-between px-8 w-full z-40 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-sm dark:shadow-none font-manrope tracking-tight">
+<div class="flex items-center gap-8 w-1/2">
+<h1 class="text-xl font-black text-slate-900 dark:text-white">The Architectural Intelligence</h1>
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-high/50 border-none rounded-lg pl-10 pr-4 py-1.5 text-sm focus:ring-1 ring-slate-200 dark:ring-slate-800 transition-all" placeholder="Search systems or users..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<img alt="Admin user profile" class="w-full h-full object-cover" data-alt="Close up portrait of a confident male executive in a sleek dark shirt, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwC8tF2ohVsj0nX78sScTwruilNTc7yuZNiVGegK7Nopf7tOW2jOoD4yxh4Q8QpIRFdI6F-kJUpsw1OyPvphqcG3QY8jaRnB6slk7d-0dSkFjsjiYachyv_4i0J42l7gVbefjy0xp1d9EiiwmNXjp_r6j_q25o_34_g_VFi3kPzSUmZWSDKQWg4yN2wTKUfQpIi0ViITPjzevBQSFI2fjs7bkaYH0XecIzp1vXJWvRDYeMihco53GN4fIoOim6PcXjf2hZci7PG3E"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+<!-- Page Header -->
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tighter text-primary">User Management</h2>
+<p class="text-on-surface-variant mt-2 max-w-md">Orchestrate your ecosystem. Manage permissions, monitor activity, and handle user lifecycles with editorial precision.</p>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                Add New User
+            </button>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Filters & Table -->
+<div class="col-span-9 space-y-8">
+<!-- Filter Bar -->
+<section class="bg-surface-container-low p-6 rounded-xl flex flex-wrap gap-4 items-center">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border-none shadow-sm flex-1">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="filter_list">filter_list</span>
+<select class="bg-transparent border-none text-sm font-medium focus:ring-0 w-full">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Developer</option>
+<option>Viewer</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border-none shadow-sm flex-1">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="lens">lens</span>
+<select class="bg-transparent border-none text-sm font-medium focus:ring-0 w-full">
+<option>All Status</option>
+<option>Active</option>
+<option>Inactive</option>
+<option>Pending</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border-none shadow-sm flex-1">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="workspace_premium">workspace_premium</span>
+<select class="bg-transparent border-none text-sm font-medium focus:ring-0 w-full">
+<option>Subscription Tier</option>
+<option>Enterprise</option>
+<option>Professional</option>
+<option>Basic</option>
+</select>
+</div>
+<button class="text-sm font-bold text-on-primary-container px-4 hover:underline">Clear Filters</button>
+</section>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.04)] overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-outline">User</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-outline">Role</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-outline">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-outline text-center">Last Active</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-outline text-right">Usage (MTD)</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-outline text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Young professional man with glasses smiling softly in a high-key lighting portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTj8G2W9KD6WDWxAKqSdwITDHJtkzHgg8eDH4fIc3zTelS_FKt0L8mTni7Z5ZUo4yeX2Bk8VdJHRkV0fQdoshTIS9QhJliJhdBlbH0arXlzuAtpmmh14OfqsHxPTej9whKwwH_s8-OaUhxIghFEm64adtN9sajZUPnHrJnVfqZew5d_ZU2H3nEIOnvJuvrwif7is2bi4ToFUJ7MaVCECeUQ--CHOWC2LJpW9mYE0l_siiRuMUahaWo5h6Whc5jXd1_IzwzjnppGko"/>
+</div>
+<div>
+<p class="font-bold text-primary">Julian Vesper</p>
+<p class="text-xs text-on-surface-variant">julian.v@archi-ai.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-on-primary-container/10 text-on-primary-container">Developer</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-sm font-medium">Active</span>
+</div>
+</td>
+<td class="px-6 py-5 text-center text-sm text-on-surface-variant italic">2 mins ago</td>
+<td class="px-6 py-5 text-right font-mono font-medium text-sm">1.2M reqs</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg" title="More Options">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Portrait of a young creative woman with vibrant energy and warm lighting against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-IuhxhEEvjXPDWEhZzGGAiD3z0vaDYJdXXXyCz0I7z7Tp-RTXOYxhyo3lifxhcW0nilwrz3D5LYzKLbDZGcuRYtfVR0Hlkzc1Ao5c_2D2hcO4246BMeu57CSG_279YOKPSstcMWMj0VjxSLmYHLPE8Ca5lWLsqtXcNOfhDSH1HLzohYw1-1nZ76l_RTlL6erzlOOjuSc4szFbtRxRdglBSTVWLVy9NeSi2ilnNweKAfY6AiH94qDSmCggpjSio6-QyV9Zh12W3no"/>
+</div>
+<div>
+<p class="font-bold text-primary">Elara Thorne</p>
+<p class="text-xs text-on-surface-variant">e.thorne@network.net</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-tertiary-container text-on-tertiary-container">Admin</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-sm font-medium">Active</span>
+</div>
+</td>
+<td class="px-6 py-5 text-center text-sm text-on-surface-variant italic">14 mins ago</td>
+<td class="px-6 py-5 text-right font-mono font-medium text-sm">840K reqs</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg" title="More Options">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Middle-aged man with sharp features and a sophisticated gaze, cinematic shadow lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALay-SGRSXXYIlTMq4d3am2DWlg6duPeuFfj5IUdqQrrDjnPBsDbmHX-7pXuhy9xIc934_5mhRYCxf3OCLYCevJD0k5hMb5oTuNSD3TR8gCTXU3R3nmJfDRfKP4gl92d4ZcSJ3ALaY5-Mm-tXm2c7Zv4fLP5dPTp17BggRgtZNzqaWV361mwHMxpxsEdpIzuPfxwvWrZtrdazlHpajtjiKpZ2uxCpLZtuP_KsCmAOtvmODBLwCesyOnLfQdNHkHi8VrjoptG1G-Vg"/>
+</div>
+<div>
+<p class="font-bold text-primary">Marcus Halloway</p>
+<p class="text-xs text-on-surface-variant">marcus.h@enterprise.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-surface-container-high text-outline">Viewer</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="text-sm font-medium text-outline">Inactive</span>
+</div>
+</td>
+<td class="px-6 py-5 text-center text-sm text-on-surface-variant italic">2 days ago</td>
+<td class="px-6 py-5 text-right font-mono font-medium text-sm">12K reqs</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg" title="More Options">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Artistic portrait of a woman with long dark hair, soft natural light through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASZUa0BRsdq0DPvKrYqk-vEj4ZpUYT-bL03uMVcHOEWrBf9nUmycTlY7nJR-8EotmX0vD5fQdNuwHwlg34HkjxV62yNxnnc4vrulWakMJV4psXiYmiizGLUwJjuLLcz0T8utAaOVyepzuIHXX900f3KfXMOA14Kegjp9rGdDlNFppPy_jllhz6Ud5Vg3WLv-AB0Z0gaCthUd9pVjmqwVYRk9mH7knzpa39ZlAnzr0aeFytJLQtesO7T7-iUopGcivAnFs5AYYs-rs"/>
+</div>
+<div>
+<p class="font-bold text-primary">Sofia Chen</p>
+<p class="text-xs text-on-surface-variant">s.chen@future-tech.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-on-primary-container/10 text-on-primary-container">Developer</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
+<span class="text-sm font-medium text-error">Pending</span>
+</div>
+</td>
+<td class="px-6 py-5 text-center text-sm text-on-surface-variant italic">Never</td>
+<td class="px-6 py-5 text-right font-mono font-medium text-sm">0 reqs</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg" title="More Options">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="bg-surface-container-low/30 px-6 py-4 flex items-center justify-between">
+<p class="text-xs text-on-surface-variant font-medium">Showing 1 to 4 of 128 users</p>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<button class="px-3 py-1 rounded bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-high text-xs font-medium">2</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-high text-xs font-medium">3</button>
+<button class="p-1 rounded hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar Metrics -->
+<div class="col-span-3 space-y-8">
+<!-- Growth Metric Card -->
+<section class="bg-surface-container-low p-6 rounded-xl border-none">
+<h3 class="text-xs font-bold uppercase tracking-widest text-outline mb-6">User Growth</h3>
+<div class="space-y-4">
+<div class="flex items-end justify-between">
+<div>
+<p class="text-3xl font-black tracking-tighter text-primary">2,481</p>
+<p class="text-xs text-on-surface-variant">Total active users</p>
+</div>
+<div class="flex items-center gap-1 text-secondary text-sm font-bold bg-secondary-fixed/30 px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                                12%
+                            </div>
+</div>
+<!-- Mini Chart Visualization (CSS based) -->
+<div class="h-24 w-full flex items-end gap-1.5 pt-4">
+<div class="bg-primary/10 w-full h-[40%] rounded-t-sm"></div>
+<div class="bg-primary/10 w-full h-[55%] rounded-t-sm"></div>
+<div class="bg-primary/10 w-full h-[45%] rounded-t-sm"></div>
+<div class="bg-primary/10 w-full h-[60%] rounded-t-sm"></div>
+<div class="bg-primary/10 w-full h-[80%] rounded-t-sm"></div>
+<div class="bg-primary/10 w-full h-[70%] rounded-t-sm"></div>
+<div class="bg-primary w-full h-[95%] rounded-t-sm"></div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Feed -->
+<section class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-none">
+<h3 class="text-xs font-bold uppercase tracking-widest text-outline mb-6">Recent Activity</h3>
+<div class="space-y-6">
+<!-- Activity Item 1 -->
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-bold text-primary leading-tight">Admin Override</p>
+<p class="text-xs text-on-surface-variant mt-1">Elara T. updated permissions for <span class="text-primary font-medium">Julian V.</span></p>
+<p class="text-[10px] text-outline mt-1 font-mono">12m ago</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary" data-icon="person_add">person_add</span>
+</div>
+<div>
+<p class="text-sm font-bold text-primary leading-tight">New Onboarding</p>
+<p class="text-xs text-on-surface-variant mt-1">Sofia Chen joined the Developer tier.</p>
+<p class="text-[10px] text-outline mt-1 font-mono">1h ago</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="text-sm font-bold text-primary leading-tight">Security Alert</p>
+<p class="text-xs text-on-surface-variant mt-1">Failed login attempt detected from 192.168.1.1.</p>
+<p class="text-[10px] text-outline mt-1 font-mono">4h ago</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-2 text-xs font-bold border-t border-surface-container-high text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">
+                        View Audit Log
+                    </button>
+</section>
+<!-- System Usage Card -->
+<div class="p-6 rounded-xl bg-primary-container text-on-primary relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-[10px] font-black uppercase tracking-widest opacity-60">Usage Alert</p>
+<h4 class="text-lg font-extrabold mt-1">Tier Threshold</h4>
+<p class="text-sm opacity-80 mt-2">Julian Vesper has reached 92% of his monthly API quota.</p>
+<button class="mt-4 bg-white text-primary-container px-4 py-2 rounded font-bold text-xs">Notify User</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined !text-8xl" data-icon="bolt">bolt</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

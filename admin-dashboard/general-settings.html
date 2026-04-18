@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>General Settings | Architect Intelligence</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#737cd8",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary": "#000000",
+                        "outline": "#74777d",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed-dim": "#4fd7f0",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474c",
+                        "on-secondary-fixed": "#001f25",
+                        "primary-container": "#000767",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-container": "#006573",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#a3eeff",
+                        "outline-variant": "#c4c6cc",
+                        "on-tertiary-fixed": "#20005f",
+                        "on-tertiary-fixed-variant": "#4f00d0",
+                        "surface-container": "#eceef0",
+                        "secondary-container": "#61e5ff",
+                        "tertiary": "#000000",
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "on-error-container": "#93000a",
+                        "on-background": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "inverse-primary": "#bdc2ff",
+                        "tertiary-container": "#20005f",
+                        "on-tertiary-container": "#8d69ff",
+                        "on-primary-fixed": "#000767",
+                        "tertiary-fixed": "#e8deff",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-primary-fixed-variant": "#343d96",
+                        "primary-fixed": "#e0e0ff",
+                        "secondary": "#006877",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-tint": "#4c56af",
+                        "on-surface": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-white">
+<!-- SideNavBar -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-8 gap-y-4 font-manrope text-sm font-medium z-50">
+<div class="px-8 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<div>
+<h2 class="text-lg font-black tracking-tighter text-slate-900 dark:text-white leading-tight">Enterprise Console</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500">System Administrator</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active: Platform Overview -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label">Platform Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="user-management.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="model-performance.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label">Model Performance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="revenue.html">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label">Revenue &amp; Billing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="system-logs.html">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label">System Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="security.html">
+  <span class="material-symbols-outlined" data-icon="shield">shield</span>
+  <span class="font-label">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-900 font-bold border-r-4 border-blue-900 transition-colors" href="general-settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label">General Settings</span>
+</a>
+</nav>
+<div class="px-4 pt-4 mt-auto border-t border-slate-200/50 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-700 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-700 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                Documentation
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-72 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-40 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl flex items-center justify-between px-8 h-20 shadow-2xl shadow-slate-900/5">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-12 pr-4 py-2.5 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary-container/20 transition-all text-sm font-body" placeholder="Search parameters or logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2.5 rounded-full text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-error rounded-full ring-2 ring-white"></span>
+</button>
+<button class="p-2.5 rounded-full text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-slate-900">Admin profile</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Super Admin</p>
+</div>
+<img alt="Admin profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-container/10" data-alt="Professional headshot of a middle-aged male administrator with a confident expression in a clean studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlZeZltFGvjp1aBQ3xUZnkrA8SQac9CB0MmI5Ys8fpc7rm-OkdzAD4L0Kr8guXIhmuWbs9La7OKuHbN7MUBQShejNQ9fX3XwbG91UIrwpsTz3BMcnrBdLsG0toA2EmLDqdRf83ZfG3Uf1fh9bUdZS0yE2IM0VD-KOBnlvfPeYorkQWM7KLsltbYlV4fmdYQtKFBNVuPf6RMYLnYyNTCy8iyVf3lI1f9VTKJm0HV83wui5CTBJY4DqWDDSLsaNGSGrSuQRzhtMrphk"/>
+</div>
+</div>
+</header>
+<!-- Canvas Body -->
+<div class="p-12 max-w-6xl w-full mx-auto">
+<!-- Page Header -->
+<div class="mb-16">
+<h1 class="text-5xl font-headline font-extrabold tracking-tight text-primary mb-4">General Settings</h1>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                    Configure platform-wide parameters, security protocols, and system localization.
+                </p>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Section 1: Platform Configuration -->
+<section class="md:col-span-7 bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">settings_suggest</span>
+</div>
+<h2 class="text-xl font-headline font-bold">Platform Configuration</h2>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Organization Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-surface-tint transition-all text-on-surface" type="text" value="Synthetix AI"/>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Primary Region</label>
+<select class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-surface-tint appearance-none cursor-pointer">
+<option selected="">US-East-1</option>
+<option>EU-West-1</option>
+<option>AP-Southeast-2</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Maintenance Mode</label>
+<div class="flex items-center h-[52px]">
+<button class="w-12 h-6 rounded-full bg-slate-300 relative transition-colors duration-200 focus:outline-none">
+<span class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-200"></span>
+</button>
+<span class="ml-3 text-sm text-slate-600">Off</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Global AI Parameters -->
+<section class="md:col-span-5 bg-primary-container text-white rounded-xl p-8 shadow-xl overflow-hidden relative">
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings: 'FILL' 1;">neurology</span>
+</div>
+<h2 class="text-xl font-headline font-bold">Global AI Parameters</h2>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-white/60">Default Model Version</label>
+<div class="relative">
+<select class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-lg focus:ring-2 focus:ring-secondary-fixed/50 appearance-none cursor-pointer text-white">
+<option class="text-slate-900">v4.2-stable</option>
+<option class="text-slate-900">v4.3-beta</option>
+<option class="text-slate-900">v3.9-legacy</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="text-[10px] font-bold uppercase tracking-widest text-white/60">Max Token Limit</label>
+<span class="text-xs font-mono">4096</span>
+</div>
+<input class="w-full h-1.5 bg-white/20 rounded-lg appearance-none cursor-pointer accent-secondary-fixed" max="16384" min="1024" step="1024" type="range" value="4096"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-white/60">Data Retention Policy</label>
+<select class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-lg focus:ring-2 focus:ring-secondary-fixed/50 appearance-none cursor-pointer text-white">
+<option class="text-slate-900">90 Days</option>
+<option class="text-slate-900">180 Days</option>
+<option class="text-slate-900">1 Year</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Aesthetic Gradient -->
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-secondary rounded-full blur-[80px] opacity-20"></div>
+</section>
+<!-- Section 3: Security & Access -->
+<section class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<h2 class="text-xl font-headline font-bold">Security &amp; Access</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div>
+<p class="text-sm font-bold">Two-Factor Auth</p>
+<p class="text-xs text-slate-500">MFA via App or Email</p>
+</div>
+<button class="w-12 h-6 rounded-full bg-on-primary-container relative transition-colors duration-200 focus:outline-none">
+<span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-200"></span>
+</button>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Session Timeout</label>
+<select class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg appearance-none cursor-pointer">
+<option>30 Minutes</option>
+<option>1 Hour</option>
+<option>4 Hours</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">IP Whitelisting</label>
+<textarea class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-surface-tint transition-all text-sm font-mono leading-relaxed" placeholder="Enter IP addresses, one per line..." rows="4">192.168.1.1
+10.0.0.45
+203.0.113.195</textarea>
+</div>
+</div>
+</section>
+<!-- Section 4: Localization & Appearance -->
+<section class="md:col-span-4 bg-white rounded-xl p-8 shadow-sm flex flex-col border border-slate-100">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">translate</span>
+</div>
+<h2 class="text-xl font-headline font-bold">Localization</h2>
+</div>
+<div class="space-y-5 flex-1">
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Language</label>
+<select class="w-full py-2 border-b border-slate-200 focus:border-primary transition-colors focus:ring-0 px-0 bg-transparent font-medium">
+<option>English - US</option>
+<option>German - DE</option>
+<option>Japanese - JP</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Timezone</label>
+<select class="w-full py-2 border-b border-slate-200 focus:border-primary transition-colors focus:ring-0 px-0 bg-transparent font-medium">
+<option>UTC -05:00 (EST)</option>
+<option>UTC +00:00 (GMT)</option>
+<option>UTC +09:00 (JST)</option>
+</select>
+</div>
+<div class="space-y-3 pt-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Theme Preference</label>
+<div class="flex p-1 bg-surface-container-high rounded-lg">
+<button class="flex-1 py-2 text-xs font-bold rounded-md bg-white shadow-sm">Light</button>
+<button class="flex-1 py-2 text-xs font-bold text-slate-500">Dark</button>
+<button class="flex-1 py-2 text-xs font-bold text-slate-500">System</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Notification Preferences -->
+<section class="md:col-span-12 bg-surface-container-low rounded-xl p-8 shadow-inner">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<h2 class="text-xl font-headline font-bold">Notification Preferences</h2>
+<p class="text-sm text-slate-500">Select which system events trigger administrative alerts.</p>
+</div>
+</div>
+<button class="px-6 py-2.5 bg-primary text-white rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Save All Changes</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<label class="group flex items-center gap-4 p-5 bg-white rounded-xl cursor-pointer hover:shadow-md transition-all">
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary-container focus:ring-primary-container" type="checkbox"/>
+<div>
+<p class="text-sm font-bold">System Health</p>
+<p class="text-[11px] text-slate-500">Uptime &amp; node status</p>
+</div>
+</label>
+<label class="group flex items-center gap-4 p-5 bg-white rounded-xl cursor-pointer hover:shadow-md transition-all">
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary-container focus:ring-primary-container" type="checkbox"/>
+<div>
+<p class="text-sm font-bold">Billing &amp; Invoice</p>
+<p class="text-[11px] text-slate-500">Monthly spend reports</p>
+</div>
+</label>
+<label class="group flex items-center gap-4 p-5 bg-white rounded-xl cursor-pointer hover:shadow-md transition-all">
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary-container focus:ring-primary-container" type="checkbox"/>
+<div>
+<p class="text-sm font-bold">Security Breach</p>
+<p class="text-[11px] text-slate-500">Critical access alerts</p>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Footer Meta -->
+<footer class="mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center text-slate-400 text-xs gap-4">
+<p>© 2024 Architect Intelligence Enterprise. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-primary" href="#">System Integrity Status: <span class="text-secondary font-bold">Optimal</span></a>
+<a class="hover:text-primary underline" href="#">Privacy Policy</a>
+<a class="hover:text-primary underline" href="#">Audit Logs</a>
+</div>
+</footer>
+</div>
+</main>
+</body></html>

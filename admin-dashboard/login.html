@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Architectural Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f7f9fb",
+                      "secondary-fixed": "#a3eeff",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#d8dadc",
+                      "tertiary": "#000000",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#4f00d0",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-container": "#006573",
+                      "on-primary-container": "#737cd8",
+                      "background": "#f7f9fb",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c4c6cc",
+                      "on-primary-fixed-variant": "#343d96",
+                      "on-error": "#ffffff",
+                      "secondary": "#006877",
+                      "secondary-container": "#61e5ff",
+                      "on-primary-fixed": "#000767",
+                      "inverse-primary": "#bdc2ff",
+                      "tertiary-fixed": "#e8deff",
+                      "on-secondary-fixed": "#001f25",
+                      "outline": "#74777d",
+                      "on-tertiary-container": "#8d69ff",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#cdbdff",
+                      "on-surface": "#191c1e",
+                      "surface-tint": "#4c56af",
+                      "on-tertiary-fixed": "#20005f",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "primary-fixed-dim": "#bdc2ff",
+                      "surface-container-high": "#e6e8ea",
+                      "on-background": "#191c1e",
+                      "inverse-surface": "#2d3133",
+                      "surface-container": "#eceef0",
+                      "primary-container": "#000767",
+                      "on-surface-variant": "#44474c",
+                      "tertiary-container": "#20005f",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#e0e0ff",
+                      "secondary-fixed-dim": "#4fd7f0",
+                      "surface-container-highest": "#e0e3e5",
+                      "primary": "#000000"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.5rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<main class="flex-grow flex items-center justify-center px-6 py-20 relative overflow-hidden">
+<!-- Background Aesthetic Elements -->
+<div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[120px] opacity-20 pointer-events-none" style="background: linear-gradient(to bottom right, #000767, #8d69ff);"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full blur-[100px] opacity-10 pointer-events-none" style="background: linear-gradient(to top left, #006877, #61e5ff);"></div>
+
+<div class="w-full max-w-xl z-10">
+<!-- Branding Header -->
+<div class="mb-12 text-center md:text-left">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-primary mb-4">
+                Architectural Intelligence
+            </h1>
+<p class="text-on-surface-variant font-body text-lg max-w-md leading-relaxed">
+                Access your enterprise AI dashboard. Sign in to continue building the future.
+            </p>
+</div>
+
+<!-- Login Card -->
+<div class="surface-container-lowest glass-panel rounded-xl p-8 md:p-12 shadow-[0px_24px_48px_rgba(25,28,30,0.06)] border border-white/20">
+<div class="space-y-8">
+<div class="space-y-2">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Welcome back</h2>
+<p class="text-on-surface-variant text-sm">Enter your credentials to access your workspace.</p>
+</div>
+
+<!-- Login Form -->
+<form id="login-form" class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-on-surface-variant" for="email">Email address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-surface-tint focus:border-transparent outline-none transition-all" id="email" name="email" placeholder="you@company.com" required="" type="email"/>
+</div>
+</div>
+
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="text-sm font-medium text-on-surface-variant" for="password">Password</label>
+<a class="text-xs font-semibold text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl">lock</span>
+<input class="w-full pl-12 pr-12 py-4 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-surface-tint focus:border-transparent outline-none transition-all" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" id="toggle-password" type="button">
+<span class="material-symbols-outlined text-xl">visibility_off</span>
+</button>
+</div>
+</div>
+
+<!-- Remember Me -->
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-surface-tint" id="remember" type="checkbox"/>
+<label class="text-sm text-on-surface-variant" for="remember">Remember me for 30 days</label>
+</div>
+
+<!-- Error Message Container -->
+<div class="hidden bg-error-container/20 border border-error/30 rounded-lg p-4" id="error-message">
+<p class="text-error text-sm font-medium" id="error-text"></p>
+</div>
+
+<!-- Submit Button -->
+<button class="w-full group flex items-center justify-center gap-2 bg-primary text-on-primary py-4 px-8 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed" id="login-btn" type="submit">
+<span id="login-btn-text">Sign in</span>
+<span class="hidden loading-spinner" id="login-spinner">
+<svg class="w-5 h-5 animate-spin" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+</span>
+</button>
+</form>
+
+<!-- Trust Indicators -->
+<div class="bg-surface-container-low rounded-lg p-6 flex flex-col md:flex-row items-center gap-6">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-primary flex items-center justify-center text-white text-sm font-bold">JD</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-secondary flex items-center justify-center text-white text-sm font-bold">MK</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-tertiary flex items-center justify-center text-white text-sm font-bold">AS</div>
+</div>
+<div class="text-center md:text-left">
+<p class="text-on-surface font-bold text-sm">Trusted by 500+ enterprises</p>
+<p class="text-on-surface-variant text-xs font-label uppercase tracking-wider">Fortune 500 Security standards</p>
+</div>
+</div>
+
+<!-- Sign Up Redirect -->
+<div class="text-center pt-2">
+<p class="text-sm text-on-surface-variant">
+                            Don't have an account?
+                            <a class="text-primary font-bold hover:underline ml-1" href="signup.html">Sign up</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full py-8 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto gap-4">
+<div class="text-slate-600 dark:text-slate-400 font-inter text-xs tracking-wide uppercase">
+                © 2024 Architectural Intelligence. All rights reserved.
+            </div>
+<div class="flex gap-8">
+<a class="text-slate-600 dark:text-slate-400 font-inter text-xs tracking-wide uppercase hover:text-slate-900 dark:hover:text-white transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-600 dark:text-slate-400 font-inter text-xs tracking-wide uppercase hover:text-slate-900 dark:hover:text-white transition-opacity opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-600 dark:text-slate-400 font-inter text-xs tracking-wide uppercase hover:text-slate-900 dark:hover:text-white transition-opacity opacity-80 hover:opacity-100" href="#">Security</a>
+</div>
+</div>
+</footer>
+
+<script>
+const API_BASE_URL = 'http://localhost:4000';
+
+// Toggle password visibility
+const togglePasswordBtn = document.getElementById('toggle-password');
+const passwordInput = document.getElementById('password');
+
+togglePasswordBtn.addEventListener('click', () => {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    const icon = togglePasswordBtn.querySelector('.material-symbols-outlined');
+    icon.textContent = type === 'password' ? 'visibility_off' : 'visibility';
+});
+
+// Handle login form submission
+const loginForm = document.getElementById('login-form');
+const loginBtn = document.getElementById('login-btn');
+const loginBtnText = document.getElementById('login-btn-text');
+const loginSpinner = document.getElementById('login-spinner');
+const errorMessage = document.getElementById('error-message');
+const errorText = document.getElementById('error-text');
+
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Reset error state
+    errorMessage.classList.add('hidden');
+
+    // Get form data
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const remember = document.getElementById('remember').checked;
+
+    // Show loading state
+    loginBtn.disabled = true;
+    loginBtnText.classList.add('hidden');
+    loginSpinner.classList.remove('hidden');
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/admin/login`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ email, password, remember })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Login failed. Please check your credentials.');
+        }
+
+        // Successful login - redirect to dashboard
+        window.location.href = '/dashboard.html';
+
+    } catch (error) {
+        // Show error message
+        errorText.textContent = error.message;
+        errorMessage.classList.remove('hidden');
+
+        // Reset loading state
+        loginBtn.disabled = false;
+        loginBtnText.classList.remove('hidden');
+        loginSpinner.classList.add('hidden');
+    }
+});
+
+// Check if already logged in
+async function checkAuthStatus() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/admin/me`, {
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            if (data.loggedIn) {
+                window.location.href = '/admin-dashboard/dashboard.html';
+            }
+        }
+    } catch (error) {
+        // Not logged in, stay on login page
+    }
+}
+
+checkAuthStatus();
+</script>
+</body>
+</html>

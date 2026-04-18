@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architectural Intelligence | The Future of Business Automation</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-fixed-dim": "#cdbdff",
+          "inverse-surface": "#2d3133",
+          "error": "#ba1a1a",
+          "background": "#f7f9fb",
+          "tertiary-fixed": "#e8deff",
+          "surface-container-highest": "#e0e3e5",
+          "on-primary": "#ffffff",
+          "on-tertiary": "#ffffff",
+          "on-error-container": "#93000a",
+          "on-tertiary-fixed-variant": "#4f00d0",
+          "secondary-container": "#61e5ff",
+          "surface-container": "#eceef0",
+          "on-primary-fixed": "#000767",
+          "primary-container": "#000767",
+          "surface-container-low": "#f2f4f6",
+          "on-primary-container": "#737cd8",
+          "on-secondary-fixed": "#001f25",
+          "tertiary": "#000000",
+          "surface-variant": "#e0e3e5",
+          "primary": "#000000",
+          "on-tertiary-fixed": "#20005f",
+          "error-container": "#ffdad6",
+          "outline": "#74777d",
+          "secondary-fixed-dim": "#4fd7f0",
+          "surface-container-high": "#e6e8ea",
+          "secondary-fixed": "#a3eeff",
+          "on-surface": "#191c1e",
+          "surface": "#f7f9fb",
+          "on-error": "#ffffff",
+          "inverse-on-surface": "#eff1f3",
+          "on-secondary-fixed-variant": "#004e5a",
+          "on-background": "#191c1e",
+          "outline-variant": "#c4c6cc",
+          "surface-tint": "#4c56af",
+          "tertiary-container": "#20005f",
+          "surface-container-lowest": "#ffffff",
+          "primary-fixed-dim": "#bdc2ff",
+          "on-tertiary-container": "#8d69ff",
+          "surface-bright": "#f7f9fb",
+          "inverse-primary": "#bdc2ff",
+          "surface-dim": "#d8dadc",
+          "primary-fixed": "#e0e0ff",
+          "on-primary-fixed-variant": "#343d96",
+          "on-secondary": "#ffffff",
+          "on-secondary-container": "#006573",
+          "secondary": "#006877",
+          "on-surface-variant": "#44474c"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "fontFamily": {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        }
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .text-gradient-innovation {
+    background: linear-gradient(to right, #737cd8, #8d69ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  #side-panel {
+    background-color: #0f172a;
+  }
+  /* Utility classes for showing/hiding auth buttons */
+  .auth-hidden {
+    display: none !important;
+  }
+  /* Loading state */
+  .auth-loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+
+<!-- SIDE PANEL & OVERLAY -->
+<div id="side-panel" class="fixed top-0 left-0 w-80 h-full shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]" style="background-color:#0f172a;">
+  <div class="flex justify-between items-center p-6 border-b border-slate-700" style="background-color:#0f172a;">
+    <span class="text-xl font-bold text-white font-headline">Menu</span>
+    <button id="close-btn" class="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="p-6 space-y-6 overflow-y-auto" style="background-color:#0f172a; height: calc(100% - 73px);">
+    <a class="block text-white font-bold border-b-2 border-white pb-1 font-body" href="index.html">Home</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="marketplace.html">Marketplace</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="solution.html">Solution</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="pricing.html">Pricing</a>
+    <div class="space-y-4 pt-6" id="mobile-auth-buttons">
+      <!-- Mobile: Loading State -->
+      <div id="mobile-loading" class="text-center text-slate-400 text-sm py-2 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined animate-spin">refresh</span> 
+        <span>Checking...</span>
+      </div>
+      <!-- Mobile: Logged Out Buttons -->
+      <div id="mobile-logged-out" class="space-y-4 auth-hidden">
+        <button onclick="window.location.href='./login.html'" class="w-full px-6 py-3 rounded-lg text-slate-400 hover:text-white transition-all font-semibold active:scale-95 border border-slate-700 hover:border-slate-500">
+          Login
+        </button>
+        <button onclick="window.location.href='./signup.html'" class="w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all active:scale-95 shadow-xl">
+          Sign Up
+        </button>
+      </div>
+      <!-- Mobile: Logged In Buttons -->
+      <div id="mobile-logged-in" class="space-y-4 auth-hidden">
+        <div class="flex items-center gap-3 pb-2 border-b border-slate-700">
+          <img id="mobile-user-avatar" src="" alt="" class="w-10 h-10 rounded-full bg-slate-700 object-cover hidden"/>
+          <div class="text-slate-300 text-sm font-medium" id="mobile-user-name">Welcome</div>
+        </div>
+        <button onclick="window.location.href='./user-dashboard/dashboard.html'" class="w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all active:scale-95 shadow-xl">
+          Dashboard
+        </button>
+        <button onclick="logout()" class="w-full px-6 py-3 rounded-lg text-slate-400 hover:text-white transition-all font-semibold active:scale-95 border border-slate-700 hover:border-slate-500">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[9998]"></div>
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl">
+  <div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+    <div class="flex items-center gap-12">
+      <span class="text-2xl font-bold tracking-tighter text-slate-950 dark:text-white font-headline">Architectural Intelligence</span>
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-slate-950 dark:text-white font-bold border-b-2 border-slate-950 dark:border-white pb-1 font-body" href="index.html">Home</a>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="marketplace.html">Marketplace</a>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="solution.html">Solution</a>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="pricing.html">Pricing</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-4" id="desktop-auth-buttons">
+        <!-- Desktop: Loading State -->
+        <div id="desktop-loading" class="text-slate-500 text-sm flex items-center gap-2">
+          <span class="material-symbols-outlined animate-spin text-sm">refresh</span>
+          <span class="text-xs">Checking auth...</span>
+        </div>
+        <!-- Desktop: Logged Out Buttons -->
+        <div id="desktop-logged-out" class="hidden items-center gap-4">
+          <button onclick="window.location.href='./login.html'" class="px-6 py-2 rounded-lg text-slate-500 hover:text-slate-900 transition-all font-semibold active:scale-95 cursor-pointer">
+            Login
+          </button>
+          <button onclick="window.location.href='./signup.html'" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl cursor-pointer">
+            Sign Up
+          </button>
+        </div>
+        <!-- Desktop: Logged In Buttons -->
+        <div id="desktop-logged-in" class="hidden items-center gap-3">
+          <div class="flex items-center gap-2 bg-surface-container-high rounded-full pl-1 pr-4 py-1">
+            <img id="desktop-user-avatar" src="" alt="User" class="w-8 h-8 rounded-full hidden object-cover"/>
+            <span id="desktop-user-name" class="text-sm font-medium text-slate-700 dark:text-slate-300 max-w-[120px] truncate"></span>
+          </div>
+          <button onclick="window.location.href='./user-dashboard/dashboard.html'" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl cursor-pointer">
+            Dashboard
+          </button>
+          <button onclick="logout()" class="px-4 py-2 rounded-lg text-slate-500 hover:text-slate-900 transition-all font-semibold active:scale-95 cursor-pointer" title="Logout">
+            <span class="material-symbols-outlined">logout</span>
+          </button>
+        </div>
+      </div>
+      <!-- Hamburger — only visible on mobile -->
+      <button id="menu-btn" class="md:hidden px-4 py-2 text-slate-950 dark:text-white">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="pt-24 overflow-x-hidden">
+  <!-- Hero Section -->
+  <section class="relative px-8 py-20 md:py-32 max-w-screen-2xl mx-auto flex flex-col items-start min-h-screen md:min-h-[819px] justify-center">
+    <div class="absolute right-0 top-0 w-1/2 h-full -z-10 opacity-20 pointer-events-none">
+      <div class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-on-primary-container via-transparent to-transparent"></div>
+    </div>
+    <div class="max-w-4xl space-y-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/30 border border-secondary/10">
+        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-on-secondary-container">The Cognitive Gallery is Open</span>
+      </div>
+      <h1 class="text-6xl md:text-8xl font-extrabold font-headline tracking-tighter leading-[0.9] text-primary">
+        Architectural Intelligence: <br/>
+        <span class="text-gradient-innovation">The Future of Business Automation</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed">
+        A premium digital curator for enterprise-grade AI models. Treat your automation assets as luxury investments, orchestrated for peak structural efficiency.
+      </p>
+      <!-- Hero Search Bar -->
+      <div class="relative w-full max-w-2xl group">
+        <div class="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+          <span class="material-symbols-outlined text-on-surface-variant">search</span>
+        </div>
+        <input class="w-full py-6 pl-16 pr-20 sm:pr-32 rounded-xl bg-surface-container-high border-none focus:ring-2 focus:ring-on-primary-container transition-all text-lg font-body placeholder:text-on-surface-variant/50" placeholder="Search elite AI solutions, neural architectures..." type="text"/>
+        <button class="absolute right-3 top-3 bottom-3 px-4 sm:px-8 bg-primary text-on-primary rounded-lg font-semibold flex items-center gap-2 transition-transform active:scale-95 text-sm sm:text-base">
+          Find Tools
+        </button>
+      </div>
+    </div>
+    <!-- Floating Abstract Image -->
+    <div class="hidden lg:block absolute right-[-5%] top-1/2 -translate-y-1/2 w-[45%] aspect-square rounded-[4rem] overflow-hidden rotate-3 shadow-2xl">
+      <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIB51wVOZu1ILJytMyKq9x8wS32bFeh42Vhi-ZnTZ8omOwXcEuP2Zba6A8RvhJDMJue51Jt6oEON6f29uiwIufQD-vJdK6L0BkJW5uZMRHKNxB-9r1ROYfJe7CEYi-45PujWmZGZGs5cRebDuDYAY9bisT25HmHixsqgjsM5prWgnCJA1fJi1B8z2jVYKBAWxHsPWdpt3lkKhfXt3EYfuBGYuM68idL9empFxg_zSdpSR-kVr1593-Za7GO5MHZFL2BT5WRZ9Hjio" alt="abstract liquid chrome flowing through 3D crystalline structures"/>
+    </div>
+  </section>
+
+  <!-- Top AI Solutions (Bento Grid) -->
+  <section class="px-8 py-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div class="space-y-4">
+          <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tight text-primary">Top AI Solutions</h2>
+          <p class="text-on-surface-variant text-lg">Curated intelligence for industry leaders.</p>
+        </div>
+        <button class="text-primary font-bold flex items-center gap-2 border-b-2 border-primary pb-1 group">
+          Explore Marketplace
+          <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Solution 1 -->
+        <div class="md:col-span-2 group relative overflow-hidden rounded-xl bg-surface-container-lowest p-8 flex flex-col justify-between min-h-[400px] hover:shadow-2xl transition-all">
+          <div class="flex justify-between items-start relative z-10">
+            <div class="space-y-2">
+              <span class="px-3 py-1 rounded-full bg-on-primary-container/10 text-on-primary-container text-xs font-bold uppercase">Analytics</span>
+              <h3 class="text-3xl font-bold font-headline">Neural Ledger v4</h3>
+            </div>
+            <span class="material-symbols-outlined text-secondary text-4xl">token</span>
+          </div>
+          <p class="text-on-surface-variant text-lg max-w-md relative z-10">
+            Predictive financial modeling with 99.8% accuracy. Built on the proprietary Cognition Core for extreme reliability.
+          </p>
+          <div class="absolute right-0 bottom-0 w-2/3 h-full opacity-10 group-hover:opacity-20 transition-opacity">
+            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_WRxJ7fpu6kbdOIKSRhSJj0jAEVhLWT4LOEB-uRqyLZibLEkLkrg2LWkf9MjJNc-ZCV9MO5LKF459ZNbU4StEP_szgUYfvXel4UoSGpriQMJkNpd-sUaLSuvT8iO2vhYQmZDiBPRNxG0TBbtt5dXsYEuUDaCPxjnSIIqYJjB_gDEJnRJgKu6xYdxRG0Kphx91L2N32znr-KFIFM4rSfY1oOK2UCev4xGfJQW9znw63PMRHhYsA3quQe7B0eeJuER-Z7_C_fIVR9E" alt="abstract glowing digital grid"/>
+          </div>
+        </div>
+        <!-- Solution 2 -->
+        <div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-6 hover:shadow-xl transition-all">
+          <div class="w-16 h-16 rounded-lg bg-secondary-container/50 flex items-center justify-center">
+            <span class="material-symbols-outlined text-on-secondary-container text-3xl">psychology</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold font-headline mb-2">Ethos AI Monitor</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Real-time ethical oversight for automated customer interactions and decision engines.
+            </p>
+          </div>
+          <button class="mt-auto w-full py-3 bg-surface-container-high rounded-lg text-sm font-bold hover:bg-on-primary-container hover:text-on-primary transition-colors">Details</button>
+        </div>
+        <!-- Solution 3 -->
+        <div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-6 hover:shadow-xl transition-all">
+          <div class="w-16 h-16 rounded-lg bg-on-tertiary-fixed-variant/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-on-tertiary-fixed-variant text-3xl">hub</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold font-headline mb-2">Synapse Connect</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Seamlessly integrate heterogeneous AI models into a single operational architecture.
+            </p>
+          </div>
+          <button class="mt-auto w-full py-3 bg-surface-container-high rounded-lg text-sm font-bold hover:bg-on-primary-container hover:text-on-primary transition-colors">Details</button>
+        </div>
+        <!-- Solution 4 -->
+        <div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-xl flex flex-col md:flex-row gap-8 items-center hover:shadow-xl transition-all">
+          <div class="w-full md:w-1/3 aspect-video rounded-lg overflow-hidden">
+            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKBWGOsKG1daGbgZIyylkrgDJLKGvPKBpYrctRYuRtagR-0SZyIosWpP_JizmzFPFrf4lzH47_h2XJscpjyi-81dOM7v1o1TxUcy0Y4ZwIJpG-olgSGxYj0cygAqH2w50SwrwmiaBtSbtZ4iXC4gxuF0VKdvj_uIZTQ8_a-VVdATiLwMRJTxB-OIg1RPsX2Q5cB0Mp3Ifh_xp_HVxsALJRM_cTXzu7qbYU2RvreMH3u9UdtA7Fa8PrGZrUTBeWHZpQ6M813O0M2fk" alt="satellite view of a glowing earth network at night"/>
+          </div>
+          <div class="flex-1 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold">ACTIVE AI PROCESSING</div>
+              <h3 class="text-2xl font-bold font-headline">Atlas Global Vision</h3>
+            </div>
+            <p class="text-on-surface-variant text-sm">
+              Computer vision for supply chain logistics. Automate visual inspections across 50+ global facilities simultaneously.
+            </p>
+            <div class="flex gap-4">
+              <span class="text-xs font-semibold px-2 py-1 bg-surface-container-high rounded text-on-surface-variant">Supply Chain</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-surface-container-high rounded text-on-surface-variant">Real-time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="px-8 py-32 bg-surface">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <div class="relative">
+        <div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div class="relative z-10 space-y-8">
+          <h2 class="text-5xl font-extrabold font-headline tracking-tight text-primary leading-tight">Reliability as a Foundation, Innovation as a Fuel.</h2>
+          <p class="text-on-surface-variant text-xl leading-relaxed">
+            We don't just list tools; we certify architectures. Every AI solution in our marketplace undergoes rigorous stress-testing for enterprise compliance.
+          </p>
+          <div class="space-y-6">
+            <div class="flex gap-6 items-start">
+              <div class="p-3 rounded-lg bg-surface-container-lowest shadow-md">
+                <span class="material-symbols-outlined text-secondary">verified_user</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg font-headline">Enterprise Grade Security</h4>
+                <p class="text-on-surface-variant text-sm">Military-grade encryption for all neural data exchanges.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <div class="p-3 rounded-lg bg-surface-container-lowest shadow-md">
+                <span class="material-symbols-outlined text-on-primary-container">speed</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg font-headline">Instant Integration</h4>
+                <p class="text-on-surface-variant text-sm">One-click deployment to your existing cloud infrastructure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative aspect-square">
+        <div class="absolute inset-0 bg-primary-container rounded-[2rem] -rotate-3"></div>
+        <img class="absolute inset-0 w-full h-full object-cover rounded-[2rem] rotate-3 hover:rotate-0 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_nO5Speglqh_w3l81t6QCpa2uIbwnFJBnJEYWRKY3ikOcF_Qy7SwpEGQc-0GOq2IavyFEpFjKSdDFNmzaNrpZKQh4rYVGlIlEkqfLw4k4wKczHZeozZ80As5TqTeyIad5_AaoIZFIDhGXtf5kSpJs9-78tspQQ6d5VKHeyOGWqebYOu7yi099OXhzR-CpPBsn0dmE1SGgm-85Rjh9GAZxbeMQ5DLLWXt0C6ygDj1ZOwgj4v2zBQa8zenVXwZadgI0PE-J4s7iLS0" alt="minimalist architectural sculpture"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="px-8 py-24 mb-24">
+    <div class="max-w-7xl mx-auto bg-primary rounded-[3rem] p-12 md:p-24 overflow-hidden relative text-center">
+      <div class="absolute top-0 right-0 w-full h-full opacity-30 pointer-events-none">
+        <div class="w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-on-primary-container via-transparent to-transparent"></div>
+      </div>
+      <div class="relative z-10 max-w-3xl mx-auto space-y-10">
+        <h2 class="text-4xl md:text-6xl font-extrabold font-headline text-on-primary tracking-tighter">Ready to Architect Your Future?</h2>
+        <p class="text-on-primary/70 text-xl">Join 500+ global enterprises building the next generation of automation on our platform.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+          <button class="px-10 py-5 bg-on-primary text-primary text-lg font-bold rounded-xl hover:scale-105 transition-transform active:scale-95 shadow-2xl">
+            Explore Marketplace
+          </button>
+          <button class="px-10 py-5 border-2 border-on-primary text-on-primary text-lg font-bold rounded-xl hover:bg-on-primary hover:text-primary transition-all">
+            Talk to an Architect
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full mt-24 bg-slate-50 dark:bg-slate-900">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+    <div class="md:col-span-1 space-y-6">
+      <span class="text-xl font-bold text-slate-900 dark:text-white font-headline">Architectural Intelligence</span>
+      <p class="text-slate-500 text-sm leading-relaxed">
+        Building the structural foundation for the AI-driven economy. Sophistication, precision, and intelligence.
+      </p>
+    </div>
+    <div class="space-y-6">
+      <h4 class="font-headline font-bold text-slate-900 dark:text-white">Product</h4>
+      <ul class="space-y-4">
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">Marketplace</a></li>
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">Case Studies</a></li>
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">API Access</a></li>
+      </ul>
+    </div>
+    <div class="space-y-6">
+      <h4 class="font-headline font-bold text-slate-900 dark:text-white">Company</h4>
+      <ul class="space-y-4">
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">About</a></li>
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">Careers</a></li>
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="space-y-6">
+      <h4 class="font-headline font-bold text-slate-900 dark:text-white">Legal</h4>
+      <ul class="space-y-4">
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">Privacy Policy</a></li>
+        <li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-body" href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="px-8 py-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+    <span class="text-slate-500 text-sm font-body">© 2024 Architectural Intelligence. Built for the AI Frontier.</span>
+    <div class="flex gap-6">
+      <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+      <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Auth State Management
+  const AUTH_API_URL = 'http://localhost:4000/auth/me';
+  
+  // DOM Elements for Auth Buttons
+  const desktopLoading = document.getElementById('desktop-loading');
+  const desktopLoggedOut = document.getElementById('desktop-logged-out');
+  const desktopLoggedIn = document.getElementById('desktop-logged-in');
+  const mobileLoading = document.getElementById('mobile-loading');
+  const mobileLoggedOut = document.getElementById('mobile-logged-out');
+  const mobileLoggedIn = document.getElementById('mobile-logged-in');
+  
+  // User info elements
+  const desktopUserName = document.getElementById('desktop-user-name');
+  const desktopUserAvatar = document.getElementById('desktop-user-avatar');
+  const mobileUserName = document.getElementById('mobile-user-name');
+  const mobileUserAvatar = document.getElementById('mobile-user-avatar');
+
+  // Function to update UI based on auth state
+  function updateAuthUI(isLoggedIn, userData = null) {
+    console.log('Updating UI, logged in:', isLoggedIn, 'User:', userData);
+    
+    // Hide loading states
+    if (desktopLoading) desktopLoading.classList.add('auth-hidden');
+    if (mobileLoading) mobileLoading.classList.add('auth-hidden');
+    
+    if (isLoggedIn && userData) {
+      console.log('Showing logged in UI');
+      
+      // Desktop: Hide logged out, show logged in
+      if (desktopLoggedOut) {
+        desktopLoggedOut.classList.remove('flex');
+        desktopLoggedOut.classList.add('hidden');
+      }
+      if (desktopLoggedIn) {
+        desktopLoggedIn.classList.remove('hidden');
+        desktopLoggedIn.classList.add('flex');
+      }
+      
+      // Mobile: Hide logged out, show logged in
+      if (mobileLoggedOut) mobileLoggedOut.classList.add('auth-hidden');
+      if (mobileLoggedIn) mobileLoggedIn.classList.remove('auth-hidden');
+      
+      // Update user info - Desktop
+      if (userData.name && desktopUserName) {
+        desktopUserName.textContent = userData.name;
+      }
+      if (userData.avatar && desktopUserAvatar) {
+        desktopUserAvatar.src = userData.avatar.trim(); // trim to remove any spaces
+        desktopUserAvatar.classList.remove('hidden');
+      }
+      
+      // Update user info - Mobile
+      if (userData.name && mobileUserName) {
+        mobileUserName.textContent = `Welcome, ${userData.name}`;
+      }
+      if (userData.avatar && mobileUserAvatar) {
+        mobileUserAvatar.src = userData.avatar.trim();
+        mobileUserAvatar.classList.remove('hidden');
+      }
+    } else {
+      console.log('Showing logged out UI');
+      
+      // Desktop: Show logged out, hide logged in
+      if (desktopLoggedOut) {
+        desktopLoggedOut.classList.remove('hidden');
+        desktopLoggedOut.classList.add('flex');
+      }
+      if (desktopLoggedIn) {
+        desktopLoggedIn.classList.remove('flex');
+        desktopLoggedIn.classList.add('hidden');
+      }
+      
+      // Mobile: Show logged out, hide logged in
+      if (mobileLoggedOut) mobileLoggedOut.classList.remove('auth-hidden');
+      if (mobileLoggedIn) mobileLoggedIn.classList.add('auth-hidden');
+    }
+  }
+
+  // Check authentication status
+  async function checkAuthStatus() {
+    try {
+      console.log('Checking auth status...');
+      
+      const response = await fetch(AUTH_API_URL, {
+        method: 'GET',
+        credentials: 'include', // Important: sends cookies with request
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        console.log('Not authenticated, status:', response.status);
+        updateAuthUI(false);
+        return;
+      }
+
+      const data = await response.json();
+      console.log('Auth data received:', data);
+      
+      // Check if loggedIn is true in the response
+      if (data.loggedIn === true && data.user) {
+        console.log('User is logged in:', data.user.name);
+        updateAuthUI(true, data.user);
+        // Store user data globally
+        window.currentUser = data.user;
+      } else {
+        console.log('User is not logged in');
+        updateAuthUI(false);
+      }
+    } catch (error) {
+      console.error('Auth check failed:', error);
+      updateAuthUI(false);
+    }
+  }
+
+  // Logout function
+  async function logout() {
+    try {
+      const LOGOUT_API_URL = 'http://localhost:4000/auth/logout';
+      const response = await fetch(LOGOUT_API_URL, {
+        method: 'GET',
+        credentials: 'include'
+      });
+      
+      if (response.ok) {
+        window.currentUser = null;
+        updateAuthUI(false);
+        // Reload page to clear any cached state
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  }
+
+  // Run auth check when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkAuthStatus);
+  } else {
+    // DOM already loaded, run immediately
+    checkAuthStatus();
+  }
+
+  // Mobile Menu Functionality
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const sidePanel = document.getElementById('side-panel');
+  const overlay = document.getElementById('overlay');
+
+  function openMenu() {
+    sidePanel.classList.remove('-translate-x-full');
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    overlay.classList.add('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    sidePanel.classList.add('-translate-x-full');
+    overlay.classList.remove('opacity-100', 'pointer-events-auto');
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  if (menuBtn) menuBtn.addEventListener('click', openMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidePanel && !sidePanel.classList.contains('-translate-x-full')) {
+      closeMenu();
+    }
+  });
+</script>
+</body>
+</html>

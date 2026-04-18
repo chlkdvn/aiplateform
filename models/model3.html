@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuralCore AI - SmartAI Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#a3eeff",
+                        "outline-variant": "#c4c6cc",
+                        "on-tertiary-fixed": "#20005f",
+                        "on-tertiary-fixed-variant": "#4f00d0",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-container": "#006573",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-surface-variant": "#44474c",
+                        "on-secondary-fixed": "#001f25",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#000767",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#737cd8",
+                        "primary": "#000000",
+                        "surface-bright": "#f7f9fb",
+                        "outline": "#74777d",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#4fd7f0",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-primary-fixed-variant": "#343d96",
+                        "background": "#f7f9fb",
+                        "secondary": "#006877",
+                        "primary-fixed": "#e0e0ff",
+                        "surface-tint": "#4c56af",
+                        "on-surface": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "inverse-primary": "#bdc2ff",
+                        "tertiary-container": "#20005f",
+                        "on-tertiary-container": "#8d69ff",
+                        "on-primary-fixed": "#000767",
+                        "tertiary-fixed": "#e8deff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#61e5ff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#000000",
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "on-background": "#191c1e",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; color: #191c1e; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-slate-900">NeuralCore AI</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-500 hover:text-slate-900 transition-colors font-semibold tracking-tight" href="#">Product</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors font-semibold tracking-tight" href="#">Solutions</a>
+<a class="text-slate-900 border-b-2 border-slate-900 pb-1 font-semibold tracking-tight" href="#">Developers</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors font-semibold tracking-tight" href="#">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-900 cursor-pointer" data-icon="shopping_bag">shopping_bag</span>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-semibold hover:opacity-80 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Sub-Nav / Sticky Action Bar -->
+<div class="sticky top-[72px] z-40 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/10">
+<div class="max-w-[1440px] mx-auto px-6 py-3 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="font-headline font-bold text-lg">SmartAI Assistant</span>
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase">Pro</span>
+</div>
+<div class="flex gap-4">
+<button class="text-on-surface font-semibold text-sm px-4 py-2 hover:bg-surface-container-high rounded transition-colors">Documentation</button>
+<button class="bg-primary text-on-primary px-5 py-2 rounded-lg font-semibold text-sm shadow-sm">Try Now</button>
+</div>
+</div>
+</div>
+<main class="max-w-[1440px] mx-auto px-6 pt-12 pb-24">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
+<div class="lg:col-span-5 pt-8">
+<div class="flex items-center gap-2 mb-6">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 0.5;">star</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">4.8 (12k+ active users)</span>
+</div>
+<h1 class="text-6xl font-extrabold tracking-tighter leading-none mb-6">The intelligence layer for your ecosystem.</h1>
+<p class="text-xl text-on-surface-variant mb-10 leading-relaxed font-body">
+                    SmartAI Assistant leverages our proprietary neural architecture to automate complex workflows and provide human-grade conversational support.
+                </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all">Try Now Free</button>
+<button class="bg-surface-container-high text-on-surface px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-colors">View Docs</button>
+</div>
+</div>
+<!-- Preview Area -->
+<div class="lg:col-span-7 relative">
+<div class="bg-surface-container-low rounded-3xl p-4 shadow-2xl overflow-hidden border border-outline-variant/10">
+<div class="bg-surface-container-lowest rounded-2xl h-[500px] flex flex-col shadow-inner">
+<div class="p-6 border-b border-surface-container flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="font-bold text-sm">SmartAI Assistant</p>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<p class="text-[10px] text-on-surface-variant">Active Processing</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 p-6 space-y-6 overflow-y-auto">
+<div class="flex gap-3 max-w-[80%]">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex-shrink-0"></div>
+<div class="bg-surface-container-high p-4 rounded-2xl rounded-tl-none">
+<p class="text-sm">How can I assist your team today with API integration?</p>
+</div>
+</div>
+<div class="flex gap-3 max-w-[80%] ml-auto flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0"></div>
+<div class="bg-primary text-on-primary p-4 rounded-2xl rounded-tr-none">
+<p class="text-sm">I need to automate our ticket categorization using the NLP engine.</p>
+</div>
+</div>
+<div class="flex gap-3 max-w-[80%]">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex-shrink-0"></div>
+<div class="bg-surface-container-low border border-secondary-container/30 p-4 rounded-2xl rounded-tl-none">
+<p class="text-sm">Initializing NLP routing. I can categorize your incoming stream with 98.4% accuracy. Should I generate the webhook configuration?</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-high/30">
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline" data-icon="attachment">attachment</span>
+<input class="bg-transparent border-none focus:ring-0 flex-1 text-sm" placeholder="Ask anything..." type="text"/>
+<button class="bg-primary text-on-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-sm" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Tabs Overlay -->
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex bg-white p-1.5 rounded-full shadow-lg border border-outline-variant/10">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary text-sm font-bold">Preview</button>
+<button class="px-6 py-2 rounded-full hover:bg-surface-container-low text-sm font-medium text-on-surface-variant transition-colors">Use Case</button>
+<button class="px-6 py-2 rounded-full hover:bg-surface-container-low text-sm font-medium text-on-surface-variant transition-colors">Demo</button>
+</div>
+</div>
+</section>
+<!-- Bento Features Grid -->
+<section class="mb-32">
+<div class="mb-12">
+<h2 class="text-4xl font-bold tracking-tight mb-4">Powerful Core Capabilities</h2>
+<p class="text-on-surface-variant max-w-2xl">Engineered for high-volume enterprise environments where precision and speed are non-negotiable.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-3xl group hover:bg-surface-container-lowest hover:shadow-xl transition-all duration-500">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6 block" data-icon="chat_bubble">chat_bubble</span>
+<h3 class="text-2xl font-bold mb-4">AI Chat &amp; NLP</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Advanced semantic understanding that handles context switching, multi-turn dialogues, and intent recognition with zero latency.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-secondary text-lg" data-icon="check_circle">check_circle</span> Contextual awareness</li>
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-secondary text-lg" data-icon="check_circle">check_circle</span> Sentiment analysis</li>
+</ul>
+</div>
+<div class="bg-surface-container-low p-8 rounded-3xl hover:bg-surface-container-lowest hover:shadow-xl transition-all duration-500">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block" data-icon="settings_suggest">settings_suggest</span>
+<h3 class="text-xl font-bold mb-4">Automation</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Trigger complex back-office workflows based on conversational data.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-3xl hover:bg-surface-container-lowest hover:shadow-xl transition-all duration-500">
+<span class="material-symbols-outlined text-4xl text-on-tertiary-container mb-6 block" data-icon="monitoring">monitoring</span>
+<h3 class="text-xl font-bold mb-4">Analytics</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Real-time reporting on user engagement and model performance metrics.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container-high rounded-3xl overflow-hidden grid md:grid-cols-2">
+<div class="p-12">
+<h3 class="text-3xl font-bold mb-4">Universal API Access</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">Deploy anywhere. Our RESTful API and WebSocket streams integrate with your existing stack in minutes, not months.</p>
+<div class="flex gap-12">
+<div>
+<p class="text-2xl font-black">99.9%</p>
+<p class="text-xs uppercase tracking-widest text-on-surface-variant">Uptime</p>
+</div>
+<div>
+<p class="text-2xl font-black">&lt;50ms</p>
+<p class="text-xs uppercase tracking-widest text-on-surface-variant">Latency</p>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 flex items-center justify-center p-8">
+<img class="rounded-xl opacity-80 w-full h-full object-cover" data-alt="close-up of complex server code on a screen with blue and purple ambient reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuBjn4pfN33og0bD8y1bKrXY0vmxdRK1tI3YlYJlDINCKpNcPts9UPZ_po8Jf-jUw6qZc9G8OaqNOy1MJTQ_vq6UIaP7Pmww69a-AXDFagqam2pGI2CamDnaYsO662luJQVG12xL0udtiaa_JYz4b9sfRo-xLR-WXF-g-rhoFPks_nqubp2j7h4uqH56lExwZ2aJtGGgbdzZaERWAzhOBSbJLND_M9UD7Y0d1CkYcwrkcWKFm1niV0FEQwGIzSl-Jpc-RvUKH2DB4"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Documentation Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-16 border-t border-outline-variant/20">
+<!-- Sidebar -->
+<aside class="lg:col-span-3 sticky top-40 h-fit">
+<h4 class="font-headline font-bold text-lg mb-6">Documentation</h4>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-blue-600 font-bold bg-white rounded-lg shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="info">info</span> Introduction
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="rocket_launch">rocket_launch</span> Quickstart
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="terminal">terminal</span> SDK Reference
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="api">api</span> API Endpoints
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span> Authentication
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="webhook">webhook</span> Webhooks
+                    </a>
+</nav>
+</aside>
+<!-- Doc Content -->
+<div class="lg:col-span-9 space-y-16">
+<article>
+<h2 class="text-4xl font-bold mb-6">Introduction</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                        NeuralCore SmartAI Assistant provides a comprehensive suite of programmatic interfaces for natural language processing, automated reasoning, and data synthesis. This guide will walk you through integrating the assistant into your applications.
+                    </p>
+<div class="bg-surface-container-low p-8 rounded-3xl mb-12">
+<h4 class="font-bold text-xl mb-4">Onboarding Steps</h4>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+<div>
+<p class="font-bold">Generate your API Secret</p>
+<p class="text-sm text-on-surface-variant">Navigate to the Developer Settings in your dashboard to generate a production-ready key.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+<div>
+<p class="font-bold">Install the NeuralCore SDK</p>
+<p class="text-sm text-on-surface-variant">We support official libraries for JavaScript, Python, Go, and Ruby.</p>
+</div>
+</div>
+</div>
+</div>
+<h3 class="text-2xl font-bold mb-6">Authentication</h3>
+<p class="text-on-surface-variant mb-6">All requests to the NeuralCore API must be authenticated using Bearer tokens in the Authorization header.</p>
+<!-- Code Block -->
+<div class="bg-slate-900 rounded-2xl overflow-hidden">
+<div class="flex items-center justify-between px-6 py-3 bg-slate-800 border-b border-white/5">
+<div class="flex gap-4">
+<button class="text-xs font-bold text-white border-b-2 border-blue-500 pb-1">JavaScript</button>
+<button class="text-xs font-bold text-slate-400 hover:text-white transition-colors">Python</button>
+<button class="text-xs font-bold text-slate-400 hover:text-white transition-colors">cURL</button>
+</div>
+<button class="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Copy</span>
+</button>
+</div>
+<div class="p-8 font-mono text-sm leading-relaxed overflow-x-auto">
+<pre class="text-blue-300">import { SmartAI } from '@neuralcore/sdk';
+
+const assistant = new SmartAI({
+  apiKey: 'nc_live_51P8pI2K9...',
+  environment: 'production'
+});
+
+const response = await assistant.generate({
+  prompt: 'Analyze current market trends for retail AI',
+  context: 'Enterprise Finance',
+  stream: true
+});</pre>
+</div>
+</div>
+</article>
+<article class="bg-primary-container text-on-primary p-12 rounded-3xl relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-3xl font-bold mb-4">Ready to scale your intelligence?</h2>
+<p class="text-on-primary-container text-lg mb-8 max-w-lg">Join 12,000+ engineers building the next generation of AI-native software on NeuralCore.</p>
+<div class="flex gap-4">
+<button class="bg-white text-primary px-8 py-3 rounded-lg font-bold">Start Free Trial</button>
+<button class="border border-on-primary-container text-white px-8 py-3 rounded-lg font-bold">Contact Sales</button>
+</div>
+</div>
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-secondary opacity-20 blur-[100px] rounded-full"></div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-100 bg-white">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-[1440px] mx-auto">
+<p class="font-inter text-xs tracking-wide uppercase text-slate-400 mb-6 md:mb-0">© 2024 NeuralCore Architecture. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="font-inter text-xs tracking-wide uppercase text-slate-400 hover:text-blue-500 transition-colors" href="#">Privacy Policy</a>
+<a class="font-inter text-xs tracking-wide uppercase text-slate-400 hover:text-blue-500 transition-colors" href="#">Terms of Service</a>
+<a class="font-inter text-xs tracking-wide uppercase text-slate-400 hover:text-blue-500 transition-colors" href="#">Security</a>
+<a class="font-inter text-xs tracking-wide uppercase text-slate-400 hover:text-blue-500 transition-colors" href="#">Status</a>
+<a class="font-inter text-xs tracking-wide uppercase text-slate-400 hover:text-blue-500 transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

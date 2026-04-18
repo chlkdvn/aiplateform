@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cognitive Analyst v2.0 | Architectural Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#000767",
+                      "surface-container": "#eceef0",
+                      "on-tertiary": "#ffffff",
+                      "background": "#f7f9fb",
+                      "surface-tint": "#4c56af",
+                      "tertiary-container": "#20005f",
+                      "on-tertiary-fixed": "#20005f",
+                      "secondary": "#006877",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#000000",
+                      "tertiary-fixed": "#e8deff",
+                      "secondary-container": "#61e5ff",
+                      "on-background": "#191c1e",
+                      "on-tertiary-container": "#8d69ff",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c4c6cc",
+                      "on-tertiary-fixed-variant": "#4f00d0",
+                      "inverse-primary": "#bdc2ff",
+                      "tertiary-fixed-dim": "#cdbdff",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "surface-dim": "#d8dadc",
+                      "on-surface": "#191c1e",
+                      "on-secondary-container": "#006573",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#737cd8",
+                      "primary-fixed": "#e0e0ff",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f2f4f6",
+                      "primary-container": "#000767",
+                      "surface-bright": "#f7f9fb",
+                      "outline": "#74777d",
+                      "surface": "#f7f9fb",
+                      "on-secondary-fixed": "#001f25",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#343d96",
+                      "on-surface-variant": "#44474c",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#a3eeff",
+                      "secondary-fixed-dim": "#4fd7f0",
+                      "inverse-surface": "#2d3133",
+                      "primary-fixed-dim": "#bdc2ff",
+                      "primary": "#000000"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm flex justify-between items-center px-8 h-16 w-full">
+<div class="text-xl font-bold text-slate-900 tracking-tighter">Architectural Intelligence</div>
+<div class="hidden md:flex items-center gap-8 font-manrope font-semibold tracking-tight">
+<a class="text-slate-900 border-b-2 border-slate-900 pb-1" href="#">Models</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Documentation</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Support</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Billing</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img alt="User Profile Avatar" data-alt="close up headshot of a professional user for their profile avatar with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEvFVK_iawwTinuuBoGacbLc0obYAnQTDboZhLL4mXK7erM8mlTjaeCAW6Baow2DmMCfxjHas0rHPs-XxWgiY-xCeCTQ8MwbfOn8Sxj8kZSMLnXQmTR7Al_KTI1v8ilm1DhBv9bE0A-w3uZ_YPlQ8pXJ9YfbBpHco8UJhUZN0sXxQUzq7KS83aQwp59Onv2pzSjyjKc4AcUmTmVckksmyVHRbGNRPn8rxhFoYMC5e0FNj2BzByUSuBsk-bKULRbLAL1dn15uzGSoo"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-slate-50 flex-col p-4 gap-2 font-inter text-sm font-medium border-r border-outline-variant/10">
+<div class="mb-6 px-2">
+<div class="text-lg font-bold text-slate-900">Enterprise Console</div>
+<div class="text-[10px] text-slate-500 tracking-widest uppercase">v2.4.0-stable</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 bg-slate-200 text-slate-900 rounded-lg group" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span> Enterprise Console
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200">terminal</span> Technical Specs
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200">menu_book</span> API Reference
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200">storefront</span> Marketplace
+            </a>
+</nav>
+<div class="mt-auto space-y-4 pt-4">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-semibold shadow-sm hover:opacity-90 transition-opacity">Deploy Instance</button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span> Documentation
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">help_outline</span> Help
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="md:ml-64 pt-16 min-h-screen">
+<!-- Hero Section: Editorial & Asymmetric -->
+<section class="relative min-h-[819px] flex flex-col justify-center px-8 md:px-16 overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<div class="inline-flex items-center gap-2 bg-secondary-container/20 text-secondary px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> New Release
+                    </div>
+<h1 class="text-6xl md:text-8xl font-extrabold text-primary leading-tight tracking-tighter mb-6">
+                        Cognitive <br/>Analyst v2.0
+                    </h1>
+<p class="text-xl text-on-surface-variant max-w-lg mb-10 leading-relaxed">
+                        Redefining enterprise decision-making with high-fidelity predictive modeling and real-time behavioral insights. Engineered for precision. Built for scale.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-bold text-lg hover:scale-105 transition-transform">Deploy Now</button>
+<button class="border border-outline-variant text-on-surface px-10 py-4 rounded-lg font-bold text-lg hover:bg-surface-container-low transition-colors">View Benchmarks</button>
+</div>
+</div>
+<div class="relative h-[500px] w-full flex justify-center items-center">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary-container via-surface-tint/20 to-transparent rounded-3xl opacity-10"></div>
+<img alt="Model Visual" class="w-full h-full object-cover rounded-3xl shadow-2xl scale-110 lg:translate-x-12" data-alt="abstract complex digital node network architecture with flowing light particles in deep blue and purple space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxAFiDjRhenFcxBXhF-SC1mVM0HbhpFKO_pVMxp9HR2acDLrg6-Qc1YhGjEW2tZKX2h0LwZO3mnISO2laYI5yjWV54XRXAYjdqFlpYGI-VzFweNPh-GwOdRqHByU6FM8mCj11BFiGh44G-ER_PJNlis6be9kOYpnKOpo1G3SiJyIXChhkxcaX1EmRfS0pW86brHXS9x-M3IbVo24iNfzxaeJ5VfB9Bk2l64ROlx0GmSYfcA9gX4NrGh0O8fGjD1Tpb_aEsPDLq19w"/>
+</div>
+</div>
+</section>
+<!-- Key Performance Metrics: Bento-ish Stacking -->
+<section class="px-8 md:px-16 py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-16 tracking-tight">Performance Architecture</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.04)]">
+<div class="text-on-surface-variant text-sm font-semibold uppercase tracking-widest mb-4">Precision Rate</div>
+<div class="text-5xl font-extrabold text-primary mb-2">99.82%</div>
+<p class="text-on-surface-variant text-sm">Confidence score across standard GLUE benchmarks.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.04)]">
+<div class="text-on-surface-variant text-sm font-semibold uppercase tracking-widest mb-4">Inference Latency</div>
+<div class="text-5xl font-extrabold text-secondary mb-2">&lt;45ms</div>
+<p class="text-on-surface-variant text-sm">Mean response time per 1k token generation.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.04)]">
+<div class="text-on-surface-variant text-sm font-semibold uppercase tracking-widest mb-4">Training Set</div>
+<div class="text-5xl font-extrabold text-on-tertiary-container mb-2">14.2T</div>
+<p class="text-on-surface-variant text-sm">High-quality, curated enterprise data tokens.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Breakdown: Modern Cards -->
+<section class="px-8 md:px-16 py-32 bg-background">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-4">
+<h2 class="text-4xl font-bold mb-6 tracking-tight">Core Neural Capabilities</h2>
+<p class="text-on-surface-variant leading-relaxed">Cognitive Analyst v2.0 integrates three distinct processing layers to ensure maximum analytical depth.</p>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">insights</span>
+<h3 class="text-xl font-bold">Real-time Sentiment</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Dynamic extraction of behavioral intent and emotional nuance from unstructured data streams at sub-second intervals.</p>
+</div>
+<div class="space-y-4">
+<span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+<h3 class="text-xl font-bold">Predictive Modeling</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Recursive forecasting engine that maps multi-variate dependencies to predict market shifts with high statistical significance.</p>
+</div>
+<div class="space-y-4">
+<span class="material-symbols-outlined text-4xl text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h3 class="text-xl font-bold">Compliance Engine</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Built-in SOC2 and GDPR auditing layers that filter all outputs through rigorous regulatory and ethical guardrails.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Strategic Applications: Industry Grid -->
+<section class="px-8 md:px-16 py-24 bg-surface-container-high/30">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold mb-4">Strategic Applications</h2>
+<p class="text-on-surface-variant">Engineered for the complexities of global enterprise.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:bg-primary hover:text-on-primary transition-colors cursor-default">
+<div class="font-bold text-lg mb-2">Finance</div>
+<p class="text-xs opacity-70">Automated portfolio risk assessment and fraud detection.</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:bg-primary hover:text-on-primary transition-colors cursor-default">
+<div class="font-bold text-lg mb-2">Logistics</div>
+<p class="text-xs opacity-70">Global supply chain disruption predictive modeling.</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:bg-primary hover:text-on-primary transition-colors cursor-default">
+<div class="font-bold text-lg mb-2">Risk Mgmt</div>
+<p class="text-xs opacity-70">Regulatory impact analysis and compliance monitoring.</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:bg-primary hover:text-on-primary transition-colors cursor-default">
+<div class="font-bold text-lg mb-2">Legal</div>
+<p class="text-xs opacity-70">Multi-jurisdictional contract review and discovery.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Developer Documentation: Code Block -->
+<section class="px-8 md:px-16 py-32 bg-background">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+<div class="w-full lg:w-1/2">
+<h2 class="text-4xl font-extrabold mb-6 tracking-tighter">Developer First</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Integrate Cognitive Analyst v2.0 into your existing stack in minutes. Our REST API is designed for robustness and ease of implementation.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-sm font-medium">Standard OpenAPI 3.0 Specification</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-sm font-medium">Native SDKs for Python, Node, and Go</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-sm font-medium">WebSocket support for real-time streams</span>
+</li>
+</ul>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="bg-slate-900 rounded-xl overflow-hidden shadow-2xl">
+<div class="bg-slate-800 px-4 py-2 flex items-center justify-between">
+<div class="flex gap-4">
+<span class="text-xs text-white border-b border-white pb-1 cursor-pointer">Python</span>
+<span class="text-xs text-slate-400 hover:text-white cursor-pointer transition-colors">cURL</span>
+<span class="text-xs text-slate-400 hover:text-white cursor-pointer transition-colors">Node.js</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm cursor-pointer hover:text-white">content_copy</span>
+</div>
+<div class="p-6 font-mono text-xs leading-relaxed text-slate-300">
+<p><span class="text-on-tertiary-container">import</span> requests</p>
+<p> </p>
+<p>url = <span class="text-secondary-container">"https://api.archai.com/v2/analyze"</span></p>
+<p>headers = {</p>
+<p>  <span class="text-secondary-container">"Authorization"</span>: <span class="text-secondary-container">"Bearer {YOUR_API_KEY}"</span>,</p>
+<p>  <span class="text-secondary-container">"Content-Type"</span>: <span class="text-secondary-container">"application/json"</span></p>
+<p>}</p>
+<p> </p>
+<p>payload = {</p>
+<p>  <span class="text-secondary-container">"model"</span>: <span class="text-secondary-container">"cognitive-analyst-2.0"</span>,</p>
+<p>  <span class="text-secondary-container">"input"</span>: <span class="text-secondary-container">"Analyze market volatility for Q3 2024"</span>,</p>
+<p>  <span class="text-secondary-container">"precision"</span>: <span class="text-secondary-container">"high"</span></p>
+<p>}</p>
+<p> </p>
+<p>response = requests.post(url, json=payload, headers=headers)</p>
+<p><span class="text-on-tertiary-container">print</span>(response.json())</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Tiers: Sophisticated Cards -->
+<section class="px-8 md:px-16 py-32 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4 tracking-tight">Flexible Intelligence</h2>
+<p class="text-on-surface-variant">Pricing built to scale with your organization's ambitions.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Starter -->
+<div class="bg-surface-container-lowest p-10 rounded-xl flex flex-col h-full border border-outline-variant/10">
+<div class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-2">Starter</div>
+<div class="text-4xl font-extrabold mb-6">$499<span class="text-sm font-normal text-on-surface-variant">/mo</span></div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="text-sm text-on-surface-variant flex gap-2"><span class="material-symbols-outlined text-sm">check</span> 100k Monthly Tokens</li>
+<li class="text-sm text-on-surface-variant flex gap-2"><span class="material-symbols-outlined text-sm">check</span> Standard Latency</li>
+<li class="text-sm text-on-surface-variant flex gap-2"><span class="material-symbols-outlined text-sm">check</span> Community Support</li>
+</ul>
+<button class="w-full py-4 rounded-lg font-bold border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all">Get Started</button>
+</div>
+<!-- Pro -->
+<div class="bg-primary text-on-primary p-10 rounded-xl flex flex-col h-full shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-secondary px-4 py-1 text-[10px] font-bold uppercase tracking-tighter">Most Popular</div>
+<div class="text-sm font-bold uppercase tracking-widest opacity-70 mb-2">Professional</div>
+<div class="text-4xl font-extrabold mb-6">$2,499<span class="text-sm font-normal opacity-70">/mo</span></div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="text-sm flex gap-2"><span class="material-symbols-outlined text-sm">check</span> 2M Monthly Tokens</li>
+<li class="text-sm flex gap-2"><span class="material-symbols-outlined text-sm">check</span> Ultra-Low Latency Edge</li>
+<li class="text-sm flex gap-2"><span class="material-symbols-outlined text-sm">check</span> 24/7 Priority Support</li>
+<li class="text-sm flex gap-2"><span class="material-symbols-outlined text-sm">check</span> Custom Fine-tuning</li>
+</ul>
+<button class="w-full py-4 rounded-lg font-bold bg-on-primary text-primary hover:bg-secondary-fixed transition-all">Go Professional</button>
+</div>
+<!-- Enterprise -->
+<div class="bg-surface-container-lowest p-10 rounded-xl flex flex-col h-full border border-outline-variant/10">
+<div class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-2">Enterprise</div>
+<div class="text-4xl font-extrabold mb-6">Custom</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="text-sm text-on-surface-variant flex gap-2"><span class="material-symbols-outlined text-sm">check</span> Unlimited Tokens</li>
+<li class="text-sm text-on-surface-variant flex gap-2"><span class="material-symbols-outlined text-sm">check</span> Dedicated GPU Instances</li>
+<li class="text-sm text-on-surface-variant flex gap-2"><span class="material-symbols-outlined text-sm">check</span> On-Premise Deployment</li>
+<li class="text-sm text-on-surface-variant flex gap-2"><span class="material-symbols-outlined text-sm">check</span> Dedicated Architect</li>
+</ul>
+<button class="w-full py-4 rounded-lg font-bold border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="px-8 md:px-16 py-12 border-t border-outline-variant/20 bg-background">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-xl font-bold tracking-tighter">Architectural Intelligence</div>
+<div class="flex gap-8 text-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Ethics Charter</a>
+</div>
+<div class="text-sm text-on-surface-variant/50">© 2024 Architectural Intelligence Inc. All rights reserved.</div>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full glass-panel h-16 flex items-center justify-around px-4 z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-[10px]">API</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-[10px]">Market</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">Account</span>
+</button>
+</nav>
+</body></html>

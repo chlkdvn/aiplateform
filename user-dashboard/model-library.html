@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Model Library | Architectural Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#20005f",
+                        "surface": "#f7f9fb",
+                        "tertiary-fixed": "#e8deff",
+                        "surface-variant": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474c",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "outline": "#74777d",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#343d96",
+                        "primary-fixed": "#e0e0ff",
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#4fd7f0",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-container": "#61e5ff",
+                        "inverse-primary": "#bdc2ff",
+                        "on-primary-container": "#737cd8",
+                        "surface-container": "#eceef0",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-fixed": "#20005f",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed": "#001f25",
+                        "on-tertiary-fixed-variant": "#4f00d0",
+                        "primary-container": "#000767",
+                        "outline-variant": "#c4c6cc",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#a3eeff",
+                        "on-tertiary-container": "#8d69ff",
+                        "background": "#f7f9fb",
+                        "secondary": "#006877",
+                        "primary": "#000000",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-container": "#006573",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#000767",
+                        "surface-tint": "#4c56af",
+                        "surface-bright": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Mobile Side Panel -->
+<div id="side-panel" class="fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-slate-950 shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]">
+  <div class="flex items-center justify-between p-6 border-b border-slate-800">
+    <span class="text-xl font-bold text-white">Menu</span>
+    <button id="close-btn" class="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="p-6 space-y-4 overflow-y-auto h-[calc(100%-72px)]">
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="dashboard.html">Dashboard</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="api-key.html">Api Key</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="active-instances.html">Active Instances</a>
+    <a class="block text-white font-bold border-b-2 border-white pb-1 font-body" href="model-library.html">Model Library</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="billing-usage.html">Billing and Usage</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="help.html">Help Center</a>
+    
+    <!-- Mobile User Info -->
+    <div class="pt-4 mt-4 border-t border-slate-800">
+      <div class="flex items-center gap-3 mb-4">
+        <img id="mobile-user-avatar" src="" alt="" class="w-10 h-10 rounded-full bg-slate-700 object-cover hidden"/>
+        <div class="text-slate-300 text-sm font-medium" id="mobile-user-name">Loading...</div>
+      </div>
+      <button onclick="logout()" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors w-full">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="font-body">Log Out</span>
+      </button>
+    </div>
+  </div>
+</div>
+<div id="overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[9998]"></div>
+
+<!-- SideNavBar -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-64 z-50 bg-slate-50 flex flex-col p-4 border-r border-slate-200">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+</div>
+<div>
+<div class="font-manrope font-extrabold text-lg text-slate-950">Cognitive Gallery</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Enterprise Tier</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="api-key.html">
+  <span class="material-symbols-outlined">key</span>
+  <span class="font-body">Api Key</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="active-instances.html">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-body">Active Instances</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white text-slate-950 font-bold rounded-lg shadow-sm translate-x-1 transition-transform" href="model-library.html">
+<span class="material-symbols-outlined">shelves</span>
+<span class="font-body">Model Library</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="billing-usage.html">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body">Billing and Usage</span>
+</a>
+</nav>
+<div class="pt-6 mt-6 border-t border-slate-200/50 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 transition-colors" href="help.html">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body">Help Center</span>
+</a>
+<button onclick="logout()" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-red-600 transition-colors w-full text-left">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body">Log Out</span>
+</button>
+</div>
+</aside>
+
+<!-- Main Content Area -->
+<main class="ml-0 md:ml-64 min-h-screen">
+<!-- TopAppBar Anchor -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-white/70 backdrop-blur-xl z-40 px-8 flex justify-between items-center shadow-[0px_24px_48px_rgba(25,28,30,0.06)]">
+<div class="flex items-center gap-3">
+  <button id="menu-btn" class="md:hidden px-3 py-2 text-slate-950 rounded-lg hover:bg-slate-100 transition-all">
+    <span class="material-symbols-outlined">menu</span>
+  </button>
+  <div class="font-manrope font-extrabold text-xl tracking-tight text-slate-900">Architectural Intelligence</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<a class="text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors" href="#">Models</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors" href="#">Deployments</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors" href="#">Registry</a>
+</div>
+<div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer" data-icon="settings">settings</span>
+<!-- Desktop User Profile with Dropdown -->
+<div class="relative group">
+  <div class="w-8 h-8 rounded-full overflow-hidden bg-slate-200 ring-2 ring-white cursor-pointer">
+    <img id="desktop-user-avatar" class="w-full h-full object-cover" src="" alt="User avatar"/>
+  </div>
+  <!-- Dropdown for logout -->
+  <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+    <div class="p-3 border-b border-slate-100">
+      <p id="dropdown-user-name" class="text-sm font-bold text-slate-900 truncate"></p>
+      <p id="dropdown-user-email" class="text-xs text-slate-500 truncate"></p>
+    </div>
+    <button onclick="logout()" class="w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-slate-50 rounded-b-xl flex items-center gap-2">
+      <span class="material-symbols-outlined text-sm">logout</span>
+      Logout
+    </button>
+  </div>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Canvas -->
+<div class="pt-24 pb-16 px-12 max-w-7xl mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="space-y-2">
+<h1 class="text-5xl font-extrabold tracking-tight text-primary leading-tight">Model Library</h1>
+<p class="text-lg text-on-surface-variant max-w-xl font-body">Manage and deploy your proprietary and marketplace AI assets through our curated repository.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="upload">upload</span>
+                        Upload Custom Model
+                    </button>
+<button class="px-8 py-3 border-2 border-outline-variant text-primary rounded-lg font-semibold hover:bg-surface-container-low transition-all">
+                        Browse Marketplace
+                    </button>
+</div>
+</div>
+<!-- Search and Filters -->
+<div class="bg-surface-container-low p-6 rounded-xl mb-12 flex flex-col lg:flex-row gap-6 items-center">
+<div class="relative w-full lg:flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border-none rounded-lg focus:ring-2 focus:ring-surface-tint shadow-sm transition-all" placeholder="Search models by name, tag, or version..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-4 w-full lg:w-auto">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold uppercase tracking-wider text-outline ml-1">Category</label>
+<select class="bg-surface-container-lowest border-none rounded-lg py-2 px-4 text-sm font-medium focus:ring-2 focus:ring-surface-tint shadow-sm cursor-pointer">
+<option>All Categories</option>
+<option>Computer Vision</option>
+<option>NLP</option>
+<option>Predictive Analytics</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold uppercase tracking-wider text-outline ml-1">Source</label>
+<select class="bg-surface-container-lowest border-none rounded-lg py-2 px-4 text-sm font-medium focus:ring-2 focus:ring-surface-tint shadow-sm cursor-pointer">
+<option>All Sources</option>
+<option>Proprietary</option>
+<option>Marketplace</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold uppercase tracking-wider text-outline ml-1">Status</label>
+<select class="bg-surface-container-lowest border-none rounded-lg py-2 px-4 text-sm font-medium focus:ring-2 focus:ring-surface-tint shadow-sm cursor-pointer">
+<option>All Status</option>
+<option>Ready</option>
+<option>Training</option>
+<option>Archived</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Model Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Model Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.06)] hover:translate-y-[-4px] transition-all duration-300 group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 bg-primary-container/10 rounded-xl flex items-center justify-center text-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="abstract procedural 3D geometric pattern with glowing neon blue highlights on a dark matte surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmtskp4dN23DTm5QgnLNLISbxO30Eb0e5ArhaFfT4N8jvt_fa3nUY6rAydH1z6fH9ZDtbXqXlADcQ77h5xITKwdx6yd-_VLSL5WrNxcWLh609CD7TDoOexanjDFkN9OaUDMfXo08lBL1Cy3VcVJjfMNHGBjJ6xE0oSVHiUgk8FBE3WZ0DqwvOPci-jNwyOjnnbkYIcvoFTtvw8eYOSpKlcf9lL1gPCh9np_aUcCS4ztDX2_jPmEsRsx4TqNNSx830SR_WFNodzooM"/>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2.5 py-0.5 bg-secondary-container/30 text-on-secondary-container text-[10px] font-bold uppercase tracking-wider rounded-full">Proprietary</span>
+<span class="flex items-center gap-1.5 px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Ready
+                            </span>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-primary mb-1 group-hover:text-primary-container transition-colors">Cognitive Analyst v4</h3>
+<p class="text-sm text-on-surface-variant font-body">Multimodal LLM optimized for financial data synthesis and quarterly trend forecasting.</p>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-slate-50 mb-4">
+<div class="text-xs font-medium text-outline">Version <span class="text-on-surface">v1.2.4</span></div>
+<div class="text-xs font-medium text-outline">Updated <span class="text-on-surface">Oct 24, 2023</span></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="rocket_launch">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Deploy</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Docs</span>
+</button>
+</div>
+</div>
+<!-- Model Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.06)] hover:translate-y-[-4px] transition-all duration-300 group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 bg-secondary-container/10 rounded-xl flex items-center justify-center text-secondary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="vibrant fluid abstract art with swirling teal and deep purple gradients with a premium silk texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrLwmYHig50Lz1G2BUb_RbsIT0L7wIq8G9kYth5T5gJIBrYrwiv333ke3xiMabCoLsPzVeC5XPea4IPsFys5eX9t01Z0VXS_FAc3QeenKW0X4gvx75BaAbz1vvSlmNqj8J_JcPUYRgwE7ON_wbmi9vJ6v-ughqTleuJ2MZDVCS5S5H6QBrh0Tdas8SRoyPpb0dR7Zca5gUkB9HYomf1CVJwDUB_dE7ryp2aH9GUcBQ6-MMlstFWM23MDR0Db2Mu9T9MPpffEcDTCQ"/>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2.5 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase tracking-wider rounded-full">Marketplace</span>
+<span class="flex items-center gap-1.5 px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-wider rounded-full">
+<span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span> Training
+                            </span>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-primary mb-1 group-hover:text-primary-container transition-colors">Visionary CRM</h3>
+<p class="text-sm text-on-surface-variant font-body">Computer vision model designed for automated storefront inventory and shelf-life analysis.</p>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-slate-50 mb-4">
+<div class="text-xs font-medium text-outline">Version <span class="text-on-surface">v2.0.1</span></div>
+<div class="text-xs font-medium text-outline">Updated <span class="text-on-surface">Nov 02, 2023</span></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors opacity-40 cursor-not-allowed">
+<span class="material-symbols-outlined text-xl" data-icon="rocket_launch">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Deploy</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Docs</span>
+</button>
+</div>
+</div>
+<!-- Model Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.06)] hover:translate-y-[-4px] transition-all duration-300 group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 bg-primary-container/10 rounded-xl flex items-center justify-center text-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="minimalist 3D architectural rendering of interlocking glass spheres with subtle reflections and bright studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd7E5iO_47gGHvG1QfFmFhwBHVVOpnJRS6-c6uPw64-SruPqqWc5kUp2gspPp8HW47j6fgGBEwzYdR0rIkCiAOM432onTUMlD2-gHdCjKPewjXpqOVxUMLnwO905pPkD4VAbXuBOrHmaZnsrTrGfMDCBJfL4Rnl3JLYEroldHYM4bZjDjNCrE-h0uKskmDIvaEDUXok_eP4y_3_kG8PKzt17JBa5jD39vJ_HhdJuORJ4tarzgdls7rahCfZ_4OFDhDTzlQX-O27hg"/>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2.5 py-0.5 bg-secondary-container/30 text-on-secondary-container text-[10px] font-bold uppercase tracking-wider rounded-full">Proprietary</span>
+<span class="flex items-center gap-1.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-full">
+<span class="w-1.5 h-1.5 bg-slate-400 rounded-full"></span> Idle
+                            </span>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-primary mb-1 group-hover:text-primary-container transition-colors">Neural Architect Pro</h3>
+<p class="text-sm text-on-surface-variant font-body">Advanced structural analysis AI for detecting micro-fractures in reinforced concrete scans.</p>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-slate-50 mb-4">
+<div class="text-xs font-medium text-outline">Version <span class="text-on-surface">v3.4.0</span></div>
+<div class="text-xs font-medium text-outline">Updated <span class="text-on-surface">Sep 18, 2023</span></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="rocket_launch">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Deploy</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Docs</span>
+</button>
+</div>
+</div>
+<!-- Model Card 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.06)] hover:translate-y-[-4px] transition-all duration-300 group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 bg-secondary-container/10 rounded-xl flex items-center justify-center text-secondary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up view of intricate gold circuit patterns on a black high-tech ceramic surface with shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBbVDX2c5sp6Spjlz7taY42034RHisIncjxRlx1bwdPdaOUd8e0aS6yxyTVH4gn1PZvF0_S2Tj4nRhcPEp1GEO58eVFJ8X-qZXnFRGl6Nqo7fgp85njPoTduB4D_Nwd5og_DXIO7Btz-WuLoFmc-MNBti9B8GC4JzrA3vl3TwZtowoc9xNgBSJFUuwQWr8wvS5WnkKoOvOaZSM8KQHCu2ul44Ki3YjPgTOTiCHaulrbjlRLEOVUmM43Dco7wpcRvr3Y1HrfbmykVQ"/>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2.5 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase tracking-wider rounded-full">Marketplace</span>
+<span class="flex items-center gap-1.5 px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Ready
+                            </span>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-primary mb-1 group-hover:text-primary-container transition-colors">Sentient Cyber v2</h3>
+<p class="text-sm text-on-surface-variant font-body">Real-time network intrusion detection using predictive sequence modeling and anomaly filtering.</p>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-slate-50 mb-4">
+<div class="text-xs font-medium text-outline">Version <span class="text-on-surface">v0.8.5-beta</span></div>
+<div class="text-xs font-medium text-outline">Updated <span class="text-on-surface">Oct 30, 2023</span></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="rocket_launch">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Deploy</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Docs</span>
+</button>
+</div>
+</div>
+<!-- Model Card 5 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.06)] hover:translate-y-[-4px] transition-all duration-300 group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 bg-primary-container/10 rounded-xl flex items-center justify-center text-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="digital representation of global data network with light particles flowing around a dark blue planet earth sphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzdc4ssgz5fueRQCSFWoFHfQRU8spfJJNk7guNfvoHwkTdgsBHNsBVf1qhBO_vHcYlsFE0Oe6ewrIQ2gGIvFRjnGgA84QUQFTqCT1iF0UxX5JMD9YsUuIgNb6Du18zLKNNRRz_Eg10HDstzROHVKl5YajjnfY6H6qzY8-fEVPRl8bHSCVVDXKZwLiZ6eWbma5-_BQp7blG1WoQ-BhJ-RV1PSD9F_0A707VnDiUYMXsW9x273IX6uDcLyTdshDiMrDtuTKZnC_1RMQ"/>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2.5 py-0.5 bg-secondary-container/30 text-on-secondary-container text-[10px] font-bold uppercase tracking-wider rounded-full">Proprietary</span>
+<span class="flex items-center gap-1.5 px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Ready
+                            </span>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-primary mb-1 group-hover:text-primary-container transition-colors">Global Yield Optimizer</h3>
+<p class="text-sm text-on-surface-variant font-body">Predictive analytics engine for global agricultural supply chain optimization and climate risk assessment.</p>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-slate-50 mb-4">
+<div class="text-xs font-medium text-outline">Version <span class="text-on-surface">v1.1.2</span></div>
+<div class="text-xs font-medium text-outline">Updated <span class="text-on-surface">Oct 12, 2023</span></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="rocket_launch">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Deploy</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Docs</span>
+</button>
+</div>
+</div>
+<!-- Model Card 6 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_24px_48px_rgba(25,28,30,0.06)] hover:translate-y-[-4px] transition-all duration-300 group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 bg-primary-container/10 rounded-xl flex items-center justify-center text-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="iridescent chrome blockchain links glowing with white and teal light on a dark studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlzsHt4OUOljexwcfmDwfXS07bQwfhExibGIhYqj5V9-8u9S24FhYeVgMaCc3YmXzh42-w-WhqUGq4uVeybSPhvGbx5rR-Rhx1Sv81QtnwFEfHFiP3MxjziptZFAHZBXxVtFWsxAKUtMBW3lF2r7VHPyTznCX7qotPM0uUxYgK4AQ-1vkLftZ5qNWsi0nNVINYCac6Z9UKb8NiWcnQiYNI3WLv_XfbJnnV32-ZvWGlDs9W8WLJ0FaKhtFv-TAEC8N5gE_e5pVF7iY"/>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2.5 py-0.5 bg-secondary-container/30 text-on-secondary-container text-[10px] font-bold uppercase tracking-wider rounded-full">Proprietary</span>
+<span class="flex items-center gap-1.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-full">
+<span class="w-1.5 h-1.5 bg-slate-400 rounded-full"></span> Archived
+                            </span>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-primary mb-1 group-hover:text-primary-container transition-colors">Ledger Sentry Legacy</h3>
+<p class="text-sm text-on-surface-variant font-body">Earlier iteration of blockchain analysis tool. Maintained for legacy compatibility and forensic audits.</p>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-slate-50 mb-4">
+<div class="text-xs font-medium text-outline">Version <span class="text-on-surface">v0.9.1</span></div>
+<div class="text-xs font-medium text-outline">Updated <span class="text-on-surface">Aug 05, 2023</span></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors opacity-40 cursor-not-allowed">
+<span class="material-symbols-outlined text-xl" data-icon="rocket_launch">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Deploy</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Docs</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+const API_BASE_URL = 'http://localhost:4000';
+
+// Mobile menu functionality
+const menuBtn = document.getElementById('menu-btn');
+const closeBtn = document.getElementById('close-btn');
+const sidePanel = document.getElementById('side-panel');
+const overlay = document.getElementById('overlay');
+
+function openMenu() {
+  sidePanel.classList.remove('-translate-x-full');
+  overlay.classList.remove('opacity-0', 'pointer-events-none');
+  overlay.classList.add('opacity-100', 'pointer-events-auto');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  sidePanel.classList.add('-translate-x-full');
+  overlay.classList.remove('opacity-100', 'pointer-events-auto');
+  overlay.classList.add('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = '';
+}
+
+if (menuBtn) menuBtn.addEventListener('click', openMenu);
+if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+if (overlay) overlay.addEventListener('click', closeMenu);
+
+// Fetch user data and update UI
+async function loadUserData() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/me`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      // Not authenticated, redirect to login
+      window.location.href = '/login.html';
+      return;
+    }
+
+    const data = await response.json();
+    
+    if (data.loggedIn && data.user) {
+      const user = data.user;
+      
+      // Update desktop avatar
+      const desktopAvatar = document.getElementById('desktop-user-avatar');
+      if (user.avatar) {
+        desktopAvatar.src = user.avatar.trim();
+      }
+      
+      // Update mobile user info
+      const mobileName = document.getElementById('mobile-user-name');
+      const mobileAvatar = document.getElementById('mobile-user-avatar');
+      if (mobileName) mobileName.textContent = user.name || 'User';
+      if (mobileAvatar && user.avatar) {
+        mobileAvatar.src = user.avatar.trim();
+        mobileAvatar.classList.remove('hidden');
+      }
+      
+      // Update dropdown info
+      const dropdownName = document.getElementById('dropdown-user-name');
+      const dropdownEmail = document.getElementById('dropdown-user-email');
+      if (dropdownName) dropdownName.textContent = user.name || 'User';
+      if (dropdownEmail) dropdownEmail.textContent = user.email || '';
+      
+      // Store user data globally
+      window.currentUser = user;
+    } else {
+      // Not logged in, redirect to login
+      window.location.href = '/login.html';
+    }
+  } catch (error) {
+    console.error('Failed to load user data:', error);
+    // On error, assume not authenticated
+    window.location.href = '/login.html';
+  }
+}
+
+// Logout function
+async function logout() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+      method: 'GET',
+      credentials: 'include'
+    });
+    
+    if (response.ok) {
+      // Clear stored user data
+      window.currentUser = null;
+      // Redirect to login page
+      window.location.href = '/login.html';
+    } else {
+      console.error('Logout failed');
+      alert('Logout failed. Please try again.');
+    }
+  } catch (error) {
+    console.error('Logout error:', error);
+    alert('Network error during logout.');
+  }
+}
+
+// Load user data when page loads
+document.addEventListener('DOMContentLoaded', loadUserData);
+</script>
+</body>
+</html>

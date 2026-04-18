@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "inverse-surface": "#2d3133",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "tertiary-fixed": "#e8deff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#4f00d0",
+                        "secondary-container": "#61e5ff",
+                        "surface-container": "#eceef0",
+                        "on-primary-fixed": "#000767",
+                        "primary-container": "#000767",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-container": "#737cd8",
+                        "on-secondary-fixed": "#001f25",
+                        "tertiary": "#000000",
+                        "surface-variant": "#e0e3e5",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#20005f",
+                        "error-container": "#ffdad6",
+                        "outline": "#74777d",
+                        "secondary-fixed-dim": "#4fd7f0",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary-fixed": "#a3eeff",
+                        "on-surface": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-background": "#191c1e",
+                        "outline-variant": "#c4c6cc",
+                        "surface-tint": "#4c56af",
+                        "tertiary-container": "#20005f",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-tertiary-container": "#8d69ff",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-primary": "#bdc2ff",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed": "#e0e0ff",
+                        "on-primary-fixed-variant": "#343d96",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#006573",
+                        "secondary": "#006877",
+                        "on-surface-variant": "#44474c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { backdrop-filter: blur(40px); }
+</style>
+</head>
+<body class="text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
+
+<!-- Side Panel -->
+<div id="side-panel" class="fixed top-0 left-0 w-80 h-full shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]" style="background-color:#0f172a;">
+  <div class="flex justify-between items-center p-6 border-b border-slate-700" style="background-color:#0f172a;">
+    <span class="text-xl font-bold text-white font-headline">Menu</span>
+    <button id="close-btn" class="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="p-6 space-y-6 overflow-y-auto" style="background-color:#0f172a; height: calc(100% - 73px);">
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="index.html">Home</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="marketplace.html">Marketplace</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="solution.html">Solution</a>
+    <a class="block text-white font-bold border-b-2 border-white pb-1 font-body" href="pricing.html">Pricing</a>
+    <div class="space-y-4 pt-6">
+      <!-- FIXED: Login with onclick navigation -->
+      <button onclick="window.location.href='./login.html'" class="w-full px-6 py-3 rounded-lg text-slate-400 hover:text-white transition-all font-semibold active:scale-95 border border-slate-700 hover:border-slate-500 cursor-pointer">Login</button>
+      <!-- FIXED: Sign Up with onclick navigation -->
+      <button onclick="window.location.href='./signup.html'" class="w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all active:scale-95 shadow-xl cursor-pointer">Sign Up</button>
+      <!-- FIXED: Dashboard with onclick navigation (no nested <a> tag) -->
+      <button onclick="window.location.href='./user-dashboard/dashboard.html'" class="w-full px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-all active:scale-95 shadow-xl cursor-pointer">
+        Dashboard
+      </button>
+    </div>
+  </div>
+</div>
+<div id="overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[9998]"></div>
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl transition-all duration-300">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-slate-950">Architectural Intelligence</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="index.html">Home</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="marketplace.html">Marketplace</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors font-body" href="solution.html">Solution</a>
+<a class="text-slate-950 dark:text-white font-bold border-b-2 border-slate-950 dark:border-white pb-1 font-body" href="pricing.html">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+  <div class="hidden md:flex items-center gap-4">
+    <!-- FIXED: Login with onclick navigation -->
+    <button onclick="window.location.href='./login.html'" class="px-6 py-2 rounded-lg text-slate-500 hover:text-slate-900 transition-all font-semibold active:scale-95 cursor-pointer">Login</button>
+    <!-- FIXED: Sign Up with onclick navigation -->
+    <button onclick="window.location.href='./signup.html'" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl cursor-pointer">Sign Up</button>
+    <!-- FIXED: Dashboard with onclick navigation -->
+    <button onclick="window.location.href='./user-dashboard/dashboard.html'" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95 shadow-xl cursor-pointer">Dashboard</button>
+  </div>
+  <button id="menu-btn" class="md:hidden px-4 py-2 text-slate-950">
+    <span class="material-symbols-outlined">menu</span>
+  </button>
+</div>
+</div>
+</nav>
+
+<main class="pt-32 pb-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 text-center mb-24">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-primary mb-6">
+                Intelligence scaled to <br/>your <span class="text-on-primary-container">ambition.</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-12">
+                Predictable pricing for builders and enterprises. Choose the foundation that supports your growth in the AI frontier.
+            </p>
+<!-- Toggle -->
+<div class="flex items-center justify-center gap-4 mb-16">
+<span class="text-sm font-semibold text-on-surface">Monthly</span>
+<button class="w-14 h-8 bg-surface-container-high rounded-full p-1 relative transition-colors">
+<div class="w-6 h-6 bg-primary rounded-full"></div>
+</button>
+<span class="text-sm font-semibold text-on-surface-variant">Yearly <span class="ml-1 text-secondary font-bold">(-20%)</span></span>
+</div>
+</section>
+
+<!-- Pricing Bento Grid -->
+<section class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+<!-- Starter Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between shadow-xl shadow-on-surface/5 hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-outline-variant/30 group">
+<div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-1">Starter</h3>
+<p class="text-on-surface-variant text-sm">For independent creators.</p>
+</div>
+<span class="material-symbols-outlined text-secondary-fixed-dim text-3xl">person</span>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-extrabold text-primary">$0</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Access to Open Models</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Basic API Integration</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Community Support</span>
+</li>
+</ul>
+</div>
+<button class="w-full py-4 rounded-lg font-bold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all scale-100 active:scale-95">Get Started</button>
+</div>
+
+<!-- Business Plan -->
+<div class="bg-primary text-on-primary p-8 rounded-xl flex flex-col justify-between shadow-2xl relative overflow-hidden transform md:-translate-y-4">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Most Popular</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline text-2xl font-bold mb-1">Business</h3>
+<p class="text-on-primary-container text-sm">Optimized for scaling teams.</p>
+</div>
+<span class="material-symbols-outlined text-secondary-container text-3xl">groups</span>
+</div>
+<div class="mb-8">
+<span class="text-5xl font-extrabold">$149</span>
+<span class="text-on-primary-container">/mo</span>
+</div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-sm" data-weight="fill">check_circle</span>
+<span>All Starter Features</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-sm" data-weight="fill">check_circle</span>
+<span>Premium AI Accelerators</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-sm" data-weight="fill">check_circle</span>
+<span>Priority Execution Queue</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-sm" data-weight="fill">check_circle</span>
+<span>Team Collaboration Tools</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-sm" data-weight="fill">check_circle</span>
+<span>Standard SLA</span>
+</li>
+</ul>
+</div>
+<button class="w-full py-4 rounded-lg font-bold bg-white text-primary hover:scale-95 active:scale-90 transition-all relative z-10">Upgrade Now</button>
+<!-- Decorative element -->
+<div class="absolute -bottom-16 -right-16 w-48 h-48 bg-on-tertiary-container/20 rounded-full blur-3xl"></div>
+</div>
+
+<!-- Enterprise Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between shadow-xl shadow-on-surface/5 hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-outline-variant/30 group">
+<div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-1">Enterprise</h3>
+<p class="text-on-surface-variant text-sm">Custom AI infrastructure.</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-3xl">corporate_fare</span>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-extrabold text-primary">Custom</span>
+<p class="text-on-surface-variant text-sm mt-2">Tailored pricing for high volume.</p>
+</div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Unlimited Model Access</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Dedicated GPU Clusters</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Custom Legal Compliance</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>24/7 Dedicated Support</span>
+</li>
+</ul>
+</div>
+<button class="w-full py-4 rounded-lg font-bold bg-primary text-on-primary hover:scale-95 active:scale-90 transition-all">Contact Sales</button>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="max-w-4xl mx-auto px-8">
+<h2 class="font-headline text-3xl font-extrabold text-primary mb-12 text-center">Frequently Asked Questions</h2>
+<div class="space-y-6">
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-bold text-on-surface mb-2">Can I switch plans later?</h4>
+<p class="text-on-surface-variant">Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of the next billing cycle. If you upgrade to a Business plan mid-month, the price will be prorated.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-bold text-on-surface mb-2">What happens if I exceed my usage limits?</h4>
+<p class="text-on-surface-variant">Starter and Business plans have soft caps. We'll notify you when you reach 80% of your limit. For Enterprise customers, we offer overage protection with dynamic scaling.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-bold text-on-surface mb-2">Do you offer discounts for educational institutions?</h4>
+<p class="text-on-surface-variant">Absolutely. We support the future of AI research. Contact our academic partnerships team with your .edu credentials to apply for the grant program.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-bold text-on-surface mb-2">Is my data used to train your base models?</h4>
+<p class="text-on-surface-variant">No. We maintain strict data siloing. Your proprietary inputs and outputs are never used to train our foundational models without explicit consent.</p>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-8 mt-32">
+<div class="bg-surface-container-highest rounded-3xl p-12 md:p-24 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
+<div class="relative z-10 max-w-xl">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-primary mb-6">Ready to architect your intelligence?</h2>
+<p class="text-on-surface-variant text-lg">Join 10,000+ engineers and companies building on the frontier.</p>
+</div>
+<div class="relative z-10 flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<button class="px-8 py-4 bg-primary text-on-primary rounded-lg font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform whitespace-nowrap">Start Free Trial</button>
+<button class="px-8 py-4 bg-white text-primary rounded-lg font-bold hover:bg-slate-50 transition-colors whitespace-nowrap">Request Demo</button>
+</div>
+<!-- Abstract Design Shape -->
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-10">
+<svg class="w-full h-full scale-150 transform translate-x-1/4" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.7,-31.3,87.1,-15.7,87.1,0C87.1,15.7,83.7,31.3,76.4,44.7C69.2,58.1,58.1,69.2,44.7,76.4C31.3,83.7,15.7,87.1,0,87.1C-15.7,87.1,-31.3,83.7,-44.7,76.4C-58.1,69.2,-69.2,58.1,-76.4,44.7C-83.7,31.3,-87.1,15.7,-87.1,0C-87.1,-15.7,-83.7,-31.3,-76.4,-44.7C-69.2,-58.1,-58.1,-69.2,-44.7,-76.4C-31.3,-83.7,-15.7,-87.1,0,-87.1C15.7,-87.1,31.3,-83.7,44.7,-76.4Z" fill="#000767" transform="translate(100 100)"></path>
+</svg>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full mt-24 bg-slate-50 border-t border-transparent">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="text-xl font-bold text-slate-900 block mb-4">Architectural Intelligence</span>
+<p class="text-slate-500 text-sm leading-relaxed">Defining the digital frontier with curated AI infrastructure and enterprise-grade tools.</p>
+</div>
+<div>
+<h5 class="font-headline font-bold text-slate-900 mb-6">Product</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Marketplace</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors underline font-semibold" href="#">Pricing</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Solutions</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Documentation</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold text-slate-900 mb-6">Company</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">About</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Careers</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Contact Support</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold text-slate-900 mb-6">Legal</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200">
+<p class="text-slate-400 text-xs text-center">© 2024 Architectural Intelligence. Built for the AI Frontier.</p>
+</div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menu-btn');
+const closeBtn = document.getElementById('close-btn');
+const sidePanel = document.getElementById('side-panel');
+const overlay = document.getElementById('overlay');
+
+function openMenu() {
+  sidePanel.classList.remove('-translate-x-full');
+  overlay.classList.remove('opacity-0', 'pointer-events-none');
+  overlay.classList.add('opacity-100', 'pointer-events-auto');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  sidePanel.classList.add('-translate-x-full');
+  overlay.classList.remove('opacity-100', 'pointer-events-auto');
+  overlay.classList.add('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = '';
+}
+
+menuBtn.addEventListener('click', openMenu);
+closeBtn.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+</script>
+</body>
+</html>

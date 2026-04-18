@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architectural Intelligence - Onboarding Step 2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e6e8ea",
+                        "surface-bright": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "secondary-fixed": "#a3eeff",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4c56af",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#006573",
+                        "error": "#ba1a1a",
+                        "outline": "#74777d",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface-variant": "#44474c",
+                        "tertiary-container": "#20005f",
+                        "outline-variant": "#c4c6cc",
+                        "on-primary-fixed": "#000767",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#000767",
+                        "primary": "#000000",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#8d69ff",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-tertiary-fixed-variant": "#4f00d0",
+                        "on-primary-fixed-variant": "#343d96",
+                        "inverse-primary": "#bdc2ff",
+                        "tertiary-fixed": "#e8deff",
+                        "surface": "#f7f9fb",
+                        "secondary": "#006877",
+                        "on-tertiary-fixed": "#20005f",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "primary-fixed": "#e0e0ff",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-container": "#737cd8",
+                        "on-secondary-fixed": "#001f25",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#61e5ff",
+                        "secondary-fixed-dim": "#4fd7f0",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-low": "#f2f4f6",
+                        "background": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl flex items-center justify-between px-8 py-6 max-w-full">
+<div class="text-xl font-bold tracking-tighter text-slate-900">Architectural Intelligence</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-slate-500 hover:opacity-70 transition-opacity">help</button>
+<button class="material-symbols-outlined text-slate-500 hover:opacity-70 transition-opacity">close</button>
+</div>
+</header>
+<div class="flex min-h-screen pt-20">
+<aside class="hidden lg:flex flex-col h-screen w-64 bg-slate-50 py-12 px-6 fixed left-0 top-20 border-r-0">
+<div class="mb-12">
+<div class="text-lg font-black text-slate-900 mb-1">Onboarding</div>
+<div class="text-sm font-medium text-slate-500">Step 2 of 4</div>
+</div>
+<nav class="space-y-6">
+<div class="flex items-center gap-4 text-slate-400 font-medium text-sm pl-5">
+<span class="material-symbols-outlined">person</span>
+<span>Identity</span>
+</div>
+<div class="flex items-center gap-4 text-slate-900 font-bold border-l-4 border-slate-900 pl-4 text-sm font-manrope">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span>Intelligence</span>
+</div>
+<div class="flex items-center gap-4 text-slate-400 font-medium text-sm pl-5">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Workspace</span>
+</div>
+<div class="flex items-center gap-4 text-slate-400 font-medium text-sm pl-5">
+<span class="material-symbols-outlined">verified</span>
+<span>Review</span>
+</div>
+</nav>
+</aside>
+<main class="flex-1 lg:ml-64 px-8 md:px-16 py-12">
+<div class="max-w-4xl">
+<div class="lg:hidden mb-8">
+<p class="text-sm font-bold uppercase tracking-widest text-on-secondary-container mb-2">Step 2 of 4</p>
+<h1 class="text-3xl font-extrabold tracking-tight text-primary">Intelligence Profile</h1>
+</div>
+<div class="hidden lg:block mb-12">
+<h1 class="text-5xl font-extrabold tracking-tighter text-primary mb-4 leading-tight">Define your domain of <br/><span class="text-on-tertiary-container">expertise & interest.</span></h1>
+<p class="text-lg text-on-surface-variant max-w-xl">Tailor the intelligence experience to your professional workflow and research priorities.</p>
+</div>
+<div class="space-y-16">
+<section>
+<div class="flex items-center gap-2 mb-6">
+<span class="w-8 h-1 bg-primary rounded-full"></span>
+<h2 class="text-xl font-bold tracking-tight">Select your primary role</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="relative group cursor-pointer">
+<input class="sr-only peer role-radio" name="role" type="radio" value="ai-developer"/>
+<div class="h-full p-6 bg-surface-container-lowest rounded-xl transition-all duration-300 peer-checked:bg-primary peer-checked:text-white hover:bg-surface-container-low shadow-sm border-none ring-2 ring-transparent peer-checked:ring-primary-container">
+<div class="mb-4">
+<span class="material-symbols-outlined text-3xl peer-checked:text-white">terminal</span>
+</div>
+<h3 class="text-lg font-bold mb-2">AI Developer</h3>
+<p class="text-sm opacity-70">Focus on model architecture, fine-tuning, and deployment pipelines.</p>
+</div>
+</label>
+<label class="relative group cursor-pointer">
+<input checked class="sr-only peer role-radio" name="role" type="radio" value="product-manager"/>
+<div class="h-full p-6 bg-surface-container-lowest rounded-xl transition-all duration-300 peer-checked:bg-primary peer-checked:text-white hover:bg-surface-container-low shadow-sm border-none ring-2 ring-transparent peer-checked:ring-primary-container">
+<div class="mb-4">
+<span class="material-symbols-outlined text-3xl peer-checked:text-white" style="font-variation-settings: 'FILL' 1;">strategy</span>
+</div>
+<h3 class="text-lg font-bold mb-2">Product Manager</h3>
+<p class="text-sm opacity-70">Oversee AI product lifecycle, user experience, and market fit.</p>
+</div>
+</label>
+<label class="relative group cursor-pointer">
+<input class="sr-only peer role-radio" name="role" type="radio" value="data-scientist"/>
+<div class="h-full p-6 bg-surface-container-lowest rounded-xl transition-all duration-300 peer-checked:bg-primary peer-checked:text-white hover:bg-surface-container-low shadow-sm border-none ring-2 ring-transparent peer-checked:ring-primary-container">
+<div class="mb-4">
+<span class="material-symbols-outlined text-3xl peer-checked:text-white">analytics</span>
+</div>
+<h3 class="text-lg font-bold mb-2">Data Scientist</h3>
+<p class="text-sm opacity-70">Extracting insights, statistical modeling, and data engineering.</p>
+</div>
+</label>
+</div>
+</section>
+<section>
+<div class="flex items-center gap-2 mb-6">
+<span class="w-8 h-1 bg-on-tertiary-container rounded-full"></span>
+<h2 class="text-xl font-bold tracking-tight">Intelligence Specializations</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="relative cursor-pointer">
+<input checked class="sr-only peer spec-checkbox" name="specializations" type="checkbox" value="nlp"/>
+<div class="flex items-center p-6 bg-surface-container-lowest rounded-xl peer-checked:ring-2 peer-checked:ring-secondary transition-all duration-200">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-secondary-container/20 flex items-center justify-center">
+<img alt="NLP" class="w-full h-full object-cover grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyrrqCk7C4_wNAetCWtb5IL7xhP-ANjAxhFxV5gAExLWswZgHco2hQzUEI5-G1V5TQX-n0CCniJ_LPE86UAFcgAVU-sv5u7qd226XONwTaKKJWgn8KtKYuM24jJU9vKgMZyHxwprw-fCwLhRAgLseA443wRVblX91GNiMWxph6hOB7tJbLJpBvArwAlhFVk6rP1JKuxyXYP5DB1Ro69l_JhvcNAec914xlVOUXH9DBOOHu2ue4Vyd1aO2HjgVqYSEhK_SKHqexAJ0"/>
+</div>
+<div class="ml-6">
+<h4 class="font-bold text-lg leading-tight">NLP & LLMs</h4>
+<p class="text-sm text-on-surface-variant mt-1">Generative text, translation, and semantic search.</p>
+</div>
+<div class="ml-auto opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</label>
+<label class="relative cursor-pointer">
+<input class="sr-only peer spec-checkbox" name="specializations" type="checkbox" value="computer-vision"/>
+<div class="flex items-center p-6 bg-surface-container-lowest rounded-xl peer-checked:ring-2 peer-checked:ring-secondary transition-all duration-200">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-secondary-container/20 flex items-center justify-center">
+<img alt="CV" class="w-full h-full object-cover grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXmIZ3xZSBxuGo5qCWgcgOGyXhzCyGQEJ_J_dZq5w8kX7Enf9WvftiKRQRxKktx_LSO9BbFBj38nPsunOrIHko30BbC0WGPOkx7gvxQ0uKKEfEIhUQHn1A07Z6Ya9D-paztnSexEaxM5jD9VL2Bp9JJQ6FAMPSgSvFLHeRR-IV0AwqUUMJa5GzGeZ98ch1Z2iW-dFBxTxOtpC06FninYBFcPd0k8F7y54fz1wjAmtInSHSsxkI1tPN54lZbXJbsOXYvVO93Ke5D-g"/>
+</div>
+<div class="ml-6">
+<h4 class="font-bold text-lg leading-tight">Computer Vision</h4>
+<p class="text-sm text-on-surface-variant mt-1">Object detection, segmentation, and visual AI.</p>
+</div>
+<div class="ml-auto opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</label>
+<label class="relative cursor-pointer">
+<input checked class="sr-only peer spec-checkbox" name="specializations" type="checkbox" value="predictive-analytics"/>
+<div class="flex items-center p-6 bg-surface-container-lowest rounded-xl peer-checked:ring-2 peer-checked:ring-secondary transition-all duration-200">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-secondary-container/20 flex items-center justify-center">
+<img alt="Analytics" class="w-full h-full object-cover grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7XteaobqlzaiWaeCVhcrZrhNIg7qfi_DE4_WrkaVweFziRPZWhQ8lV7GmhlMguQWW1Obmd7fQaAaEw4YthHvVxszKnUPsOzM8bQqTrLSX7ETxPMx6fr120t_a-d7GBvWgpbBUs2eZSZsbQWTgpB_Lq24ywxK2x8HXoFGiHgpx-FdOjt9UO11Dclf9S0SsEE6vZ0ZdENtyjCh2zpoXrkcnfge1uB1FZms0VKVpsxc39RjUP9uwec4sCI4uGBVGTGBBNvwoy3kORKw"/>
+</div>
+<div class="ml-6">
+<h4 class="font-bold text-lg leading-tight">Predictive Analytics</h4>
+<p class="text-sm text-on-surface-variant mt-1">Forecasting, anomaly detection, and risk modeling.</p>
+</div>
+<div class="ml-auto opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</label>
+<label class="relative cursor-pointer">
+<input class="sr-only peer spec-checkbox" name="specializations" type="checkbox" value="edge-computing"/>
+<div class="flex items-center p-6 bg-surface-container-lowest rounded-xl peer-checked:ring-2 peer-checked:ring-secondary transition-all duration-200">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-secondary-container/20 flex items-center justify-center">
+<img alt="Edge" class="w-full h-full object-cover grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf9Ixq2gPQABu-Uex1oJ_T2JnvhTUxZWPXZwrLRJNyHVk8uBhECg7zwZLBQeZYqNSHSwne5XqOBM33wod2Ys3zTJYJAqq950LsvW2C8JgsW0I_jVTypHEoQNznjejnI44K4AaIsh_IlpD3cLToRirbQNzJ7Pi1eOlJQY7AfKNjXQBy6ppMEZV6uLu5w0gNxPkhuzJwga_MW5kfY1z-xoYX-HJBK6rC9dSJBW6hc7StGCW9TmVOpNn43GzrZxtOkiBg3rDXcete6L4"/>
+</div>
+<div class="ml-6">
+<h4 class="font-bold text-lg leading-tight">Edge Computing AI</h4>
+<p class="text-sm text-on-surface-variant mt-1">On-device processing and embedded intelligence.</p>
+</div>
+<div class="ml-auto opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</label>
+</div>
+</section>
+<footer class="flex items-center justify-between pt-12 mt-12 border-t-0 bg-surface-bright/50 backdrop-blur-sm sticky bottom-0 py-6">
+<button onclick="goBack()" class="px-8 py-3 font-bold text-primary hover:opacity-60 transition-all duration-200" type="button">
+                            Back
+                        </button>
+<div class="flex items-center gap-6">
+<div class="hidden md:block">
+<div class="flex gap-1">
+<div class="w-3 h-1.5 bg-primary/20 rounded-full"></div>
+<div class="w-8 h-1.5 bg-primary rounded-full"></div>
+<div class="w-3 h-1.5 bg-primary/20 rounded-full"></div>
+<div class="w-3 h-1.5 bg-primary/20 rounded-full"></div>
+</div>
+</div>
+<button onclick="saveAndContinue()" id="continueBtn" class="px-10 py-4 bg-primary text-on-primary font-bold rounded-lg shadow-xl shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2">
+<span id="btnText">Continue</span>
+<span id="btnSpinner" class="hidden loading-spinner material-symbols-outlined">refresh</span>
+</button>
+</div>
+</footer>
+</div>
+</div>
+</main>
+<aside class="hidden xl:block w-[400px] relative overflow-hidden bg-slate-900">
+<div class="absolute inset-0 opacity-40">
+<img alt="Aesthetic" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkp7b2koH9bwFJUajMEcHob0Oo7fab9xAGB3TY1kdabahMdQn2g5YVJbhdKl0D1bvx0Lwv0_0xUilZSIKEPfwcAQlR8z6IngzPY6JaEiocNtAms7rn1G9nssLccsM4jmZIS46fqr4E9LvyFAt3aRo5CP49CWOuUfhCezNZzC-FatOh8bHEBpgBA_BarF5qTG6LO5FgJLHEPa_SKL-x4JRunbX79VPDXfyoDy81V1miJ2OZ0z7yRDkxh0_sPSbtQWMsp5gdt9EiCoI"/>
+</div>
+<div class="relative z-10 p-12 flex flex-col justify-end h-full">
+<div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/10">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl mb-4">auto_awesome</span>
+<h3 class="text-white text-2xl font-bold mb-4">The Architectural Advantage</h3>
+<p class="text-slate-300 text-sm leading-relaxed">By selecting your profile, our engine pre-configures the latent space of your workspace.</p>
+</div>
+</div>
+</aside>
+</div>
+
+<script>
+    const API_BASE_URL = 'http://localhost:4000';
+
+    function setLoading(isLoading) {
+        const btn = document.getElementById('continueBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        
+        if (isLoading) {
+            btn.disabled = true;
+            btnText.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
+        } else {
+            btn.disabled = false;
+            btnText.classList.remove('hidden');
+            btnSpinner.classList.add('hidden');
+        }
+    }
+
+    function goBack() {
+        window.location.href = 'onboarding_1.html';
+    }
+
+    async function saveAndContinue() {
+        const role = document.querySelector('.role-radio:checked')?.value;
+        const specializations = Array.from(document.querySelectorAll('.spec-checkbox:checked')).map(cb => cb.value);
+
+        if (!role) {
+            alert('Please select a primary role');
+            return;
+        }
+        if (specializations.length === 0) {
+            alert('Please select at least one specialization');
+            return;
+        }
+
+        setLoading(true);
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/onboarding/step/2`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: {
+                        primaryRole: role,
+                        specializations: specializations,
+                        experienceLevel: 'intermediate'
+                    }
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                window.location.href = 'onboarding_3.html';
+            } else {
+                alert(result.error || 'Failed to save. Please try again.');
+                setLoading(false);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Network error. Please try again.');
+            setLoading(false);
+        }
+    }
+</script>
+</body>
+</html>

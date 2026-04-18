@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Revenue &amp; Billing - Financial Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#44474c",
+                        "on-surface": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#000767",
+                        "primary-fixed": "#e0e0ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#4f00d0",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#343d96",
+                        "secondary-fixed-dim": "#4fd7f0",
+                        "on-secondary-container": "#006573",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-container": "#737cd8",
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "surface-tint": "#4c56af",
+                        "on-tertiary-container": "#8d69ff",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#a3eeff",
+                        "secondary-container": "#61e5ff",
+                        "inverse-primary": "#bdc2ff",
+                        "outline": "#74777d",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed": "#20005f",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-container": "#20005f",
+                        "tertiary-fixed": "#e8deff",
+                        "primary": "#000000",
+                        "secondary": "#006877",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "primary-container": "#000767",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1e",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "outline-variant": "#c4c6cc",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#001f25"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-fixed">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col bg-slate-50 dark:bg-slate-900 h-full w-64 border-r-0 z-50">
+<div class="px-8 py-10">
+<h1 class="text-xl font-bold tracking-tight text-slate-950 dark:text-white">Cognitive Gallery</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 mt-1">Enterprise Admin</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active: Platform Overview -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label">Platform Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="user-management.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="model-performance.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label">Model Performance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-900 font-bold border-r-4 border-blue-900 transition-colors" href="revenue.html">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label">Revenue &amp; Billing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="system-logs.html">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label">System Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="security.html">
+  <span class="material-symbols-outlined" data-icon="shield">shield</span>
+  <span class="font-label">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-200/50 transition-colors group" href="general-settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label">General Settings</span>
+</a>
+</nav>
+<div class="p-4 px-8 mb-4">
+<button class="w-full py-3 bg-primary text-on-primary font-bold rounded-lg transition-all scale-98 active:opacity-80">
+                Generate Report
+            </button>
+</div>
+<div class="px-4 py-6 border-t border-slate-200 dark:border-slate-800 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 font-medium hover:text-slate-950 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span class="text-sm">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 font-medium hover:text-slate-950 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span class="text-sm">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 flex items-center justify-between px-8 z-40 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex items-center gap-6">
+<span class="text-lg font-bold text-slate-900 dark:text-white">Financial Intelligence</span>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-slate-100 border-none rounded-full text-sm w-80 focus:ring-2 focus:ring-primary/20 transition-all font-body" placeholder="Search transactions, models, or users..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-slate-950 transition-opacity opacity-90 hover:opacity-100">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-slate-950 transition-opacity opacity-90 hover:opacity-100">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden ml-2">
+<img alt="Admin User Profile" class="h-full w-full object-cover" data-alt="professional portrait of a high-level executive in a minimalist studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjpN7T718MBonIKgas59IVaMuj1nYLGaQOektcL66lr69HhHsZJj3LGJURZ3UqssEbIKoxn72VLfvD-C9ZPQdaGlUBGg1cM8DaYADh9QFnDC5Q84xEtQSDQP_h3w854-R9opj2ViC-sBDSiBDd1Xa4nuZh_rsXpy0Vx0bqvXJR_xn4-aYTLUsf55dKCM2rcHqbaI6mEGlx7Q9xHAmIuSU3PoayWxTSxA1QHDdSLMNt2Wn4acwtORMWG14_geIZAoAQGDyD9dbviRM"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen">
+<!-- Header Section -->
+<header class="mb-12">
+<h2 class="text-[3.5rem] font-extrabold font-headline leading-tight tracking-tighter text-on-surface mb-2">Revenue &amp; Billing</h2>
+<p class="text-lg text-on-surface-variant max-w-2xl font-body">Real-time financial performance and subscription management across the platform.</p>
+</header>
+<!-- Metric Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between group hover:bg-primary transition-all duration-300">
+<div>
+<span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary-fixed uppercase tracking-wider">Monthly Recurring Revenue</span>
+<h3 class="text-3xl font-extrabold font-headline mt-2 group-hover:text-white">$1,428,000</h3>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-secondary font-bold group-hover:text-secondary-fixed">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        12.4%
+                    </span>
+<span class="text-xs text-on-surface-variant group-hover:text-primary-fixed/70">vs last month</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<span class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">Total Revenue (YTD)</span>
+<h3 class="text-3xl font-extrabold font-headline mt-2">$12.4M</h3>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[78%]"></div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<span class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">ARPU</span>
+<h3 class="text-3xl font-extrabold font-headline mt-2">$102.50</h3>
+</div>
+<div class="mt-4 text-xs text-on-surface-variant">Average Revenue Per User</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<span class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">Churn Rate</span>
+<h3 class="text-3xl font-extrabold font-headline mt-2">1.2%</h3>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-xs font-bold text-secondary uppercase">Target: &lt;1.5%</span>
+<span class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Charts Layout (Bento Grid Style) -->
+<div class="grid grid-cols-12 gap-6 mb-12">
+<!-- Primary Growth Chart -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h4 class="text-xl font-bold font-headline mb-1">Revenue Growth</h4>
+<p class="text-sm text-on-surface-variant">MRR and ARR growth over last 12 months</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="h-3 w-3 rounded-full bg-primary-container"></span>
+<span class="text-xs font-semibold uppercase tracking-wider">ARR</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="h-3 w-3 rounded-full bg-on-tertiary-container"></span>
+<span class="text-xs font-semibold uppercase tracking-wider">MRR</span>
+</div>
+</div>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="relative h-[300px] w-full flex items-end justify-between gap-1">
+<!-- Lines and bars would be here, representing as geometric shapes for visual fidelity -->
+<div class="flex-1 bg-surface-container-low h-[40%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[70%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[45%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[75%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[50%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[65%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[55%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[80%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[60%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[70%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[65%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[85%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[70%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[75%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[75%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[90%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[80%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[85%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[85%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[95%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[90%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[88%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+<div class="flex-1 bg-surface-container-low h-[95%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 bg-primary-container h-[100%] rounded-t-sm transition-all group-hover:opacity-80"></div>
+</div>
+</div>
+</div>
+<!-- Subscription Breakdown (Donut) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-8 rounded-xl shadow-sm flex flex-col">
+<h4 class="text-xl font-bold font-headline mb-8">Subscription Breakdown</h4>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- SVG Donut -->
+<svg class="w-48 h-48 -rotate-90">
+<circle class="text-surface-container-low" cx="96" cy="96" fill="transparent" r="70" stroke="currentColor" stroke-width="24"></circle>
+<circle class="text-primary-container" cx="96" cy="96" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="132" stroke-width="24"></circle>
+<circle class="text-on-tertiary-container" cx="96" cy="96" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="350" stroke-width="24"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black font-headline">70%</span>
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">Enterprise</span>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="h-2 w-2 rounded-full bg-primary-container"></span>
+<span class="text-sm font-medium">Enterprise</span>
+</div>
+<span class="text-sm font-bold">$999,600</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="h-2 w-2 rounded-full bg-on-tertiary-container"></span>
+<span class="text-sm font-medium">Pro</span>
+</div>
+<span class="text-sm font-bold">$342,720</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="h-2 w-2 rounded-full bg-secondary"></span>
+<span class="text-sm font-medium">Starter</span>
+</div>
+<span class="text-sm font-bold">$85,680</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Revenue by Model Section -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm mb-12">
+<h4 class="text-xl font-bold font-headline mb-8">Revenue by Model</h4>
+<div class="space-y-8">
+<!-- Model 1 -->
+<div>
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">visibility</span>
+</div>
+<div>
+<h5 class="font-bold">NeuralVision</h5>
+<p class="text-xs text-on-surface-variant">Image analysis &amp; synthesis</p>
+</div>
+</div>
+<span class="text-lg font-bold font-headline">$540,000</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[38%]"></div>
+</div>
+</div>
+<!-- Model 2 -->
+<div>
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">translate</span>
+</div>
+<div>
+<h5 class="font-bold">Linguist-Pro</h5>
+<p class="text-xs text-on-surface-variant">Advanced LLM capabilities</p>
+</div>
+</div>
+<span class="text-lg font-bold font-headline">$428,000</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[30%]"></div>
+</div>
+</div>
+<!-- Model 3 -->
+<div>
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">code</span>
+</div>
+<div>
+<h5 class="font-bold">CodeSculpt</h5>
+<p class="text-xs text-on-surface-variant">Development automation</p>
+</div>
+</div>
+<span class="text-lg font-bold font-headline">$285,000</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[20%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Layout: Table & Alerts -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- Transactions Table -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h4 class="text-xl font-bold font-headline">Recent Transactions</h4>
+<button class="text-sm font-bold text-primary hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-surface-container-high">
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Transaction ID</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">User</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Amount</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Timestamp</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-5 text-sm font-mono text-on-surface-variant">#TX-94821</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-primary-fixed text-[8px] flex items-center justify-center font-bold text-on-primary-fixed">JD</div>
+<span class="text-sm font-medium">Jordan Devops</span>
+</div>
+</td>
+<td class="py-5 text-sm font-bold">$12,400.00</td>
+<td class="py-5">
+<span class="px-2 py-1 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold rounded uppercase">Success</span>
+</td>
+<td class="py-5 text-sm text-on-surface-variant">2 mins ago</td>
+</tr>
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-5 text-sm font-mono text-on-surface-variant">#TX-94820</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-200 text-[8px] flex items-center justify-center font-bold">AS</div>
+<span class="text-sm font-medium">Alex Sterling</span>
+</div>
+</td>
+<td class="py-5 text-sm font-bold">$850.00</td>
+<td class="py-5">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded uppercase">Pending</span>
+</td>
+<td class="py-5 text-sm text-on-surface-variant">14 mins ago</td>
+</tr>
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-5 text-sm font-mono text-on-surface-variant">#TX-94819</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-tertiary-fixed text-[8px] flex items-center justify-center font-bold text-on-tertiary-fixed">MG</div>
+<span class="text-sm font-medium">Morgan Global</span>
+</div>
+</td>
+<td class="py-5 text-sm font-bold">$45,000.00</td>
+<td class="py-5">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded uppercase">Failed</span>
+</td>
+<td class="py-5 text-sm text-on-surface-variant">42 mins ago</td>
+</tr>
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-5 text-sm font-mono text-on-surface-variant">#TX-94818</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-200 text-[8px] flex items-center justify-center font-bold">KB</div>
+<span class="text-sm font-medium">Kira Black</span>
+</div>
+</td>
+<td class="py-5 text-sm font-bold">$1,200.00</td>
+<td class="py-5">
+<span class="px-2 py-1 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold rounded uppercase">Success</span>
+</td>
+<td class="py-5 text-sm text-on-surface-variant">1 hour ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Billing Alerts Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-error">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h4 class="font-bold text-error">Billing Alerts</h4>
+</div>
+<div class="space-y-6">
+<div class="group cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold uppercase text-on-surface-variant">Failed Payment</span>
+<span class="text-[10px] text-on-surface-variant">42m ago</span>
+</div>
+<p class="text-sm font-medium mb-1">Morgan Global (Enterprise Plan)</p>
+<p class="text-xs text-on-surface-variant">Retrying automated charge for $45,000.00 in 24 hours.</p>
+</div>
+<div class="group cursor-pointer pt-4 border-t border-surface-container">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold uppercase text-on-surface-variant">Upcoming Renewal</span>
+<span class="text-[10px] text-on-surface-variant">2h ago</span>
+</div>
+<p class="text-sm font-medium mb-1">Astra Dynamic Lab</p>
+<p class="text-xs text-on-surface-variant">Yearly contract renewal ($125k) due on March 15.</p>
+</div>
+<div class="group cursor-pointer pt-4 border-t border-surface-container">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold uppercase text-on-surface-variant">Plan Upgrade</span>
+<span class="text-[10px] text-on-surface-variant">5h ago</span>
+</div>
+<p class="text-sm font-medium mb-1">Vertex AI Solutions</p>
+<p class="text-xs text-on-surface-variant">Moving from Pro to Enterprise tier (+400% quota).</p>
+</div>
+</div>
+<button class="w-full mt-8 py-2 border border-outline-variant text-sm font-bold rounded hover:bg-surface-container transition-colors">
+                        Clear All Notifications
+                    </button>
+</div>
+<!-- Secondary Visual Card -->
+<div class="bg-primary-container p-8 rounded-xl text-on-primary-fixed overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="text-xl font-bold font-headline mb-2 text-white">Synthetix Intelligence</h4>
+<p class="text-sm text-primary-fixed opacity-80 mb-6">Automated fraud detection is currently monitoring 12,400 active sessions.</p>
+<div class="flex items-center gap-2">
+<div class="h-2 w-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="text-xs font-bold uppercase tracking-widest text-white">Active AI Processing</span>
+</div>
+</div>
+<!-- Abstract Background Graphic -->
+<div class="absolute -right-8 -bottom-8 opacity-20">
+<span class="material-symbols-outlined text-[160px] text-white">query_stats</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Spacer -->
+<div class="h-16"></div>
+</main>
+</body></html>

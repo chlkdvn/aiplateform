@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>API Keys | Architectural Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#20005f",
+                        "outline": "#74777d",
+                        "on-error-container": "#93000a",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#bdc2ff",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#737cd8",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-fixed": "#001f25",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c6cc",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "secondary-fixed": "#a3eeff",
+                        "primary-fixed": "#e0e0ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e8deff",
+                        "on-primary-fixed": "#000767",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-container": "#61e5ff",
+                        "secondary": "#006877",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-tint": "#4c56af",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-container": "#8d69ff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#000000",
+                        "primary-container": "#000767",
+                        "on-surface": "#191c1e",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-fixed-variant": "#4f00d0",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#006573",
+                        "secondary-fixed-dim": "#4fd7f0",
+                        "on-tertiary-fixed": "#20005f",
+                        "on-surface-variant": "#44474c",
+                        "on-primary-fixed-variant": "#343d96"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Mobile Side Panel -->
+<div id="side-panel" class="fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-slate-950 shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]">
+  <div class="flex items-center justify-between p-6 border-b border-slate-800">
+    <span class="text-xl font-bold text-white">Menu</span>
+    <button id="close-btn" class="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="p-6 space-y-4 overflow-y-auto h-[calc(100%-72px)]">
+    <a class="block text-slate-100 hover:text-white transition-colors font-body" href="dashboard.html">Dashboard</a>
+    <a class="block text-white font-bold border-b-2 border-white pb-1 font-body" href="api-key.html">Api Key</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="active-instances.html">Active Instances</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="model-library.html">Model Library</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="billing-usage.html">Billing and Usage</a>
+    <a class="block text-slate-400 hover:text-white transition-colors font-body" href="help.html">Help Center</a>
+    
+    <!-- Mobile User Info -->
+    <div class="pt-4 mt-4 border-t border-slate-800">
+      <div class="flex items-center gap-3 mb-4">
+        <img id="mobile-user-avatar" src="" alt="" class="w-10 h-10 rounded-full bg-slate-700 object-cover hidden"/>
+        <div class="text-slate-300 text-sm font-medium" id="mobile-user-name">Loading...</div>
+      </div>
+      <button onclick="logout()" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors w-full">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="font-body">Log Out</span>
+      </button>
+    </div>
+  </div>
+</div>
+<div id="overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[9998]"></div>
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl flex justify-between items-center px-8 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-slate-950 brand-font">Architectural Intelligence</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-slate-500 hover:text-slate-800 transition-colors font-manrope tracking-tight" href="#">Marketplace</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors font-manrope tracking-tight" href="#">Models</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors font-manrope tracking-tight" href="#">Deployments</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button id="menu-btn" class="md:hidden px-3 py-2 text-slate-950 rounded-lg hover:bg-slate-100 transition-all">
+  <span class="material-symbols-outlined">menu</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-lg transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-lg transition-all">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="hidden md:block relative group">
+  <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden ring-2 ring-white cursor-pointer">
+    <img id="desktop-user-avatar" alt="User profile avatar" class="w-full h-full object-cover" src=""/>
+  </div>
+  <!-- Dropdown for logout -->
+  <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+    <div class="p-3 border-b border-slate-100">
+      <p id="dropdown-user-name" class="text-sm font-bold text-slate-900 truncate"></p>
+      <p id="dropdown-user-email" class="text-xs text-slate-500 truncate"></p>
+    </div>
+    <button onclick="logout()" class="w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-slate-50 rounded-b-xl flex items-center gap-2">
+      <span class="material-symbols-outlined text-sm">logout</span>
+      Logout
+    </button>
+  </div>
+</div>
+</div>
+</nav>
+
+<div class="flex pt-16 min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-slate-50 flex flex-col p-4 space-y-2 border-r border-slate-200/50">
+<div class="flex items-center gap-3 px-2 py-4 mb-4">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<div>
+<div class="text-lg font-black text-slate-900 leading-tight">Enterprise Tier</div>
+<div class="text-xs text-slate-500 font-medium">Active Workspace</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white text-slate-950 font-bold rounded-lg shadow-sm translate-x-1 transition-transform" href="api-key.html">
+  <span class="material-symbols-outlined">key</span>
+  <span class="font-body">Api Key</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="active-instances.html">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-body">Active Instances</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="model-library.html">
+<span class="material-symbols-outlined">shelves</span>
+<span class="font-body">Model Library</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-800 transition-all" href="billing-usage.html">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body">Billing and Usage</span>
+</a>
+</nav>
+<div class="pt-6 mt-6 border-t border-slate-200/50 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 transition-colors" href="help.html">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body">Help Center</span>
+</a>
+<button onclick="logout()" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-red-600 transition-colors w-full text-left">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body">Log Out</span>
+</button>
+</div>
+</aside>
+
+<!-- Main Content -->
+<main class="ml-0 md:ml-64 flex-1 p-12 bg-surface">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-12">
+<div class="max-w-2xl">
+<h1 class="text-4xl font-extrabold tracking-tight text-slate-900 mb-4">API Keys</h1>
+<p class="text-lg text-slate-600 leading-relaxed">
+                        Manage your secret keys to integrate Architectural Intelligence with your existing software stack. Keep these keys secure—anyone with access can use your model deployments.
+                    </p>
+</div>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-lg font-bold hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                    Generate New API Key
+                </button>
+</div>
+<!-- Dashboard Grid (Asymmetric Bento Style) -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Security Notice (Tonal Stacking) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-8">
+<div class="bg-primary-container p-8 rounded-xl text-white relative overflow-hidden">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-4 opacity-80">shield_lock</span>
+<h3 class="text-xl font-bold mb-3">Security Best Practices</h3>
+<ul class="space-y-4 text-sm text-slate-300 font-medium">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary-container text-base">verified</span>
+                                    Never share your keys in public repositories or client-side code.
+                                </li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary-container text-base">verified</span>
+                                    Rotate keys every 90 days to minimize risk of exposure.
+                                </li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary-container text-base">verified</span>
+                                    Use environment variables to store keys in your server architecture.
+                                </li>
+</ul>
+</div>
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-white/5 rounded-full blur-3xl"></div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10">
+<h4 class="text-sm font-bold text-slate-900 uppercase tracking-widest mb-4">Quick Stats</h4>
+<div class="space-y-6">
+<div>
+<div class="text-xs text-slate-500 mb-1">Total Active Keys</div>
+<div class="text-2xl font-black text-slate-900">12</div>
+</div>
+<div class="pt-4 border-t border-slate-200/50">
+<div class="text-xs text-slate-500 mb-1">Requests (Last 24h)</div>
+<div class="text-2xl font-black text-cyan-600">842.1k</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Keys Table Section -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_24px_48px_rgba(25,28,30,0.06)]">
+<div class="p-6 border-b border-slate-100 flex justify-between items-center">
+<h2 class="text-xl font-bold text-slate-900">Active Credentials</h2>
+<div class="flex items-center gap-2 bg-surface p-1 rounded-lg">
+<button class="px-3 py-1 text-xs font-bold bg-white shadow-sm rounded text-primary">Active</button>
+<button class="px-3 py-1 text-xs font-medium text-slate-500">Revoked</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-xs uppercase tracking-wider text-slate-400 font-bold border-b border-slate-50">
+<th class="px-8 py-4">Key Name</th>
+<th class="px-8 py-4">API Key</th>
+<th class="px-8 py-4">Created</th>
+<th class="px-8 py-4">Last Used</th>
+<th class="px-8 py-4">Status</th>
+<th class="px-8 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-8 py-5">
+<div class="font-semibold text-slate-900">Production CRM</div>
+<div class="text-xs text-slate-500">Core Engine V2</div>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3 bg-slate-100 px-3 py-1.5 rounded-lg w-fit">
+<code class="text-xs font-mono text-slate-600 tracking-tighter">sk_live_••••••••29f1</code>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-slate-600">Oct 12, 2023</td>
+<td class="px-8 py-5 text-sm text-slate-600">2 mins ago</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-secondary-container/20 text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                                                Active
+                                            </span>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container/20 rounded-lg transition-all" title="Revoke">
+<span class="material-symbols-outlined">block</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container/20 rounded-lg transition-all" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-8 py-5">
+<div class="font-semibold text-slate-900">Dev Sandbox</div>
+<div class="text-xs text-slate-500">Internal Testing</div>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3 bg-slate-100 px-3 py-1.5 rounded-lg w-fit">
+<code class="text-xs font-mono text-slate-600 tracking-tighter">sk_test_••••••••5a2k</code>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-slate-600">Nov 05, 2023</td>
+<td class="px-8 py-5 text-sm text-slate-600">Never</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-200 text-slate-500">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                                Inactive
+                                            </span>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container/20 rounded-lg transition-all" title="Revoke">
+<span class="material-symbols-outlined">block</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container/20 rounded-lg transition-all" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-8 py-5">
+<div class="font-semibold text-slate-900">Analytic Dashboard</div>
+<div class="text-xs text-slate-500">Read-Only View</div>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3 bg-slate-100 px-3 py-1.5 rounded-lg w-fit">
+<code class="text-xs font-mono text-slate-600 tracking-tighter">sk_live_••••••••m09q</code>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-slate-600">Aug 22, 2023</td>
+<td class="px-8 py-5 text-sm text-slate-600">1 hour ago</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-secondary-container/20 text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                                Active
+                                            </span>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container/20 rounded-lg transition-all" title="Revoke">
+<span class="material-symbols-outlined">block</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container/20 rounded-lg transition-all" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 bg-slate-50/50 text-center">
+<button class="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest">
+                                Load 9 more keys
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Section with Asymmetric Visual Bleed -->
+<div class="mt-24 relative">
+<div class="grid grid-cols-12 gap-8 items-center">
+<div class="col-span-7">
+<h2 class="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Need a customized integration?</h2>
+<p class="text-slate-600 mb-8 max-w-lg">Our engineering team can help you build proprietary architectural models using our secure SDK. High-volume keys and dedicated throughput are available for Enterprise customers.</p>
+<div class="flex gap-4">
+<button class="px-6 py-3 border-2 border-primary text-primary rounded-lg font-bold hover:bg-primary hover:text-white transition-all">Talk to sales</button>
+<button class="px-6 py-3 text-slate-500 font-bold flex items-center gap-2 group">
+                                Read documentation
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="col-span-5 relative h-64 overflow-hidden rounded-2xl shadow-2xl">
+<img alt="Technical architectural drawing" class="w-full h-full object-cover grayscale opacity-50 contrast-125" data-alt="high contrast abstract architectural blueprint with sharp angles and technical line drawings in a futuristic slate and white tone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd02BN-yVKHMVPaVFc6eCW0tws83B-930a00f4Ray7HQHtK0jKPuhQuL6TrUDUioUDpHzQrGy4nGw_PZ6bdQlkL8pg9crfPnENDVGW5SjV5gWxIQl3HZ8kOdhC-yWp-SytCmt2D-LnRfPWml-a8gmyk5QVTyBd7rTAMmFqtcwH6MfzB4pg6pJlPkNPb6BtYWO4a_OK7wpZ5J1R8U2d68YuNxzRAEj5iGiUByU3VwZkXlEJZ6GAF9fvkbICKvUZOlsY1qmb51elMiE"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent"></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+<script>
+const API_BASE_URL = 'http://localhost:4000';
+
+// Mobile menu functionality
+const menuBtn = document.getElementById('menu-btn');
+const closeBtn = document.getElementById('close-btn');
+const sidePanel = document.getElementById('side-panel');
+const overlay = document.getElementById('overlay');
+
+function openMenu() {
+  sidePanel.classList.remove('-translate-x-full');
+  overlay.classList.remove('opacity-0', 'pointer-events-none');
+  overlay.classList.add('opacity-100', 'pointer-events-auto');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  sidePanel.classList.add('-translate-x-full');
+  overlay.classList.remove('opacity-100', 'pointer-events-auto');
+  overlay.classList.add('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = '';
+}
+
+if (menuBtn) menuBtn.addEventListener('click', openMenu);
+if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+if (overlay) overlay.addEventListener('click', closeMenu);
+
+// Fetch user data and update UI
+async function loadUserData() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/me`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      // Not authenticated, redirect to login
+      window.location.href = '/login.html';
+      return;
+    }
+
+    const data = await response.json();
+    
+    if (data.loggedIn && data.user) {
+      const user = data.user;
+      
+      // Update desktop avatar
+      const desktopAvatar = document.getElementById('desktop-user-avatar');
+      if (user.avatar) {
+        desktopAvatar.src = user.avatar.trim();
+      }
+      
+      // Update mobile user info
+      const mobileName = document.getElementById('mobile-user-name');
+      const mobileAvatar = document.getElementById('mobile-user-avatar');
+      if (mobileName) mobileName.textContent = user.name || 'User';
+      if (mobileAvatar && user.avatar) {
+        mobileAvatar.src = user.avatar.trim();
+        mobileAvatar.classList.remove('hidden');
+      }
+      
+      // Update dropdown info
+      const dropdownName = document.getElementById('dropdown-user-name');
+      const dropdownEmail = document.getElementById('dropdown-user-email');
+      if (dropdownName) dropdownName.textContent = user.name || 'User';
+      if (dropdownEmail) dropdownEmail.textContent = user.email || '';
+      
+      // Store user data globally
+      window.currentUser = user;
+    } else {
+      // Not logged in, redirect to login
+      window.location.href = '/login.html';
+    }
+  } catch (error) {
+    console.error('Failed to load user data:', error);
+    // On error, assume not authenticated
+    window.location.href = '/login.html';
+  }
+}
+
+// Logout function
+async function logout() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+      method: 'GET',
+      credentials: 'include'
+    });
+    
+    if (response.ok) {
+      // Clear stored user data
+      window.currentUser = null;
+      // Redirect to login page
+      window.location.href = '/login.html';
+    } else {
+      console.error('Logout failed');
+      alert('Logout failed. Please try again.');
+    }
+  } catch (error) {
+    console.error('Logout error:', error);
+    alert('Network error during logout.');
+  }
+}
+
+// Load user data when page loads
+document.addEventListener('DOMContentLoaded', loadUserData);
+</script>
+</body>
+</html>
